@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SongListActivity"
+    android:background="@drawable/gradientbackground" >
+
+    <ListView
+        android:id="@+id/android:list"
+        android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:layout_above="@+id/backButton">
+    </ListView>
+    
+    <Button
+	        android:id="@+id/backButton"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/dockbutton"
+	        android:text="↵"
+	        android:paddingBottom="5dp"
+	        android:textColor="@color/docktext"
+	        android:textSize="40sp"
+	        android:onClick="backButtonClicked"
+	        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
