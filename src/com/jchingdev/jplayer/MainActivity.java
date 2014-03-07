@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import com.jchingdev.jplayer.MusicService.LocalBinder;
 
+import android.R.color;
+import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -12,8 +14,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -29,6 +34,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private boolean seekBarTouched = false;
 	private TextView currentTimeText;
 	private TextView maxTimeText;
+	private ImageView albumArt;
+	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	
 	////OVERRIDES////
 	
@@ -42,6 +49,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		//set up time text views
 		currentTimeText = (TextView)findViewById(R.id.currentTime);
 		maxTimeText = (TextView)findViewById(R.id.maxTime);
+		albumArt = (ImageView)findViewById(R.id.albumArt);
 	}
 	
 	@Override
@@ -84,6 +92,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			setMaxTimeText();
 			//start seek bar thread
 			seekBarHandler.postDelayed(UpdateSongTime, 100);
+			//set album art
+			//setAlbumArt();
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){
@@ -149,6 +159,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				setNowPlayingText();
 				seekBar.setMax(mService.getMaxTime());
 				setMaxTimeText();
+				//setAlbumArt();
 			}
 			seekBarHandler.postDelayed(this, 100);
 		}
@@ -170,6 +181,19 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			TimeUnit.MILLISECONDS.toSeconds(mService.getMaxTime())-
 			TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mService.getMaxTime()))		
 		));
+	}
+	
+	private void setAlbumArt(){
+		metaData.setDataSource(mService.getSongPath());
+		byte[] art = metaData.getEmbeddedPicture();
+		//check if art is null
+		if (art != null){
+			Bitmap songImage = BitmapFactory.decodeByteArray(art,0,art.length);
+			albumArt.setImageBitmap(songImage);
+		}
+		else			
+			albumArt.setBackgroundColor(color.white);
+
 	}
 	
 	////PUBLIC METHODS////

@@ -59,6 +59,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		mp.setOnCompletionListener(this);
 	}
 	
+	
 	@Override
 	public void onStart(Intent intent, int startId){
 		Toast.makeText(this, "Music Service Started", Toast.LENGTH_LONG).show();
@@ -111,6 +112,11 @@ public class MusicService extends Service implements OnCompletionListener {
 	//destroy music
 	public void stopSong(){
 		mp.stop();
+	}
+	
+	//get complete song path
+	public String getSongPath(){
+		return SD_PATH + songList.get(songPosition);
 	}
 	
 	//get now playing song text

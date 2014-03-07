@@ -3,12 +3,16 @@
 
     <string name="app_name">jPlayer</string>
     <string name="action_settings">Settings</string>
+    <string name="lazyButton">lazy</string>
     <string name="play">"▶"</string>
     <string name="forward">"▶▶"</string>
     <string name="rewind">"◀◀"</string>
     <string name="nowPlaying">"Song.mp3"</string>
     <string name="startTime">"00:00</string>
     <string name="maxTime">00:00</string>
+    <string name="album_art">Album Art</string>
+    <string name="musicNote">♪</string>
+    <string name="back">↵</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="backgroundBlue">#102E37</color>
