@@ -26,10 +26,11 @@ public final class R {
         public static final int darkGrayTrans75=0x7f070011;
         public static final int darkOrange1=0x7f070007;
         public static final int darkOrange2=0x7f07000b;
-        public static final int docktext=0x7f070015;
+        public static final int docktext=0x7f070016;
         public static final int lightBlue2=0x7f07000a;
         public static final int lightGray=0x7f070013;
         public static final int lightGrayTrans75=0x7f070014;
+        public static final int lightGreen=0x7f070015;
         public static final int lightOrange1=0x7f070008;
         public static final int lightOrange2=0x7f07000c;
         public static final int skyBlue=0x7f070003;

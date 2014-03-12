@@ -35,5 +35,6 @@
     <color name="darkGrayTrans50">#8041433D</color>
     <color name="lightGray">#E8EDE0</color>
     <color name="lightGrayTrans75">#BFE8EDE0</color>
+    <color name="lightGreen">#1EE425</color>
 
 </resources>

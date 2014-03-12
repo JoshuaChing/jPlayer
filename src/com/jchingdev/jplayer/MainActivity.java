@@ -84,6 +84,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			LocalBinder binder =(LocalBinder)service;
 			mService = binder.getService();
 			mBound = true;
+			//set play button text
+			setPlayButtonText();
 			//set now playing text
 			setNowPlayingText();
 			//set seek bar max duration
@@ -196,11 +198,21 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
 	}
 	
+	private void setPlayButtonText(){
+		TextView tv = (TextView)findViewById(R.id.playButton);
+		if (mService.getIsPaused()){
+			tv.setTextColor(getResources().getColor(R.color.docktext));
+		}
+		else
+			tv.setTextColor(getResources().getColor(R.color.lightGreen));
+	}
+	
 	////PUBLIC METHODS////
 	
 	//play button clicked
 	public void playButtonClicked(View v){
 		mService.playButton();
+		setPlayButtonText();
 	}
 	
 	//rewind button clicked

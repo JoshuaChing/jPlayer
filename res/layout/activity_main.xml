@@ -77,9 +77,9 @@
 	        android:layout_height="match_parent"
 	        android:layout_width="match_parent"
 	        android:background="@drawable/dockbutton"
-	        android:textColor="@color/docktext"
-	   		android:textSize="12sp"
-	    	android:text="@string/lazyButton"/>
+			android:textColor="@color/docktext"
+			android:textSize="12sp"
+			android:text="@string/lazyButton"/>
 	    <Button
 	        android:id="@+id/rewindButton"
 	        android:layout_weight="1"
