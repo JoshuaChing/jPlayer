@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
@@ -86,6 +88,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			mBound = true;
 			//set play button text
 			setPlayButtonText();
+			//set lazy button text
+			setLazyButtonText();
 			//set now playing text
 			setNowPlayingText();
 			//set seek bar max duration
@@ -207,6 +211,16 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			tv.setTextColor(getResources().getColor(R.color.lightGreen));
 	}
 	
+	private void setLazyButtonText(){
+		TextView tv = (TextView)findViewById(R.id.lazyButton);
+		if(!mService.getIsLazy()){
+			tv.setTextColor(getResources().getColor(R.color.docktext));
+		}
+		else
+			tv.setTextColor(getResources().getColor(R.color.lightGreen));
+		
+	}
+	
 	////PUBLIC METHODS////
 	
 	//play button clicked
@@ -232,4 +246,35 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		startActivity(intent);
 		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 	}
+	
+	//lazy button clicked
+	public void lazyButtonClicked(View v){
+		mService.lazyButton();
+		setLazyButtonText();
+		if (!mService.getIsLazy()){
+			new AlertDialog.Builder(this)
+				.setTitle("Lazy Button Deactivated")
+				.setMessage("Sensor turned off")
+				.setIcon(R.drawable.ic_launcher)
+				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface dialog, int which){
+							//place alert dialog functions here
+						}
+				})
+				.show();
+		}
+		else{
+			new AlertDialog.Builder(this)
+			.setTitle("Lazy Button Activated")
+			.setMessage("Wave your hand over the phone's sensor to change song")
+			.setIcon(R.drawable.ic_launcher)
+			.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+					public void onClick(DialogInterface dialog, int which){
+						//place alert dialog functions here
+					}
+			})
+			.show();
+		}
+	}
+	
 }

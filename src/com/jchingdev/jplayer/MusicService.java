@@ -25,6 +25,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	private boolean isPaused = true;
 	private boolean isLooping = true;
 	private boolean isShuffle = false;
+	private boolean isLazy = false;
 	
 	////BINDER SET UP////
 	private final IBinder mBinder = new LocalBinder();
@@ -129,6 +130,11 @@ public class MusicService extends Service implements OnCompletionListener {
 		return isPaused;
 	}
 	
+	//get is lazy
+	public boolean getIsLazy(){
+		return isLazy;
+	}
+	
 	//pause
 	public void pause(){
 		mp.pause();
@@ -207,5 +213,13 @@ public class MusicService extends Service implements OnCompletionListener {
 		setSong();
 		mp.start();
 		isPaused = false;
+	}
+	
+	//lazy button
+	public void lazyButton(){
+		if (isLazy)
+			isLazy=false;
+		else
+			isLazy=true;
 	}
 }

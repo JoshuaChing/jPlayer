@@ -73,13 +73,15 @@
 	    android:orientation="horizontal"
 	    android:layout_alignParentBottom="true">
 	    <Button
+	        android:id="@+id/lazyButton"
 	        android:layout_weight="1"
 	        android:layout_height="match_parent"
 	        android:layout_width="match_parent"
 	        android:background="@drawable/dockbutton"
 			android:textColor="@color/docktext"
 			android:textSize="12sp"
-			android:text="@string/lazyButton"/>
+			android:text="@string/lazyButton"
+			android:onClick="lazyButtonClicked"/>
 	    <Button
 	        android:id="@+id/rewindButton"
 	        android:layout_weight="1"
