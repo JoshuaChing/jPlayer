@@ -11,8 +11,8 @@
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:contentDescription="@string/album_art"
-        android:background="@color/darkGray"/>
+        android:contentDescription="@string/album_art"/>
+        <!-- android:background="@color/darkGray"/>-->
     
     <TextView
         android:id="@+id/nowPlaying"

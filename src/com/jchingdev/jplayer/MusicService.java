@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.Service;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Binder;
@@ -15,6 +19,38 @@ import android.widget.Toast;
 
 public class MusicService extends Service implements OnCompletionListener {
 	
+	////SENSOR VARIABLES AND CLASS////
+	public SensorManager sensorManager;
+	public Sensor proximitySensor;
+	public SensorEventListener l;
+	private boolean close = false;
+	
+	public class ProximitySensorEventListener implements SensorEventListener{
+
+		@Override
+		public void onAccuracyChanged(Sensor sensor, int accuracy) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onSensorChanged(SensorEvent se) {
+			// TODO Auto-generated method stub
+			if (isLazy){	
+				if (se.values[0] < 5){
+					if (!close){
+						close = true;
+						nextSong();
+					}
+				}
+				else
+					close = false;
+			}
+		}
+			
+	}
+	
+	
 	////SONG LIST VARIABLES////
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private List<String> songList = new ArrayList<String>();
@@ -22,6 +58,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
+	private boolean isNewSong = false;
 	private boolean isPaused = true;
 	private boolean isLooping = true;
 	private boolean isShuffle = false;
@@ -48,7 +85,7 @@ public class MusicService extends Service implements OnCompletionListener {
 
 	@Override
 	public void onCreate(){
-		Toast.makeText(this,"Welcome to jPlayer", Toast.LENGTH_LONG).show();
+		//Toast.makeText(this,"Welcome to jPlayer", Toast.LENGTH_LONG).show();
 		startService(new Intent(this, MusicService.class));
 		updateSongList();
 		//set current song
@@ -58,24 +95,31 @@ public class MusicService extends Service implements OnCompletionListener {
 		}catch(IOException e){}
 		//set up the looper listener
 		mp.setOnCompletionListener(this);
+		//set up sensor variables and register
+		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+		l = new ProximitySensorEventListener();
 	}
 	
 	
 	@Override
 	public void onStart(Intent intent, int startId){
-		Toast.makeText(this, "Music Service Started", Toast.LENGTH_LONG).show();
+		//Toast.makeText(this, "Music Service Started", Toast.LENGTH_LONG).show();
 	}
 	
 	@Override
 	public void onDestroy(){
-		Toast.makeText(this,"Goodbye!", Toast.LENGTH_LONG).show();
+		//Toast.makeText(this,"Goodbye!", Toast.LENGTH_LONG).show();
+		sensorManager.unregisterListener(l);
 	}
 	
 	@Override
 	public void onCompletion(MediaPlayer arg0) {
 		// TODO Auto-generated method stub
-		if (isLooping)
+		if (isLooping){
+			Toast.makeText(this, "COMPLETED", Toast.LENGTH_LONG).show();
 			nextSong();
+		}
 		else{
 			setSong();
 			isPaused = true;
@@ -83,6 +127,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		//reset time
 		setTime(0);
 	}
+		
 	////PRIVATE METHODS////
 	
 	//method to find all .mp3 files and add them to list
@@ -104,11 +149,6 @@ public class MusicService extends Service implements OnCompletionListener {
 	}
 	
 	////PUBLIC METHODS////
-	
-	//test method
-	public void testService(){
-		Toast.makeText(this,"Service accessed", Toast.LENGTH_LONG).show();
-	}
 	
 	//destroy music
 	public void stopSong(){
@@ -133,6 +173,16 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get is lazy
 	public boolean getIsLazy(){
 		return isLazy;
+	}
+	
+	//get is new song
+	public boolean getIsNewSong(){
+		return isNewSong;
+	}
+	
+	//set is new song
+	public void setIsNewSong(boolean state){
+		isNewSong = state;
 	}
 	
 	//pause
@@ -189,6 +239,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		else
 			songPosition++;
 		setSong();
+		isNewSong = true;
 		if (!isPaused){
 			mp.start();
 		}
@@ -202,6 +253,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		else
 			songPosition--;
 		setSong();
+		isNewSong = true;
 		if (!isPaused){
 			mp.start();
 		}
@@ -211,15 +263,20 @@ public class MusicService extends Service implements OnCompletionListener {
 	public void selectSong(int newPosition){
 		songPosition = newPosition;
 		setSong();
+		isNewSong = true;
 		mp.start();
 		isPaused = false;
 	}
 	
 	//lazy button
 	public void lazyButton(){
-		if (isLazy)
+		if (isLazy){
 			isLazy=false;
-		else
+			sensorManager.unregisterListener(l);
+		}
+		else{
 			isLazy=true;
+			sensorManager.registerListener(l, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+		}
 	}
 }

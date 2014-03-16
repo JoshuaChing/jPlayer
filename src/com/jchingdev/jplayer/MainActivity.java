@@ -161,16 +161,16 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				));
 			}
 			//check if new song
-			if (mService.getCurrentTime() <= 1000){
+			if (mService.getIsNewSong()){
 				setNowPlayingText();
 				seekBar.setMax(mService.getMaxTime());
 				setMaxTimeText();
 				//setAlbumArt();
+				mService.setIsNewSong(false);
 			}
 			seekBarHandler.postDelayed(this, 100);
 		}
 	};
-	
 	
 	////PRIVATE METHODS////
 	
@@ -254,7 +254,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		if (!mService.getIsLazy()){
 			new AlertDialog.Builder(this)
 				.setTitle("Lazy Button Deactivated")
-				.setMessage("Sensor turned off")
+				.setMessage("Sensor disabled")
 				.setIcon(R.drawable.ic_launcher)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog, int which){
@@ -265,15 +265,15 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		}
 		else{
 			new AlertDialog.Builder(this)
-			.setTitle("Lazy Button Activated")
-			.setMessage("Wave your hand over the phone's sensor to change song")
-			.setIcon(R.drawable.ic_launcher)
-			.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-					public void onClick(DialogInterface dialog, int which){
-						//place alert dialog functions here
-					}
-			})
-			.show();
+				.setTitle("Lazy Button Activated")
+				.setMessage("Wave your hand over the phone's sensor to change song")
+				.setIcon(R.drawable.ic_launcher)
+				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface dialog, int which){
+							//place alert dialog functions here
+						}
+				})
+				.show();
 		}
 	}
 	
