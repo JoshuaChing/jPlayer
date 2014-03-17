@@ -58,7 +58,6 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
-	private boolean isNewSong = false;
 	private boolean isPaused = true;
 	private boolean isLooping = true;
 	private boolean isShuffle = false;
@@ -175,16 +174,6 @@ public class MusicService extends Service implements OnCompletionListener {
 		return isLazy;
 	}
 	
-	//get is new song
-	public boolean getIsNewSong(){
-		return isNewSong;
-	}
-	
-	//set is new song
-	public void setIsNewSong(boolean state){
-		isNewSong = state;
-	}
-	
 	//pause
 	public void pause(){
 		mp.pause();
@@ -239,7 +228,6 @@ public class MusicService extends Service implements OnCompletionListener {
 		else
 			songPosition++;
 		setSong();
-		isNewSong = true;
 		if (!isPaused){
 			mp.start();
 		}
@@ -253,7 +241,6 @@ public class MusicService extends Service implements OnCompletionListener {
 		else
 			songPosition--;
 		setSong();
-		isNewSong = true;
 		if (!isPaused){
 			mp.start();
 		}
@@ -263,7 +250,6 @@ public class MusicService extends Service implements OnCompletionListener {
 	public void selectSong(int newPosition){
 		songPosition = newPosition;
 		setSong();
-		isNewSong = true;
 		mp.start();
 		isPaused = false;
 	}

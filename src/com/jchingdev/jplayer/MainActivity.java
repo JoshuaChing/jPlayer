@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	////SERVICE VARIABLES////
 	MusicService mService;
 	boolean mBound = false;
-	
+
 	////MEDIA PLAYER VARIABLES////
 	private SeekBar seekBar;
 	private Handler seekBarHandler = new Handler();
@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private TextView maxTimeText;
 	private ImageView albumArt;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
+	private String nowPlayingSong;
 	
 	////OVERRIDES////
 	
@@ -51,6 +52,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		//set up time text views
 		currentTimeText = (TextView)findViewById(R.id.currentTime);
 		maxTimeText = (TextView)findViewById(R.id.maxTime);
+		//set up album art view
 		albumArt = (ImageView)findViewById(R.id.albumArt);
 	}
 	
@@ -100,6 +102,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			seekBarHandler.postDelayed(UpdateSongTime, 100);
 			//set album art
 			//setAlbumArt();
+			//set now playing song string variable
+			nowPlayingSong = mService.getNowPlayingText();
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){
@@ -160,13 +164,13 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mService.getCurrentTime()))		
 				));
 			}
-			//check if new song
-			if (mService.getIsNewSong()){
+			//check if new song is playing
+			if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
 				setNowPlayingText();
 				seekBar.setMax(mService.getMaxTime());
 				setMaxTimeText();
 				//setAlbumArt();
-				mService.setIsNewSong(false);
+				nowPlayingSong = mService.getNowPlayingText();
 			}
 			seekBarHandler.postDelayed(this, 100);
 		}
