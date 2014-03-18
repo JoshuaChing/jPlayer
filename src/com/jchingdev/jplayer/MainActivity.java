@@ -88,8 +88,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			LocalBinder binder =(LocalBinder)service;
 			mService = binder.getService();
 			mBound = true;
-			//set play button text
-			setPlayButtonText();
+			//set play button image
+			setPlayButtonImage();
 			//set lazy button text
 			setLazyButtonText();
 			//set now playing text
@@ -206,13 +206,13 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
 	}
 	
-	private void setPlayButtonText(){
-		TextView tv = (TextView)findViewById(R.id.playButton);
+	private void setPlayButtonImage(){
+		ImageView iv = (ImageView)findViewById(R.id.playButtonImage);
 		if (mService.getIsPaused()){
-			tv.setTextColor(getResources().getColor(R.color.docktext));
+			iv.setImageResource(R.drawable.ic_action_play);
 		}
 		else
-			tv.setTextColor(getResources().getColor(R.color.lightGreen));
+			iv.setImageResource(R.drawable.ic_action_pause);
 	}
 	
 	private void setLazyButtonText(){
@@ -230,7 +230,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	//play button clicked
 	public void playButtonClicked(View v){
 		mService.playButton();
-		setPlayButtonText();
+		setPlayButtonImage();
 	}
 	
 	//rewind button clicked

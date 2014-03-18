@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/progressthumbbottom"/>
-    <!-- <item android:drawable="@drawable/progressthumbtop"/>-->
-</layer-list>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:shape="oval">
+		<gradient
+        android:type="radial"
+        android:gradientRadius="11"
+        android:startColor="@color/white"
+        android:centerColor="@color/white"
+        android:endColor="@color/white"/>
+		<size
+			android:width="11dp"
+			android:height="11dp"/>
+</shape>

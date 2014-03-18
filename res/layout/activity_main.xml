@@ -5,25 +5,76 @@
     tools:context=".MainActivity"
     android:background="@drawable/gradientbackground">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+        
+        <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">  
+        	<Button
+           		android:id="@+id/shuffleButton"
+            	android:layout_width="match_parent"
+            	android:layout_height="match_parent"
+            	android:background="@drawable/dockbutton"/>
+
+        	<ImageView
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:layout_centerHorizontal="true"
+        	    android:layout_centerVertical="true"
+        	    android:contentDescription="@string/shuffleCD"
+        	    android:src="@drawable/ic_action_shuffle" />
+
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/nowPlaying"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dockbutton"
+                android:text="@string/nowPlaying"
+                android:textColor="@color/docktext"
+                android:textSize="17sp"/>
+        </RelativeLayout>
+        
+        <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">  
+        	<Button
+           		android:id="@+id/loopButton"
+            	android:layout_width="match_parent"
+            	android:layout_height="match_parent"
+            	android:background="@drawable/dockbutton"/>
+        	<ImageView
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/loopCD"
+			    android:src="@drawable/ic_action_repeat"/>
+        </RelativeLayout>
+        
+    </LinearLayout>
+    
     <ImageView
         android:id="@+id/albumArt"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:contentDescription="@string/album_art"/>
-        <!-- android:background="@color/darkGray"/>-->
-    
-    <TextView
-        android:id="@+id/nowPlaying"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="@color/white"
-        android:text="@string/nowPlaying"
-        android:layout_margin="10dp" />
-    
+        android:contentDescription="@string/album_artCD"
+        android:background="@drawable/defaultalbumartbackground"
+        android:src="@drawable/ic_launcher"/>
+        
     <RelativeLayout
         android:id="@+id/timeDisplay"
         android:layout_height="wrap_content"
@@ -69,7 +120,7 @@
 	<LinearLayout 
 	    android:id="@+id/dock"
 	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
+	    android:layout_height="45dp"
 	    android:orientation="horizontal"
 	    android:layout_alignParentBottom="true">
 	    <Button
@@ -79,39 +130,64 @@
 	        android:layout_width="match_parent"
 	        android:background="@drawable/dockbutton"
 			android:textColor="@color/docktext"
-			android:textSize="12sp"
+			android:textSize="15sp"
 			android:text="@string/lazyButton"
 			android:onClick="lazyButtonClicked"/>
-	    <Button
-	        android:id="@+id/rewindButton"
-	        android:layout_weight="1"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:background="@drawable/dockbutton"
-	        android:text="@string/rewind"
-	        android:textColor="@color/docktext"
-	        android:textSize="20sp"
-	        android:onClick="rewindButtonClicked"/>
-	     <Button
-	        android:id="@+id/playButton"
-	        android:layout_weight="1"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:background="@drawable/dockbutton"
-	        android:text="@string/play"
-	        android:textColor="@color/docktext"
-	        android:textSize="40sp"
-	        android:onClick="playButtonClicked"/>
-	     <Button
-	        android:id="@+id/forwardButton"
-	        android:layout_weight="1"
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:background="@drawable/dockbutton"
-	        android:text="@string/forward"
-	        android:textColor="@color/docktext"
-	        android:textSize="20sp"
-	        android:onClick="forwardButtonClicked"/>
+	    <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="match_parent"
+	         android:layout_height="match_parent">
+	    	<Button
+	        	android:id="@+id/rewindButton"
+	        	android:layout_width="match_parent"
+	       	 	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="rewindButtonClicked"/>
+	    	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/previousCD"
+			    android:src="@drawable/ic_action_previous"/>
+	    </RelativeLayout>
+	    <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="match_parent"
+	         android:layout_height="match_parent">
+	     	<Button
+	       	 	android:id="@+id/playButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="playButtonClicked"/>
+	     	<ImageView
+	     	    android:id="@+id/playButtonImage"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/playCD"
+			    android:src="@drawable/ic_action_play"/>
+	     </RelativeLayout>
+	     <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="match_parent"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/forwardButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="forwardButtonClicked"/>
+			<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/nextCD"
+			    android:src="@drawable/ic_action_next"/>
+	     </RelativeLayout>
 	     <Button
 	        android:id="@+id/songs"
 	        android:layout_weight="1"
@@ -119,7 +195,7 @@
 	        android:layout_height="match_parent"
 	        android:background="@drawable/dockbutton"
 	        android:textColor="@color/docktext"
-	        android:textSize="20sp"
+	        android:textSize="25sp"
 	        android:text="@string/musicNote"
 	        android:onClick="songsButtonClicked"/>
 	</LinearLayout>

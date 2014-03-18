@@ -3,5 +3,5 @@
     android:shape="line" >
     <stroke
         android:color="@color/whiteTrans75"
-        android:width="2dp"/>
+        android:width="3dp"/>
 </shape>

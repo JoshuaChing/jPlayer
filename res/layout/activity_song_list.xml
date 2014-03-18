@@ -9,19 +9,28 @@
         android:id="@+id/android:list"
         android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:layout_above="@+id/backButton">
+		android:layout_above="@+id/backButtonLayout">
     </ListView>
     
-    <Button
-	        android:id="@+id/backButton"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:background="@drawable/dockbutton"
-	        android:text="@string/back"
-	        android:paddingBottom="5dp"
-	        android:textColor="@color/docktext"
-	        android:textSize="35sp"
-	        android:onClick="backButtonClicked"
-	        android:layout_alignParentBottom="true"/>
+    <RelativeLayout
+        	android:id="@+id/backButtonLayout"
+	         android:layout_width="match_parent"
+	         android:layout_height="45dp"
+	         android:layout_alignParentBottom="true">
+    	<Button
+	        	android:id="@+id/backButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="backButtonClicked"/>
+    	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/backCD"
+			    android:src="@drawable/ic_action_undo"/>
+    </RelativeLayout>
+    
 
 </RelativeLayout>

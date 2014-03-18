@@ -10,10 +10,17 @@
     <string name="nowPlaying">"Song.mp3"</string>
     <string name="startTime">"00:00</string>
     <string name="maxTime">00:00</string>
-    <string name="album_art">Album Art</string>
     <string name="musicNote">♪</string>
     <string name="back">↵</string>
 
+    <string name="album_artCD">Album Art</string>
+    <string name="nextCD">Next</string>
+    <string name="previousCD">Previous</string>
+    <string name="playCD">Play</string>
+    <string name="backCD">Back</string>
+    <string name="shuffleCD">Shuffle</string>
+    <string name="loopCD">Loop</string>
+    
     <color name="transparent">#00FFFFFF</color>
     <color name="backgroundBlue">#102E37</color>
     <color name="backgroundBlue2">#010c10</color>
@@ -33,6 +40,7 @@
     <color name="darkGray">#41433D</color>
     <color name="darkGrayTrans75">#BF41433D</color>
     <color name="darkGrayTrans50">#8041433D</color>
+    <color name="darkGrayTrans25">#4041433D</color>
     <color name="lightGray">#E8EDE0</color>
     <color name="lightGrayTrans75">#BFE8EDE0</color>
     <color name="lightGreen">#1EE425</color>
