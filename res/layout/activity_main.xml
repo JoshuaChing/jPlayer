@@ -5,7 +5,7 @@
     tools:context=".MainActivity"
     android:background="@drawable/gradientbackground">
 
-    <LinearLayout
+   <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
@@ -30,8 +30,8 @@
         	    android:src="@drawable/ic_action_shuffle" />
 
         </RelativeLayout>
-        
-        <RelativeLayout
+               
+		<RelativeLayout
             android:layout_weight="3"
             android:layout_width="0dp"
             android:layout_height="match_parent">
@@ -39,10 +39,15 @@
                 android:id="@+id/nowPlaying"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/dockbutton"
+                android:background="@drawable/dockbutton"/>
+            <TextView
+                android:id="@+id/nowPlayingText"
+      			android:gravity="center"
+                android:layout_width="match_parent"
+        	    android:layout_height="match_parent"
                 android:text="@string/nowPlaying"
                 android:textColor="@color/docktext"
-                android:textSize="17sp"/>
+                android:textStyle="bold"/>
         </RelativeLayout>
         
         <RelativeLayout
@@ -53,8 +58,10 @@
            		android:id="@+id/loopButton"
             	android:layout_width="match_parent"
             	android:layout_height="match_parent"
-            	android:background="@drawable/dockbutton"/>
+            	android:background="@drawable/dockbutton"
+            	android:onClick="loopButtonClicked"/>
         	<ImageView
+        	    android:id="@+id/loopButtonImage"
         	    android:layout_width="wrap_content"
         	    android:layout_height="wrap_content"
         	    android:layout_centerHorizontal="true"
@@ -130,7 +137,6 @@
 	        android:layout_width="match_parent"
 	        android:background="@drawable/dockbutton"
 			android:textColor="@color/docktext"
-			android:textSize="15sp"
 			android:text="@string/lazyButton"
 			android:onClick="lazyButtonClicked"/>
 	    <RelativeLayout

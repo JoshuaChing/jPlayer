@@ -36,9 +36,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private boolean seekBarTouched = false;
 	private TextView currentTimeText;
 	private TextView maxTimeText;
+	private TextView nowPlayingText;
 	private ImageView albumArt;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private String nowPlayingSong;
+	private boolean isLoopingOnComplete = false;
 	
 	////OVERRIDES////
 	
@@ -54,6 +56,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		maxTimeText = (TextView)findViewById(R.id.maxTime);
 		//set up album art view
 		albumArt = (ImageView)findViewById(R.id.albumArt);
+		//set up now playing text
+		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
 	}
 	
 	@Override
@@ -172,6 +176,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				//setAlbumArt();
 				nowPlayingSong = mService.getNowPlayingText();
 			}
+			//check if looping is off and if song is done
+			if (!mService.getIsLoopingOnComplete()==isLoopingOnComplete){
+				ImageView iv = (ImageView)findViewById(R.id.playButtonImage);
+					iv.setImageResource(R.drawable.ic_action_play);
+					mService.resetIsLoopingOnComplete();
+			}
 			seekBarHandler.postDelayed(this, 100);
 		}
 	};
@@ -179,8 +189,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	////PRIVATE METHODS////
 	
 	private void setNowPlayingText(){
-		TextView tv = (TextView)findViewById(R.id.nowPlaying);
-		tv.setText(mService.getNowPlayingText());
+		nowPlayingText.setText(mService.getNowPlayingText());
 	}
 	
 	private void setMaxTimeText(){
@@ -215,13 +224,22 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			iv.setImageResource(R.drawable.ic_action_pause);
 	}
 	
+	private void setLoopButtonImage(){
+		ImageView iv = (ImageView)findViewById(R.id.loopButtonImage);
+		if (mService.getIsLooping()){
+			iv.setImageResource(R.drawable.ic_action_repeat_focused);
+		}
+		else
+			iv.setImageResource(R.drawable.ic_action_repeat);
+	}
+	
 	private void setLazyButtonText(){
 		TextView tv = (TextView)findViewById(R.id.lazyButton);
 		if(!mService.getIsLazy()){
 			tv.setTextColor(getResources().getColor(R.color.docktext));
 		}
 		else
-			tv.setTextColor(getResources().getColor(R.color.lightGreen));
+			tv.setTextColor(getResources().getColor(R.color.skyBlue3));
 		
 	}
 	
@@ -249,6 +267,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		Intent intent = new Intent(this,SongListActivity.class);
 		startActivity(intent);
 		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+	}
+	
+	//looping button clicked
+	public void loopButtonClicked(View v){
+		mService.loopButton();
+		setLoopButtonImage();
 	}
 	
 	//lazy button clicked

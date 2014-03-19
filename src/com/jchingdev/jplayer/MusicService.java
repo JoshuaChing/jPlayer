@@ -15,7 +15,6 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Binder;
 import android.os.Environment;
 import android.os.IBinder;
-import android.widget.Toast;
 
 public class MusicService extends Service implements OnCompletionListener {
 	
@@ -59,9 +58,10 @@ public class MusicService extends Service implements OnCompletionListener {
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
 	private boolean isPaused = true;
-	private boolean isLooping = true;
+	private boolean isLooping = false;
 	private boolean isShuffle = false;
 	private boolean isLazy = false;
+	private boolean isLoopingOnComplete = false;
 	
 	////BINDER SET UP////
 	private final IBinder mBinder = new LocalBinder();
@@ -116,15 +116,16 @@ public class MusicService extends Service implements OnCompletionListener {
 	public void onCompletion(MediaPlayer arg0) {
 		// TODO Auto-generated method stub
 		if (isLooping){
-			Toast.makeText(this, "COMPLETED", Toast.LENGTH_LONG).show();
-			nextSong();
+			if (isPaused)
+				setSong();
+			else
+				nextSong();
 		}
 		else{
 			setSong();
 			isPaused = true;
+			isLoopingOnComplete=true;
 		}
-		//reset time
-		setTime(0);
 	}
 		
 	////PRIVATE METHODS////
@@ -164,6 +165,21 @@ public class MusicService extends Service implements OnCompletionListener {
 		return (songList.get(songPosition)).substring(0,songList.get(songPosition).length()-4);
 	}
 	
+	//get is looping
+	public boolean getIsLooping(){
+		return isLooping;
+	}
+	
+	//get is looping on complete
+	public boolean getIsLoopingOnComplete(){
+		return isLoopingOnComplete;
+	}
+	
+	//reset is looping on complete
+	public void resetIsLoopingOnComplete(){
+		isLoopingOnComplete=false;
+	}
+	
 	//get is paused
 	public boolean getIsPaused(){
 		return isPaused;
@@ -195,6 +211,8 @@ public class MusicService extends Service implements OnCompletionListener {
 			mp.reset();
 			mp.setDataSource(SD_PATH + songList.get(songPosition));
 			mp.prepare();
+			//reset time
+			setTime(0);
 		}catch(IOException e){}
 	}
 	
@@ -206,6 +224,15 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get song max song time
 	public int getMaxTime(){
 		return  mp.getDuration();
+	}
+	
+	//loop button
+	public void loopButton(){
+		if (isLooping){
+			isLooping = false;
+		}
+		else
+			isLooping = true;
 	}
 	
 	//play button
