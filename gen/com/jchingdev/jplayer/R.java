@@ -64,35 +64,39 @@ public final class R {
         public static final int ic_action_repeat=0x7f020007;
         public static final int ic_action_repeat_focused=0x7f020008;
         public static final int ic_action_shuffle=0x7f020009;
-        public static final int ic_action_undo=0x7f02000a;
-        public static final int ic_launcher=0x7f02000b;
-        public static final int progress=0x7f02000c;
-        public static final int progressbackground=0x7f02000d;
-        public static final int progressfillbackground=0x7f02000e;
-        public static final int progressthumb=0x7f02000f;
-        public static final int songitembackground=0x7f020010;
+        public static final int ic_action_shuffle_focused=0x7f02000a;
+        public static final int ic_action_undo=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int jandroid=0x7f02000d;
+        public static final int progress=0x7f02000e;
+        public static final int progressbackground=0x7f02000f;
+        public static final int progressfillbackground=0x7f020010;
+        public static final int progressthumb=0x7f020011;
+        public static final int songitembackground=0x7f020012;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0013;
-        public static final int albumArt=0x7f0a0005;
-        public static final int backButton=0x7f0a0012;
-        public static final int backButtonLayout=0x7f0a0011;
-        public static final int currentTime=0x7f0a0008;
-        public static final int dock=0x7f0a0007;
-        public static final int forwardButton=0x7f0a000f;
-        public static final int lazyButton=0x7f0a000b;
-        public static final int loopButton=0x7f0a0003;
-        public static final int loopButtonImage=0x7f0a0004;
-        public static final int maxTime=0x7f0a000a;
-        public static final int nowPlaying=0x7f0a0001;
-        public static final int nowPlayingText=0x7f0a0002;
-        public static final int playButton=0x7f0a000d;
-        public static final int playButtonImage=0x7f0a000e;
-        public static final int rewindButton=0x7f0a000c;
-        public static final int seekBar=0x7f0a0009;
+        public static final int action_settings=0x7f0a0015;
+        public static final int albumArt=0x7f0a0006;
+        public static final int backButton=0x7f0a0014;
+        public static final int backButtonLayout=0x7f0a0013;
+        public static final int currentTime=0x7f0a0009;
+        public static final int dock=0x7f0a0008;
+        public static final int forwardButton=0x7f0a0010;
+        public static final int lazyButton=0x7f0a000c;
+        public static final int loopButton=0x7f0a0004;
+        public static final int loopButtonImage=0x7f0a0005;
+        public static final int maxTime=0x7f0a000b;
+        public static final int nowPlaying=0x7f0a0002;
+        public static final int nowPlayingText=0x7f0a0003;
+        public static final int playButton=0x7f0a000e;
+        public static final int playButtonImage=0x7f0a000f;
+        public static final int rewindButton=0x7f0a000d;
+        public static final int seekBar=0x7f0a000a;
         public static final int shuffleButton=0x7f0a0000;
-        public static final int songs=0x7f0a0010;
-        public static final int timeDisplay=0x7f0a0006;
+        public static final int shuffleButtonImage=0x7f0a0001;
+        public static final int songPath=0x7f0a0012;
+        public static final int songs=0x7f0a0011;
+        public static final int timeDisplay=0x7f0a0007;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -105,22 +109,23 @@ public final class R {
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
-        public static final int album_artCD=0x7f06000b;
+        public static final int album_artCD=0x7f06000c;
         public static final int app_name=0x7f060000;
         public static final int back=0x7f06000a;
-        public static final int backCD=0x7f06000f;
+        public static final int backCD=0x7f060010;
         public static final int forward=0x7f060004;
         public static final int lazyButton=0x7f060002;
-        public static final int loopCD=0x7f060011;
+        public static final int loopCD=0x7f060012;
         public static final int maxTime=0x7f060008;
         public static final int musicNote=0x7f060009;
-        public static final int nextCD=0x7f06000c;
+        public static final int nextCD=0x7f06000d;
         public static final int nowPlaying=0x7f060006;
         public static final int play=0x7f060003;
-        public static final int playCD=0x7f06000e;
-        public static final int previousCD=0x7f06000d;
+        public static final int playCD=0x7f06000f;
+        public static final int previousCD=0x7f06000e;
         public static final int rewind=0x7f060005;
-        public static final int shuffleCD=0x7f060010;
+        public static final int shuffleCD=0x7f060011;
+        public static final int songPath=0x7f06000b;
         public static final int startTime=0x7f060007;
     }
     public static final class style {

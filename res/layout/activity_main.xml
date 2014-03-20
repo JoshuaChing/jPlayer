@@ -19,9 +19,11 @@
            		android:id="@+id/shuffleButton"
             	android:layout_width="match_parent"
             	android:layout_height="match_parent"
-            	android:background="@drawable/dockbutton"/>
+            	android:background="@drawable/dockbutton"
+            	android:onClick="shuffleButtonClicked"/>
 
         	<ImageView
+        	    android:id="@+id/shuffleButtonImage"
         	    android:layout_width="wrap_content"
         	    android:layout_height="wrap_content"
         	    android:layout_centerHorizontal="true"
@@ -74,13 +76,13 @@
     
     <ImageView
         android:id="@+id/albumArt"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:contentDescription="@string/album_artCD"
         android:background="@drawable/defaultalbumartbackground"
-        android:src="@drawable/ic_launcher"/>
+        android:src="@drawable/jandroid"/>
         
     <RelativeLayout
         android:id="@+id/timeDisplay"

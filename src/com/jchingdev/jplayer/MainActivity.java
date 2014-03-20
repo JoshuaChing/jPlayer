@@ -233,6 +233,15 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			iv.setImageResource(R.drawable.ic_action_repeat);
 	}
 	
+	private void setShuffleButtonImage(){
+		ImageView iv = (ImageView)findViewById(R.id.shuffleButtonImage);
+		if (mService.getIsShuffle()){
+			iv.setImageResource(R.drawable.ic_action_shuffle_focused);
+		}
+		else
+			iv.setImageResource(R.drawable.ic_action_shuffle);
+	}
+	
 	private void setLazyButtonText(){
 		TextView tv = (TextView)findViewById(R.id.lazyButton);
 		if(!mService.getIsLazy()){
@@ -273,6 +282,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	public void loopButtonClicked(View v){
 		mService.loopButton();
 		setLoopButtonImage();
+	}
+	
+	//shuffle button clicked
+	public void shuffleButtonClicked(View v){
+		mService.shuffleButton();
+		setShuffleButtonImage();
 	}
 	
 	//lazy button clicked

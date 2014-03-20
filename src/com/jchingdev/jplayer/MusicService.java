@@ -160,6 +160,10 @@ public class MusicService extends Service implements OnCompletionListener {
 		return SD_PATH + songList.get(songPosition);
 	}
 	
+	public String getOnlySongPath(){
+		return SD_PATH;
+	}
+	
 	//get now playing song text
 	public String getNowPlayingText(){
 		return (songList.get(songPosition)).substring(0,songList.get(songPosition).length()-4);
@@ -178,6 +182,11 @@ public class MusicService extends Service implements OnCompletionListener {
 	//reset is looping on complete
 	public void resetIsLoopingOnComplete(){
 		isLoopingOnComplete=false;
+	}
+	
+	//get is shuffle
+	public boolean getIsShuffle(){
+		return isShuffle;
 	}
 	
 	//get is paused
@@ -234,6 +243,15 @@ public class MusicService extends Service implements OnCompletionListener {
 		else
 			isLooping = true;
 	}
+	
+	//loop button
+		public void shuffleButton(){
+			if (isShuffle){
+				isShuffle = false;
+			}
+			else
+				isShuffle = true;
+		}
 	
 	//play button
 	public void playButton(){

@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class SongListActivity extends ListActivity {
 
@@ -28,6 +29,7 @@ public class SongListActivity extends ListActivity {
 	////SONG LIST VARIABLES////
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private List<String> songList = new ArrayList<String>();
+	private TextView songPath;
 	
 	
 	////OVERRIDE METHODS////
@@ -37,6 +39,7 @@ public class SongListActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
 		updateSongList();
+		songPath = (TextView)findViewById(R.id.songPath);
 	}
 
 	@Override
@@ -71,6 +74,7 @@ public class SongListActivity extends ListActivity {
 			LocalBinder binder =(LocalBinder)service;
 			mService = binder.getService();
 			mBound = true;
+			songPath.setText("Song Folder: "+mService.getOnlySongPath());
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){

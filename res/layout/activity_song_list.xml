@@ -5,18 +5,29 @@
     tools:context=".SongListActivity"
     android:background="@drawable/gradientbackground" >
 
+    <Button
+        android:id="@+id/songPath"
+       	android:layout_width="match_parent"
+       	android:layout_height="45dp"
+       	android:background="@drawable/dockbutton"
+		android:textColor="@color/docktext"
+		android:text="@string/songPath"
+		android:textStyle="bold"
+        android:layout_alignParentTop="true"/>
+    
     <ListView
         android:id="@+id/android:list"
         android:layout_height="wrap_content"
 		android:layout_width="match_parent"
+		android:layout_below="@+id/songPath"
 		android:layout_above="@+id/backButtonLayout">
     </ListView>
     
     <RelativeLayout
         	android:id="@+id/backButtonLayout"
-	         android:layout_width="match_parent"
-	         android:layout_height="45dp"
-	         android:layout_alignParentBottom="true">
+	        android:layout_width="match_parent"
+	        android:layout_height="45dp"
+	        android:layout_alignParentBottom="true">
     	<Button
 	        	android:id="@+id/backButton"
 	        	android:layout_width="match_parent"
