@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.jchingdev.jplayer.MusicService.LocalBinder;
 
-import android.R.color;
 import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,6 +37,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private TextView maxTimeText;
 	private TextView nowPlayingText;
 	private ImageView albumArt;
+	private ImageView albumArtBackground;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private String nowPlayingSong;
 	private boolean isLoopingOnComplete = false;
@@ -56,6 +56,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		maxTimeText = (TextView)findViewById(R.id.maxTime);
 		//set up album art view
 		albumArt = (ImageView)findViewById(R.id.albumArt);
+		albumArtBackground = (ImageView)findViewById(R.id.albumArtBackground);
 		//set up now playing text
 		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
 	}
@@ -105,7 +106,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			//start seek bar thread
 			seekBarHandler.postDelayed(UpdateSongTime, 100);
 			//set album art
-			//setAlbumArt();
+			setAlbumArt();
 			//set now playing song string variable
 			nowPlayingSong = mService.getNowPlayingText();
 		}
@@ -173,7 +174,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				setNowPlayingText();
 				seekBar.setMax(mService.getMaxTime());
 				setMaxTimeText();
-				//setAlbumArt();
+				setAlbumArt();
 				nowPlayingSong = mService.getNowPlayingText();
 			}
 			//check if looping is off and if song is done
@@ -209,10 +210,12 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		if (art != null){
 			Bitmap songImage = BitmapFactory.decodeByteArray(art,0,art.length);
 			albumArt.setImageBitmap(songImage);
+			albumArtBackground.setImageBitmap(songImage);
 		}
-		else			
-			albumArt.setBackgroundColor(color.white);
-
+		else{			
+			albumArt.setImageResource(R.drawable.jandroid);
+			albumArtBackground.setImageResource(R.drawable.jandroid);
+		}
 	}
 	
 	private void setPlayButtonImage(){
