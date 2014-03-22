@@ -164,6 +164,11 @@ public class MusicService extends Service implements OnCompletionListener {
 		return SD_PATH;
 	}
 	
+	//get song file name
+	public String getNowPlayingFile(){
+		return songList.get(songPosition);
+	}
+	
 	//get now playing song text
 	public String getNowPlayingText(){
 		return (songList.get(songPosition)).substring(0,songList.get(songPosition).length()-4);

@@ -8,12 +8,16 @@
     <Button
         android:id="@+id/songPath"
        	android:layout_width="match_parent"
-       	android:layout_height="45dp"
+       	android:layout_height="65dp"
        	android:background="@drawable/dockbutton"
 		android:textColor="@color/docktext"
 		android:text="@string/songPath"
 		android:textStyle="bold"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:drawableLeft="@drawable/ic_action_collection"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="songPathClicked"/>
     
     <ListView
         android:id="@+id/android:list"
@@ -26,7 +30,7 @@
     <RelativeLayout
         	android:id="@+id/backButtonLayout"
 	        android:layout_width="match_parent"
-	        android:layout_height="45dp"
+	        android:layout_height="50dp"
 	        android:layout_alignParentBottom="true">
     	<Button
 	        	android:id="@+id/backButton"

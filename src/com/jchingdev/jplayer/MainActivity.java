@@ -36,6 +36,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private TextView currentTimeText;
 	private TextView maxTimeText;
 	private TextView nowPlayingText;
+	private TextView albumText;
+	private TextView artistText;
 	private ImageView albumArt;
 	private ImageView albumArtBackground;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
@@ -54,9 +56,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		//set up time text views
 		currentTimeText = (TextView)findViewById(R.id.currentTime);
 		maxTimeText = (TextView)findViewById(R.id.maxTime);
-		//set up album art view
+		//set up meta data views
 		albumArt = (ImageView)findViewById(R.id.albumArt);
 		albumArtBackground = (ImageView)findViewById(R.id.albumArtBackground);
+		albumText = (TextView)findViewById(R.id.albumText);
+		artistText = (TextView)findViewById(R.id.artistText);
 		//set up now playing text
 		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
 	}
@@ -105,8 +109,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			setMaxTimeText();
 			//start seek bar thread
 			seekBarHandler.postDelayed(UpdateSongTime, 100);
-			//set album art
-			setAlbumArt();
+			//set meta data
+			setMetaData();
 			//set now playing song string variable
 			nowPlayingSong = mService.getNowPlayingText();
 		}
@@ -174,7 +178,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				setNowPlayingText();
 				seekBar.setMax(mService.getMaxTime());
 				setMaxTimeText();
-				setAlbumArt();
+				setMetaData();
 				nowPlayingSong = mService.getNowPlayingText();
 			}
 			//check if looping is off and if song is done
@@ -203,7 +207,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		));
 	}
 	
-	private void setAlbumArt(){
+	private void setMetaData(){
 		metaData.setDataSource(mService.getSongPath());
 		byte[] art = metaData.getEmbeddedPicture();
 		//check if art is null
@@ -216,6 +220,16 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			albumArt.setImageResource(R.drawable.jandroid);
 			albumArtBackground.setImageResource(R.drawable.jandroid);
 		}
+		//check if album text is null
+		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!= null)
+				albumText.setText(metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
+		else
+			albumText.setText("Unknown Album");
+		//check if artist text is null
+		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+			artistText.setText(metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+		else
+			artistText.setText("Unknown Artist");
 	}
 	
 	private void setPlayButtonImage(){
@@ -291,6 +305,20 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	public void shuffleButtonClicked(View v){
 		mService.shuffleButton();
 		setShuffleButtonImage();
+	}
+	
+	//now playing text clicked
+	public void nowPlayingClicked(View v){
+		new AlertDialog.Builder(this)
+		.setTitle("Now Playing")
+		.setMessage(mService.getNowPlayingFile())
+		.setIcon(R.drawable.ic_action_about)
+		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int which){
+					//place alert dialog functions here
+				}
+		})
+		.show();
 	}
 	
 	//lazy button clicked

@@ -9,9 +9,11 @@ import com.jchingdev.jplayer.MusicService.LocalBinder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.view.Menu;
@@ -30,7 +32,6 @@ public class SongListActivity extends ListActivity {
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private List<String> songList = new ArrayList<String>();
 	private TextView songPath;
-	
 	
 	////OVERRIDE METHODS////
 	
@@ -133,5 +134,18 @@ public class SongListActivity extends ListActivity {
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+	}
+	
+	public void songPathClicked(View view){
+		new AlertDialog.Builder(this)
+		.setTitle("Song List")
+		.setMessage(songList.size()+ "  mp3 files found")
+		.setIcon(R.drawable.ic_action_about)
+		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int which){
+					//place alert dialog functions here
+				}
+		})
+		.show();
 	}
 }
