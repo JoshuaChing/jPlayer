@@ -1,9 +1,6 @@
 package com.jchingdev.jplayer;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-
 import com.jchingdev.jplayer.MusicService.LocalBinder;
 
 import android.os.Bundle;
@@ -18,7 +15,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,7 +26,8 @@ public class SongListActivity extends ListActivity {
 	
 	////SONG LIST VARIABLES////
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
-	private List<String> songList = new ArrayList<String>();
+	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
+	private SongItemAdapter songItemAdapter;
 	private TextView songPath;
 	
 	////OVERRIDE METHODS////
@@ -39,7 +36,6 @@ public class SongListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
-		updateSongList();
 		songPath = (TextView)findViewById(R.id.songPath);
 	}
 
@@ -76,6 +72,7 @@ public class SongListActivity extends ListActivity {
 			mService = binder.getService();
 			mBound = true;
 			songPath.setText("Song Folder: "+mService.getOnlySongPath());
+			updateSongList();
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){
@@ -105,25 +102,17 @@ public class SongListActivity extends ListActivity {
 		
 	////PRIVATE METHODS////
 	
-	//method to find all .mp3 files and add them to list
+	//method to get all songs from service's list
 	private void updateSongList(){
 			
-		File home = new File(SD_PATH);
-			
-		//check if path exists and create one if it doesn't
-		if (!home.exists()){
-			home.mkdirs();
-		}
-			
-		//filter out mp3 files of the directory and add them to list
-		if (home.listFiles(new Mp3Filter()).length > 0){
-			for (File file: home.listFiles(new Mp3Filter())){
-				songList.add((file.getName()).substring(0,(file.getName()).length()-4));
-			}
+		//go through the list from service
+		for (int i=0; i<mService.getSongListSize();i++){
+			SongItem songItem = new SongItem(SD_PATH, mService.getOnlySongFile(i));
+			songList.add(songItem);
 		}
 		
-		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this, R.layout.song_item,songList);
-		setListAdapter(displayList);
+		songItemAdapter = new SongItemAdapter(this,R.layout.song_item,songList);
+		setListAdapter(songItemAdapter);
 	}
 	
 	////PUBLIC METHODS////

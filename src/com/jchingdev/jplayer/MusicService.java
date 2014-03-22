@@ -155,13 +155,24 @@ public class MusicService extends Service implements OnCompletionListener {
 		mp.stop();
 	}
 	
+	//get song list size
+	public int getSongListSize(){
+		return songList.size();
+	}
+	
 	//get complete song path
 	public String getSongPath(){
 		return SD_PATH + songList.get(songPosition);
 	}
 	
+	//get only song path
 	public String getOnlySongPath(){
 		return SD_PATH;
+	}
+	
+	//get only song file
+	public String getOnlySongFile(int i){
+		return songList.get(i);
 	}
 	
 	//get song file name
