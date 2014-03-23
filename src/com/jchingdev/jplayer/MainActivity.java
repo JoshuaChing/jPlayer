@@ -113,6 +113,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			setMetaData();
 			//set now playing song string variable
 			nowPlayingSong = mService.getNowPlayingText();
+			//set shuffle button image
+			setShuffleButtonImage();
+			//set looping button image
+			setLoopButtonImage();
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){

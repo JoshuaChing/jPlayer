@@ -45,7 +45,7 @@ public class SongItemAdapter extends ArrayAdapter<SongItem>{
             if (artist!=null)
             	artist.setText(i.getArtist());
             if (album!=null)
-            	artist.setText(i.getAlbum());
+            	album.setText(i.getAlbum());
             if (albumArt!=null){
             	if (i.getArt()!=null){
             		Bitmap songImage = BitmapFactory.decodeByteArray(i.getArt(),0,i.getArt().length);

@@ -3,6 +3,8 @@ package com.jchingdev.jplayer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import android.app.Service;
 import android.content.Intent;
@@ -36,7 +38,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		public void onSensorChanged(SensorEvent se) {
 			// TODO Auto-generated method stub
 			if (isLazy){	
-				if (se.values[0] < 5){
+				if (se.values[0] < proximitySensor.getMaximumRange()){
 					if (!close){
 						close = true;
 						nextSong();
@@ -53,7 +55,9 @@ public class MusicService extends Service implements OnCompletionListener {
 	////SONG LIST VARIABLES////
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private List<String> songList = new ArrayList<String>();
+	private Integer[] shuffleList;
 	private int songPosition = 0;
+	private int shufflePositionIndex = 0;
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -86,7 +90,10 @@ public class MusicService extends Service implements OnCompletionListener {
 	public void onCreate(){
 		//Toast.makeText(this,"Welcome to jPlayer", Toast.LENGTH_LONG).show();
 		startService(new Intent(this, MusicService.class));
+		//update all song lists
 		updateSongList();
+		populateShuffleList();
+		updateShuffleList();
 		//set current song
 		try{
 			mp.setDataSource(SD_PATH + songList.get(songPosition));
@@ -146,6 +153,28 @@ public class MusicService extends Service implements OnCompletionListener {
 				songList.add(file.getName());
 			}
 		}			
+	}
+	
+	//populate the shuffle list
+	private void populateShuffleList(){
+		shuffleList = new Integer[songList.size()];
+		for (int i=0; i<songList.size();i++){
+			shuffleList[i]=i;
+		}
+	}
+	
+	//shuffle the shuffle list
+	private void updateShuffleList(){
+		Collections.shuffle(Arrays.asList(shuffleList));
+	}
+	
+	//set index of shuffle position
+	private void setShufflePositionIndex(int currentSongPosition){
+		int i = 0;
+		while (shuffleList[i]!=currentSongPosition){
+			i++;
+		}	
+		shufflePositionIndex = i;
 	}
 	
 	////PUBLIC METHODS////
@@ -264,9 +293,14 @@ public class MusicService extends Service implements OnCompletionListener {
 		public void shuffleButton(){
 			if (isShuffle){
 				isShuffle = false;
+				//re-shuffle list
+				updateShuffleList();
 			}
-			else
+			else{
 				isShuffle = true;
+				//find index of current song in shuffle list
+				setShufflePositionIndex(songPosition);
+			}
 		}
 	
 	//play button
@@ -283,11 +317,22 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//nextSong
 	public void nextSong(){
-		//check if last song on list
-		if (songPosition >= songList.size()-1)
-			songPosition = 0;
-		else
-			songPosition++;
+		//check if shuffling
+		if (isShuffle){
+			//check if last song on list
+			if (shufflePositionIndex >= shuffleList.length-1)
+				shufflePositionIndex = 0;
+			else
+				shufflePositionIndex++;
+			songPosition = shuffleList[shufflePositionIndex];
+		}
+		else{
+			//check if last song on list
+			if (songPosition >= songList.size()-1)
+				songPosition = 0;
+			else
+				songPosition++;
+		}
 		setSong();
 		if (!isPaused){
 			mp.start();
@@ -296,11 +341,22 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//previous song
 	public void previousSong(){
-		//check if first song on list
-		if (songPosition <= 0)
-			songPosition = songList.size()-1;
+		//check if shuffling
+		if (isShuffle){
+			if (shufflePositionIndex <= 0)
+				shufflePositionIndex = shuffleList.length-1;
+			else
+				shufflePositionIndex--;
+			songPosition = shuffleList[shufflePositionIndex];
+		}
 		else
-			songPosition--;
+		{
+			//check if first song on list
+			if (songPosition <= 0)
+				songPosition = songList.size()-1;
+			else
+				songPosition--;
+		}
 		setSong();
 		if (!isPaused){
 			mp.start();
