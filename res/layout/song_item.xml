@@ -19,24 +19,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_toRightOf="@+id/albumArtSL"
-        android:paddingLeft="10dp"
-        android:textColor="@color/docktext">
+        android:paddingLeft="10dp">
 			<TextView
     			android:id="@+id/nameSL"
     			android:text="@string/nowPlaying"
     			android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
-    			android:textStyle="bold"/>
+    			android:textStyle="bold"
+    			android:textColor="@color/cloudFUI"/>
 			<TextView
 			    android:id="@+id/artistSL"
 			    android:text="@string/artist"
 			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"/>
+			    android:layout_height="wrap_content"
+			    android:textColor="@color/cloudFUI"/>
 			<TextView
 			    android:id="@+id/albumTextSL"
 			    android:text="@string/album"
 			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"/>
+			    android:layout_height="wrap_content"
+			    android:textColor="@color/cloudFUI"/>
 			</LinearLayout>
 
 </RelativeLayout>

@@ -20,20 +20,30 @@ public final class R {
         public static final int backgroundBlue=0x7f070001;
         public static final int backgroundBlue2=0x7f070002;
         public static final int black=0x7f07000e;
+        public static final int cloudFUI=0x7f07001f;
         public static final int darkBlue2=0x7f07000a;
+        public static final int darkBlueFUI=0x7f070019;
         public static final int darkGray=0x7f070011;
+        public static final int darkGrayFUI=0x7f07001b;
         public static final int darkGrayTrans25=0x7f070014;
         public static final int darkGrayTrans50=0x7f070013;
         public static final int darkGrayTrans75=0x7f070012;
+        public static final int darkNavyFUI=0x7f07001e;
         public static final int darkOrange1=0x7f070008;
         public static final int darkOrange2=0x7f07000c;
-        public static final int docktext=0x7f070018;
+        public static final int docktext=0x7f070020;
         public static final int lightBlue2=0x7f07000b;
+        /**  FLAT UI COLOURS 
+         */
+        public static final int lightBlueFUI=0x7f070018;
         public static final int lightGray=0x7f070015;
+        public static final int lightGrayFUI=0x7f07001a;
         public static final int lightGrayTrans75=0x7f070016;
         public static final int lightGreen=0x7f070017;
+        public static final int lightNavyFUI=0x7f07001d;
         public static final int lightOrange1=0x7f070009;
         public static final int lightOrange2=0x7f07000d;
+        public static final int silverFUI=0x7f07001c;
         public static final int skyBlue=0x7f070003;
         public static final int skyBlue2=0x7f070004;
         public static final int skyBlue2trans50=0x7f070006;
@@ -56,25 +66,24 @@ public final class R {
     public static final class drawable {
         public static final int defaultalbumartbackground=0x7f020000;
         public static final int dockbutton=0x7f020001;
-        public static final int gradientbackground=0x7f020002;
-        public static final int ic_action_about=0x7f020003;
-        public static final int ic_action_collection=0x7f020004;
-        public static final int ic_action_next=0x7f020005;
-        public static final int ic_action_pause=0x7f020006;
-        public static final int ic_action_play=0x7f020007;
-        public static final int ic_action_previous=0x7f020008;
-        public static final int ic_action_repeat=0x7f020009;
-        public static final int ic_action_repeat_focused=0x7f02000a;
-        public static final int ic_action_shuffle=0x7f02000b;
-        public static final int ic_action_shuffle_focused=0x7f02000c;
-        public static final int ic_action_undo=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
-        public static final int jandroid=0x7f02000f;
-        public static final int progress=0x7f020010;
-        public static final int progressbackground=0x7f020011;
-        public static final int progressfillbackground=0x7f020012;
-        public static final int progressthumb=0x7f020013;
-        public static final int songitembackground=0x7f020014;
+        public static final int ic_action_about=0x7f020002;
+        public static final int ic_action_collection=0x7f020003;
+        public static final int ic_action_next=0x7f020004;
+        public static final int ic_action_pause=0x7f020005;
+        public static final int ic_action_play=0x7f020006;
+        public static final int ic_action_previous=0x7f020007;
+        public static final int ic_action_repeat=0x7f020008;
+        public static final int ic_action_repeat_focused=0x7f020009;
+        public static final int ic_action_shuffle=0x7f02000a;
+        public static final int ic_action_shuffle_focused=0x7f02000b;
+        public static final int ic_action_undo=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int jandroid=0x7f02000e;
+        public static final int progress=0x7f02000f;
+        public static final int progressbackground=0x7f020010;
+        public static final int progressfillbackground=0x7f020011;
+        public static final int progressthumb=0x7f020012;
+        public static final int songitembackground=0x7f020013;
     }
     public static final class id {
         public static final int action_settings=0x7f0a001c;

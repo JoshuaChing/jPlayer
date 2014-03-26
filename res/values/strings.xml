@@ -49,5 +49,15 @@
     <color name="lightGray">#E8EDE0</color>
     <color name="lightGrayTrans75">#BFE8EDE0</color>
     <color name="lightGreen">#1EE425</color>
+    
+    <!-- FLAT UI COLOURS -->
+    <color name="lightBlueFUI">#3498db</color>
+    <color name="darkBlueFUI">#2980b9</color>
+    <color name="lightGrayFUI">#95a5a6</color>
+    <color name="darkGrayFUI">#7f8c8d</color>
+    <color name="silverFUI">#bdc3c7</color>
+    <color name="lightNavyFUI">#34495e</color>
+    <color name="darkNavyFUI">#2c3e50</color>
+    <color name="cloudFUI">#ecf0f1</color>
 
 </resources>

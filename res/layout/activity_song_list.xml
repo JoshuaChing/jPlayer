@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongListActivity"
-    android:background="@drawable/gradientbackground" >
+    android:background="@color/lightNavyFUI" >
 
     <Button
         android:id="@+id/songPath"
@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
 		android:layout_width="match_parent"
 		android:layout_below="@+id/songPath"
-		android:layout_above="@+id/backButtonLayout">
+		android:layout_above="@+id/backButtonLayout"
+		android:divider="#00000000">
     </ListView>
     
     <RelativeLayout
