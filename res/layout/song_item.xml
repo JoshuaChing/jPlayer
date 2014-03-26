@@ -6,12 +6,11 @@
     android:padding="10dp">
 	
     <ImageView
+        android:layout_centerVertical="true"
         android:id="@+id/albumArtSL"
         android:contentDescription="@string/album_artCD"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:padding="2dp"
-        android:background="@drawable/defaultalbumartbackground"
         android:src="@drawable/jandroid"/>
     
     <LinearLayout

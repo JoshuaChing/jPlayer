@@ -109,25 +109,21 @@
         
     </LinearLayout>
     
-
     <ImageView
         android:id="@+id/albumArt"
         android:layout_width="220dp"
         android:layout_height="220dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:padding="2dp"
         android:contentDescription="@string/album_artCD"
-        android:src="@drawable/jandroid"
-        android:background="@drawable/defaultalbumartbackground"/>
-
+        android:src="@drawable/jandroid"/>
     
     <RelativeLayout
         android:id="@+id/timeDisplay"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_above="@+id/dock"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
         
