@@ -24,29 +24,95 @@
         android:layout_height="wrap_content"
 		android:layout_width="match_parent"
 		android:layout_below="@+id/songPath"
-		android:layout_above="@+id/backButtonLayout"
+		android:layout_above="@+id/dock"
 		android:divider="#00000000">
     </ListView>
     
-    <RelativeLayout
+    <LinearLayout 
+	    android:id="@+id/dock"
+	    android:layout_width="match_parent"
+	    android:layout_height="50dp"
+	    android:orientation="horizontal"
+	    android:layout_alignParentBottom="true"
+	    android:baselineAligned="true">
+    
+    	<RelativeLayout
         	android:id="@+id/backButtonLayout"
-	        android:layout_width="match_parent"
-	        android:layout_height="50dp"
-	        android:layout_alignParentBottom="true">
-    	<Button
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="3">
+    		<Button
 	        	android:id="@+id/backButton"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
-	        	android:onClick="backButtonClicked"/>
-    	<ImageView
+	        	android:onClick="backButtonClicked"
+	        	android:textColor="@color/docktext"
+	        	android:text="now playing song info goes here"/>
+    		<!--<ImageView
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_centerHorizontal="true"
         		android:layout_centerVertical="true"
 			    android:contentDescription="@string/backCD"
-			    android:src="@drawable/ic_action_undo"/>
-    </RelativeLayout>
+			    android:src="@drawable/ic_action_undo"/>-->
+    	</RelativeLayout>
+    	<RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	    	<Button
+	        	android:id="@+id/rewindButton"
+	        	android:layout_width="match_parent"
+	       	 	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="rewindButtonClicked"/>
+	    	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/previousCD"
+			    android:src="@drawable/ic_action_previous"/>
+	    </RelativeLayout>
+	    <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	       	 	android:id="@+id/playButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="playButtonClicked"/>
+	     	<ImageView
+	     	    android:id="@+id/playButtonImage"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/playCD"
+			    android:src="@drawable/ic_action_play"/>
+	     </RelativeLayout>
+	     <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/forwardButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="forwardButtonClicked"/>
+			<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_centerHorizontal="true"
+        		android:layout_centerVertical="true"
+			    android:contentDescription="@string/nextCD"
+			    android:src="@drawable/ic_action_next"/>
+	     </RelativeLayout>
     
-
+	</LinearLayout>
+    	
 </RelativeLayout>

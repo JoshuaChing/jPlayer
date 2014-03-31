@@ -83,10 +83,9 @@ public class SongListActivity extends ListActivity {
 	@Override
 	//When back button is pressed
 	public void onBackPressed(){
+		mService.stopSong();
+		stopService(new Intent(this, MusicService.class));
 		SongListActivity.this.finish();
-		Intent intent = new Intent(this,MainActivity.class);
-		startActivity(intent);
-		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}	
 		
 	////PROTECTED METHODS////
@@ -97,7 +96,7 @@ public class SongListActivity extends ListActivity {
 		SongListActivity.this.finish();
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
-		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 	}
 		
 	////PRIVATE METHODS////
@@ -122,7 +121,7 @@ public class SongListActivity extends ListActivity {
 		SongListActivity.this.finish();
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
-		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 	}
 	
 	public void songPathClicked(View view){
@@ -137,4 +136,22 @@ public class SongListActivity extends ListActivity {
 		})
 		.show();
 	}
+	
+	//play button clicked
+		public void playButtonClicked(View v){
+			mService.playButton();
+			//setPlayButtonImage();
+		}
+		
+		//rewind button clicked
+		public void rewindButtonClicked(View v){
+			mService.previousSong();
+		}
+
+		//forward button clicked
+		public void forwardButtonClicked(View v){
+			mService.nextSong();
+		}
+	
+	
 }

@@ -19,32 +19,27 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:orientation="horizontal"
-        android:baselineAligned="false">
-        
-        <RelativeLayout
+        android:baselineAligned="false">  
+         
+       <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
-	         android:layout_height="match_parent">  
-        	<Button
-           		android:id="@+id/shuffleButton"
-            	android:layout_width="match_parent"
-            	android:layout_height="match_parent"
-            	android:background="@drawable/dockbutton"
-            	android:onClick="shuffleButtonClicked"/>
-
-        	<ImageView
-        	    android:id="@+id/shuffleButtonImage"
-        	    android:layout_width="wrap_content"
-        	    android:layout_height="wrap_content"
-        	    android:layout_centerHorizontal="true"
-        	    android:layout_centerVertical="true"
-        	    android:contentDescription="@string/shuffleCD"
-        	    android:src="@drawable/ic_action_shuffle" />
-
-        </RelativeLayout>
-               
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/songs"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="songsButtonClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+			    android:contentDescription="@string/songsCD"
+			    android:src="@drawable/ic_action_previous_item"/>
+	    </RelativeLayout>
 		<RelativeLayout
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:layout_width="0dp"
             android:layout_height="match_parent">
             <Button
@@ -86,26 +81,15 @@
                 	android:singleLine="true"/>
             </RelativeLayout>
         </RelativeLayout>
-        
-        <RelativeLayout
-	         android:layout_weight="1"
-	         android:layout_width="0dp"
-	         android:layout_height="match_parent">  
-        	<Button
-           		android:id="@+id/loopButton"
-            	android:layout_width="match_parent"
-            	android:layout_height="match_parent"
-            	android:background="@drawable/dockbutton"
-            	android:onClick="loopButtonClicked"/>
-        	<ImageView
-        	    android:id="@+id/loopButtonImage"
-        	    android:layout_width="wrap_content"
-        	    android:layout_height="wrap_content"
-        	    android:layout_centerHorizontal="true"
-        		android:layout_centerVertical="true"
-			    android:contentDescription="@string/loopCD"
-			    android:src="@drawable/ic_action_repeat"/>
-        </RelativeLayout>
+	     <Button
+	        android:id="@+id/lazyButton"
+	        android:layout_weight="1"
+	        android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	        android:background="@drawable/dockbutton"
+			android:textColor="@color/docktext"
+			android:text="@string/lazyButton"
+			android:onClick="lazyButtonClicked"/>     
         
     </LinearLayout>
     
@@ -165,16 +149,30 @@
 	    android:layout_width="match_parent"
 	    android:layout_height="50dp"
 	    android:orientation="horizontal"
-	    android:layout_alignParentBottom="true">
-	    <Button
-	        android:id="@+id/lazyButton"
-	        android:layout_weight="1"
-	        android:layout_height="match_parent"
-	        android:layout_width="match_parent"
-	        android:background="@drawable/dockbutton"
-			android:textColor="@color/docktext"
-			android:text="@string/lazyButton"
-			android:onClick="lazyButtonClicked"/>
+	    android:layout_alignParentBottom="true"
+	    android:baselineAligned="true">
+	   
+	    <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="match_parent"
+	         android:layout_height="match_parent">  
+        	<Button
+           		android:id="@+id/shuffleButton"
+            	android:layout_width="match_parent"
+            	android:layout_height="match_parent"
+            	android:background="@drawable/dockbutton"
+            	android:onClick="shuffleButtonClicked"/>
+
+        	<ImageView
+        	    android:id="@+id/shuffleButtonImage"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:layout_centerHorizontal="true"
+        	    android:layout_centerVertical="true"
+        	    android:contentDescription="@string/shuffleCD"
+        	    android:src="@drawable/ic_action_shuffle" />
+
+        </RelativeLayout>
 	    <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="match_parent"
@@ -233,21 +231,23 @@
 	     <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="match_parent"
-	         android:layout_height="match_parent">
-	     	<Button
-	        	android:id="@+id/songs"
-	        	android:layout_width="match_parent"
-	        	android:layout_height="match_parent"
-	        	android:background="@drawable/dockbutton"
-	        	android:onClick="songsButtonClicked"/>
-	     	<ImageView
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_centerHorizontal="true"
+	         android:layout_height="match_parent">  
+        	<Button
+           		android:id="@+id/loopButton"
+            	android:layout_width="match_parent"
+            	android:layout_height="match_parent"
+            	android:background="@drawable/dockbutton"
+            	android:onClick="loopButtonClicked"/>
+        	<ImageView
+        	    android:id="@+id/loopButtonImage"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:layout_centerHorizontal="true"
         		android:layout_centerVertical="true"
-			    android:contentDescription="@string/songsCD"
-			    android:src="@drawable/ic_action_collection"/>
-	     </RelativeLayout>
+			    android:contentDescription="@string/loopCD"
+			    android:src="@drawable/ic_action_repeat"/>
+        </RelativeLayout>
+
 	</LinearLayout>
     
 </RelativeLayout>

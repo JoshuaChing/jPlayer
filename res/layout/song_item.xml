@@ -18,7 +18,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_toRightOf="@+id/albumArtSL"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 			<TextView
     			android:id="@+id/nameSL"
     			android:text="@string/nowPlaying"

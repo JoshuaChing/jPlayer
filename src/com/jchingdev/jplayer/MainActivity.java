@@ -127,9 +127,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	//When back button is pressed
 	@Override
 	public void onBackPressed(){
-		mService.stopSong();
-		stopService(new Intent(this, MusicService.class));
 		MainActivity.this.finish();
+		Intent intent = new Intent(this,SongListActivity.class);
+		startActivity(intent);
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
 	//seek bar override methods
@@ -188,8 +189,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			//check if looping is off and if song is done
 			if (!mService.getIsLoopingOnComplete()==isLoopingOnComplete){
 				ImageView iv = (ImageView)findViewById(R.id.playButtonImage);
-					iv.setImageResource(R.drawable.ic_action_play);
-					mService.resetIsLoopingOnComplete();
+				iv.setImageResource(R.drawable.ic_action_play);
+				mService.resetIsLoopingOnComplete();
 			}
 			seekBarHandler.postDelayed(this, 100);
 		}
@@ -296,7 +297,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		MainActivity.this.finish();
 		Intent intent = new Intent(this,SongListActivity.class);
 		startActivity(intent);
-		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
 	//looping button clicked
