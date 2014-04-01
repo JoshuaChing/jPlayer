@@ -8,7 +8,7 @@ Whether you are running on a treadmill or driving a car, just wave your hand ove
 
 To Do List:
 - saving settings state
-- fix issue where application crashes if no mp3 files are found
-- implement swipe gestures
+- implement swipe gestures to change songs
+- search filter
 
 Enjoy!
