@@ -40,9 +40,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private TextView artistText;
 	private ImageView albumArt;
 	private ImageView albumArtBackground;
+	private ImageView playButton;
+	private int playButtonResourceID;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private String nowPlayingSong;
-	private boolean isLoopingOnComplete = false;
 	
 	////OVERRIDES////
 	
@@ -63,6 +64,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		artistText = (TextView)findViewById(R.id.artistText);
 		//set up now playing text
 		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
+		//set up play button
+		playButton = (ImageView)findViewById(R.id.playButtonImage);
+		playButtonResourceID = R.drawable.ic_action_play;
 	}
 	
 	@Override
@@ -186,11 +190,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				setMetaData();
 				nowPlayingSong = mService.getNowPlayingText();
 			}
-			//check if looping is off and if song is done
-			if (!mService.getIsLoopingOnComplete()==isLoopingOnComplete){
-				ImageView iv = (ImageView)findViewById(R.id.playButtonImage);
-				iv.setImageResource(R.drawable.ic_action_play);
-				mService.resetIsLoopingOnComplete();
+			//check if play button needs to be changed
+			if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
+				playButton.setImageResource(R.drawable.ic_action_play);
 			}
 			seekBarHandler.postDelayed(this, 100);
 		}
@@ -238,12 +240,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	}
 	
 	private void setPlayButtonImage(){
-		ImageView iv = (ImageView)findViewById(R.id.playButtonImage);
 		if (mService.getIsPaused()){
-			iv.setImageResource(R.drawable.ic_action_play);
+			playButton.setImageResource(R.drawable.ic_action_play);
 		}
 		else
-			iv.setImageResource(R.drawable.ic_action_pause);
+			playButton.setImageResource(R.drawable.ic_action_pause);
 	}
 	
 	private void setLoopButtonImage(){

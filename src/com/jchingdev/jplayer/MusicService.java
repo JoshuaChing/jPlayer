@@ -66,7 +66,6 @@ public class MusicService extends Service implements OnCompletionListener {
 	private boolean isLooping = false;
 	private boolean isShuffle = false;
 	private boolean isLazy = false;
-	private boolean isLoopingOnComplete = false;
 	
 	////BINDER SET UP////
 	private final IBinder mBinder = new LocalBinder();
@@ -132,7 +131,6 @@ public class MusicService extends Service implements OnCompletionListener {
 		else{
 			setSong();
 			isPaused = true;
-			isLoopingOnComplete=true;
 		}
 	}
 		
@@ -218,16 +216,6 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get is looping
 	public boolean getIsLooping(){
 		return isLooping;
-	}
-	
-	//get is looping on complete
-	public boolean getIsLoopingOnComplete(){
-		return isLoopingOnComplete;
-	}
-	
-	//reset is looping on complete
-	public void resetIsLoopingOnComplete(){
-		isLoopingOnComplete=false;
 	}
 	
 	//get is shuffle
