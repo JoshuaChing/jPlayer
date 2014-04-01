@@ -29,6 +29,7 @@ public class SongListActivity extends ListActivity {
 	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
 	private SongItemAdapter songItemAdapter;
 	private TextView songPath;
+	private boolean noSongs;
 	
 	////OVERRIDE METHODS////
 	
@@ -71,8 +72,16 @@ public class SongListActivity extends ListActivity {
 			LocalBinder binder =(LocalBinder)service;
 			mService = binder.getService();
 			mBound = true;
-			songPath.setText("Song Folder: "+mService.getOnlySongPath());
-			updateSongList();
+			noSongs = mService.getIsNoSongs();
+			//check if songs exist
+			if (!noSongs){
+				songPath.setText("Song Folder: "+mService.getOnlySongPath());
+				updateSongList();
+			}
+			else{
+				TextView tv = (TextView)findViewById(R.id.noSongs);
+				tv.setVisibility(View.VISIBLE);
+			}
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){
@@ -83,7 +92,9 @@ public class SongListActivity extends ListActivity {
 	@Override
 	//When back button is pressed
 	public void onBackPressed(){
-		mService.stopSong();
+		//check if songs exists
+		if (!noSongs)
+			mService.stopSong();
 		stopService(new Intent(this, MusicService.class));
 		SongListActivity.this.finish();
 	}	
@@ -114,14 +125,35 @@ public class SongListActivity extends ListActivity {
 		setListAdapter(songItemAdapter);
 	}
 	
+	//alert user that no songs exist
+	public void alertNoSongs(){
+		new AlertDialog.Builder(this)
+		.setTitle("Error")
+		.setMessage("no mp3 files found")
+		.setIcon(R.drawable.ic_action_error)
+		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int which){
+					//place alert dialog functions here
+				}
+		})
+		.show();
+	}
+	
 	////PUBLIC METHODS////
 	
 	//back button
 	public void backButtonClicked(View view){
-		SongListActivity.this.finish();
-		Intent intent = new Intent(this,MainActivity.class);
-		startActivity(intent);
-		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+		//check if songs exist
+		if (noSongs)
+			alertNoSongs();
+		else
+		{
+			SongListActivity.this.finish();
+			Intent intent = new Intent(this,MainActivity.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+		}
+			
 	}
 	
 	public void songPathClicked(View view){
@@ -139,18 +171,31 @@ public class SongListActivity extends ListActivity {
 	
 	//play button clicked
 		public void playButtonClicked(View v){
-			mService.playButton();
-			//setPlayButtonImage();
+			//check if songs exist
+			if (noSongs)
+				alertNoSongs();
+			else{
+				mService.playButton();
+				//setPlayButtonImage();
+			}
 		}
 		
 		//rewind button clicked
 		public void rewindButtonClicked(View v){
-			mService.previousSong();
+			//check if songs exist
+			if (noSongs)
+				alertNoSongs();
+			else
+				mService.previousSong();
 		}
 
 		//forward button clicked
 		public void forwardButtonClicked(View v){
-			mService.nextSong();
+			//check if songs exist
+			if (noSongs)
+				alertNoSongs();
+			else
+				mService.nextSong();
 		}
 	
 	

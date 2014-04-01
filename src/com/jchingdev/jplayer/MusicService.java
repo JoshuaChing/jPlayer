@@ -59,6 +59,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	private Integer[] shuffleList;
 	private int songPosition = 0;
 	private int shufflePositionIndex = 0;
+	private boolean noSongs;
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -92,15 +93,18 @@ public class MusicService extends Service implements OnCompletionListener {
 		startService(new Intent(this, MusicService.class));
 		//update all song lists
 		updateSongList();
-		populateShuffleList();
-		updateShuffleList();
-		//set current song
-		try{
-			mp.setDataSource(SD_PATH + songList.get(songPosition));
-			mp.prepare();
-		}catch(IOException e){}
-		//set up the looper listener
-		mp.setOnCompletionListener(this);
+		//check if songs exist
+		if (!noSongs){
+			populateShuffleList();
+			updateShuffleList();
+			//set current song
+			try{
+				mp.setDataSource(SD_PATH + songList.get(songPosition));
+				mp.prepare();
+			}catch(IOException e){}
+			//set up the looper listener
+			mp.setOnCompletionListener(this);
+		}
 		//set up sensor variables and register
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -151,7 +155,13 @@ public class MusicService extends Service implements OnCompletionListener {
 			for (File file: home.listFiles(new Mp3Filter())){
 				songList.add(file.getName());
 			}
-		}			
+		}
+		
+		//check if songs exist
+		if (songList.isEmpty())
+			noSongs = true;
+		else
+			noSongs = false;
 	}
 	
 	//populate the shuffle list
@@ -186,6 +196,11 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get song list size
 	public int getSongListSize(){
 		return songList.size();
+	}
+	
+	//get if song list is empty
+	public boolean getIsNoSongs(){
+		return noSongs;
 	}
 	
 	//get complete song path
