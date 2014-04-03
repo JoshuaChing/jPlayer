@@ -8,7 +8,7 @@ Whether you are running on a treadmill or driving a car, just wave your hand ove
 
 To Do List:
 - saving settings state
-- implement swipe gestures to change songs
 - search filter
+- playlists
 
 Enjoy!
