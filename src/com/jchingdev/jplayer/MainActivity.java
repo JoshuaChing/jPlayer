@@ -17,7 +17,9 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.GestureDetector;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -45,6 +47,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private String nowPlayingSong;
 	
+	////SWIP GESTURE CONSTANTS////
+	private static final int SWIPE_MIN_DISTANCE=120;
+	private static final int SWIPE_THRESHOLD_VELOCITY=200;
+	private GestureDetector gestureDetector;
+	
 	////OVERRIDES////
 	
 	@Override
@@ -67,6 +74,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		//set up play button
 		playButton = (ImageView)findViewById(R.id.playButtonImage);
 		playButtonResourceID = R.drawable.ic_action_play;
+		//set up gesture detector
+		gestureDetector = new GestureDetector(this, new OnSwipeGestureListener());
 	}
 	
 	@Override
@@ -165,6 +174,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		seekBarTouched = false;
 	}
 	
+	@Override
+	public boolean onTouchEvent(MotionEvent event){
+		return gestureDetector.onTouchEvent(event);
+	}
+	
 	////THREADS////
 	
 	//update seek bar and song times
@@ -197,6 +211,39 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			seekBarHandler.postDelayed(this, 100);
 		}
 	};
+	
+	////PRIVATE CLASSES////
+	
+	//swipe gesture handler
+	private class OnSwipeGestureListener extends GestureDetector.SimpleOnGestureListener{
+		
+		@Override
+		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float veloctityY){
+			float deltaX = e2.getX() - e1.getX();
+			if ((Math.abs(deltaX)<SWIPE_MIN_DISTANCE)||(Math.abs(velocityX)<SWIPE_THRESHOLD_VELOCITY)){
+				return false; //not a swipe
+			}
+			else{
+				if(deltaX < 0){
+					handleSwipeRightToLeft();
+				}
+				else{
+					handleSwipeLeftToRight();
+				}
+			}
+			return true;
+		}	
+	}
+	
+	//swipe right
+	private void handleSwipeRightToLeft(){
+		mService.nextSong();
+	}
+	
+	//swipe left
+	private void handleSwipeLeftToRight(){
+		mService.previousSong();
+	}
 	
 	////PRIVATE METHODS////
 	
