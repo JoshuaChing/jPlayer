@@ -26,19 +26,22 @@
     			android:layout_width="wrap_content"
     			android:layout_height="wrap_content"
     			android:textStyle="bold"
-    			android:textColor="@color/cloudFUI"/>
+    			android:textColor="@color/cloudFUI"
+    			android:textSize="16sp"/>
 			<TextView
 			    android:id="@+id/artistSL"
 			    android:text="@string/artist"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:textColor="@color/cloudFUI"/>
+			    android:textColor="@color/cloudFUI"
+			    android:textSize="12sp"/>
 			<TextView
 			    android:id="@+id/albumTextSL"
 			    android:text="@string/album"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:textColor="@color/cloudFUI"/>
+			    android:textColor="@color/cloudFUI"
+			    android:textSize="12sp"/>
 			</LinearLayout>
 
 </RelativeLayout>

@@ -17,7 +17,7 @@
     
    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:baselineAligned="false">  
          
@@ -60,7 +60,8 @@
                 	android:textColor="@color/docktext"
                 	android:textStyle="bold"
                 	android:gravity="center"
-                	android:singleLine="true"/>
+                	android:singleLine="true"
+                	android:textSize="16sp"/>
             	<TextView
                 	android:id="@+id/artistText"
                 	android:layout_width="match_parent"
@@ -69,7 +70,8 @@
                 	android:textColor="@color/docktext"
                 	android:layout_below="@+id/nowPlayingText"
                 	android:gravity="center"
-                	android:singleLine="true"/>
+                	android:singleLine="true"
+                	android:textSize="12sp"/>
             	<TextView
                 	android:id="@+id/albumText"
                 	android:layout_width="match_parent"
@@ -78,7 +80,8 @@
                 	android:textColor="@color/docktext"
                 	android:layout_below="@+id/artistText"
                 	android:gravity="center"
-                	android:singleLine="true"/>
+                	android:singleLine="true"
+                	android:textSize="12sp"/>
             </RelativeLayout>
         </RelativeLayout>
 	     <Button

@@ -5,6 +5,7 @@ import com.jchingdev.jplayer.MusicService.LocalBinder;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.IBinder;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,13 +33,22 @@ public class SongListActivity extends ListActivity {
 	private TextView songPath;
 	private boolean noSongs;
 	
+	////NOW PLAYING VARIABLES////
+	private Handler handler = new Handler();
+	private ImageView playButton;
+	private int playButtonResourceID;
+	
 	////OVERRIDE METHODS////
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
+		//set up song path text view
 		songPath = (TextView)findViewById(R.id.songPath);
+		//set up play button
+		playButton = (ImageView)findViewById(R.id.playButtonImage);
+		playButtonResourceID = R.drawable.ic_action_play;
 	}
 
 	@Override
@@ -77,6 +88,10 @@ public class SongListActivity extends ListActivity {
 			if (!noSongs){
 				songPath.setText("Song Folder: "+mService.getOnlySongPath());
 				updateSongList();
+				//set play button image
+				setPlayButtonImage();
+				//start now playing thread
+				handler.postDelayed(UpdateNowPlaying, 100);
 			}
 			else{
 				TextView tv = (TextView)findViewById(R.id.noSongs);
@@ -139,6 +154,28 @@ public class SongListActivity extends ListActivity {
 		.show();
 	}
 	
+	//set play button image
+	private void setPlayButtonImage(){
+		if (mService.getIsPaused()){
+			playButton.setImageResource(R.drawable.ic_action_play);
+		}
+		else
+			playButton.setImageResource(R.drawable.ic_action_pause);
+	}
+	
+	////THREADS////
+	
+	//update seek bar and song times
+	private Runnable UpdateNowPlaying = new Runnable(){
+		public void run(){
+			//check if play button needs to be changed
+			if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
+				playButton.setImageResource(R.drawable.ic_action_play);
+			}
+			handler.postDelayed(this, 100);
+		}
+	};
+	
 	////PUBLIC METHODS////
 	
 	//back button
@@ -176,7 +213,7 @@ public class SongListActivity extends ListActivity {
 				alertNoSongs();
 			else{
 				mService.playButton();
-				//setPlayButtonImage();
+				setPlayButtonImage();
 			}
 		}
 		
