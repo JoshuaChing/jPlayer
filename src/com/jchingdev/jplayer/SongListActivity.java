@@ -3,6 +3,7 @@ package com.jchingdev.jplayer;
 import java.util.ArrayList;
 import com.jchingdev.jplayer.MusicService.LocalBinder;
 
+import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -37,6 +38,10 @@ public class SongListActivity extends ListActivity {
 	private Handler handler = new Handler();
 	private ImageView playButton;
 	private int playButtonResourceID;
+	private TextView nowPlayingText;
+	private String nowPlayingSong;
+	private TextView artistText;
+	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	
 	////OVERRIDE METHODS////
 	
@@ -49,6 +54,9 @@ public class SongListActivity extends ListActivity {
 		//set up play button
 		playButton = (ImageView)findViewById(R.id.playButtonImage);
 		playButtonResourceID = R.drawable.ic_action_play;
+		//set up now playing text
+		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
+		artistText = (TextView)findViewById(R.id.artistText);
 	}
 
 	@Override
@@ -90,6 +98,10 @@ public class SongListActivity extends ListActivity {
 				updateSongList();
 				//set play button image
 				setPlayButtonImage();
+				//set now playing text
+				setNowPlayingText();
+				//set now playing song string variable
+				nowPlayingSong = mService.getNowPlayingText();
 				//start now playing thread
 				handler.postDelayed(UpdateNowPlaying, 100);
 			}
@@ -126,6 +138,16 @@ public class SongListActivity extends ListActivity {
 	}
 		
 	////PRIVATE METHODS////
+	
+	private void setNowPlayingText(){
+		metaData.setDataSource(mService.getSongPath());
+		//check if artist text is null
+		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+			artistText.setText(metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));
+		else
+			artistText.setText("Unknown Artist");
+		nowPlayingText.setText(mService.getNowPlayingText());
+	}
 	
 	//method to get all songs from service's list
 	private void updateSongList(){
@@ -171,6 +193,11 @@ public class SongListActivity extends ListActivity {
 			//check if play button needs to be changed
 			if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
 				playButton.setImageResource(R.drawable.ic_action_play);
+			}
+			//check if new song is playing
+			if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
+				setNowPlayingText();
+				nowPlayingSong = mService.getNowPlayingText();
 			}
 			handler.postDelayed(this, 100);
 		}

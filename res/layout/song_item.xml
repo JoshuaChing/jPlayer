@@ -27,7 +27,7 @@
     			android:layout_height="wrap_content"
     			android:textStyle="bold"
     			android:textColor="@color/cloudFUI"
-    			android:textSize="16sp"/>
+    			android:textSize="14sp"/>
 			<TextView
 			    android:id="@+id/artistSL"
 			    android:text="@string/artist"

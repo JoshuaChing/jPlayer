@@ -18,7 +18,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:onClick="songPathClicked"
-        android:textSize="16sp"/>
+        android:textSize="12sp"/>
     
     <ListView
         android:id="@+id/android:list"
@@ -52,22 +52,40 @@
         	android:id="@+id/backButtonLayout"
 	        android:layout_width="0dp"
 	        android:layout_height="match_parent"
-	        android:layout_weight="3">
+	        android:layout_weight="5">
     		<Button
-	        	android:id="@+id/backButton"
-	        	android:layout_width="match_parent"
-	        	android:layout_height="match_parent"
-	        	android:background="@drawable/dockbutton"
-	        	android:onClick="backButtonClicked"
-	        	android:textColor="@color/docktext"
-	        	android:text="now playing song info goes here"/>
-    		<!--<ImageView
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_centerHorizontal="true"
-        		android:layout_centerVertical="true"
-			    android:contentDescription="@string/backCD"
-			    android:src="@drawable/ic_action_undo"/>-->
+                android:id="@+id/nowPlaying"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dockbutton"
+                android:onClick="backButtonClicked"
+                android:padding="0dp"/>
+            	<RelativeLayout
+               		android:layout_width="match_parent"
+                	android:layout_height="match_parent"
+                	android:gravity="center">
+            		<TextView
+                		android:id="@+id/nowPlayingText"
+                		android:layout_width="match_parent"
+        	    		android:layout_height="wrap_content"
+                		android:text="@string/nowPlaying"
+                		android:textColor="@color/docktext"
+                		android:textStyle="bold"
+                		android:gravity="center"
+                		android:layout_centerVertical="true"
+                		android:singleLine="true"
+                		android:textSize="12sp"/>
+            		<TextView
+                		android:id="@+id/artistText"
+                		android:layout_width="match_parent"
+        	    		android:layout_height="wrap_content"
+                		android:text="@string/artist"
+                		android:textColor="@color/docktext"
+                		android:layout_below="@+id/nowPlayingText"
+                		android:gravity="center"
+                		android:singleLine="true"
+                		android:textSize="12sp"/>
+            	</RelativeLayout>
     	</RelativeLayout>
     	<RelativeLayout
 	         android:layout_weight="1"

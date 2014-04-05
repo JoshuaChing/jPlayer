@@ -87,15 +87,14 @@ public final class R {
         public static final int songitembackground=0x7f020014;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a001d;
+        public static final int action_settings=0x7f0a001c;
         public static final int albumArt=0x7f0a0007;
         public static final int albumArtBackground=0x7f0a0000;
-        public static final int albumArtSL=0x7f0a0019;
+        public static final int albumArtSL=0x7f0a0018;
         public static final int albumText=0x7f0a0005;
-        public static final int albumTextSL=0x7f0a001c;
-        public static final int artistSL=0x7f0a001b;
+        public static final int albumTextSL=0x7f0a001b;
+        public static final int artistSL=0x7f0a001a;
         public static final int artistText=0x7f0a0004;
-        public static final int backButton=0x7f0a0018;
         public static final int backButtonLayout=0x7f0a0017;
         public static final int currentTime=0x7f0a000a;
         public static final int dock=0x7f0a0009;
@@ -104,7 +103,7 @@ public final class R {
         public static final int loopButton=0x7f0a0013;
         public static final int loopButtonImage=0x7f0a0014;
         public static final int maxTime=0x7f0a000c;
-        public static final int nameSL=0x7f0a001a;
+        public static final int nameSL=0x7f0a0019;
         public static final int noSongs=0x7f0a0016;
         public static final int nowPlaying=0x7f0a0002;
         public static final int nowPlayingText=0x7f0a0003;

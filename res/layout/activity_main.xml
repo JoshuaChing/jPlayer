@@ -60,8 +60,9 @@
                 	android:textColor="@color/docktext"
                 	android:textStyle="bold"
                 	android:gravity="center"
+                	android:layout_centerVertical="true"
                 	android:singleLine="true"
-                	android:textSize="16sp"/>
+                	android:textSize="14sp"/>
             	<TextView
                 	android:id="@+id/artistText"
                 	android:layout_width="match_parent"
