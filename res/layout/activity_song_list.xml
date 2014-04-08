@@ -4,27 +4,67 @@
     android:layout_height="match_parent"
     tools:context=".SongListActivity"
     android:background="@color/lightNavyFUI" >
-
-    <Button
-        android:id="@+id/songPath"
-       	android:layout_width="match_parent"
-       	android:layout_height="60dp"
-       	android:background="@drawable/dockbutton"
-		android:textColor="@color/docktext"
-		android:text="@string/songPath"
-		android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:drawableLeft="@drawable/ic_action_collection"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:onClick="songPathClicked"
-        android:textSize="12sp"/>
+    
+   	<LinearLayout
+   	    android:id="@+id/songPathLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">  
+         
+       <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/songs"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="playlistsButtonClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+			    android:contentDescription="@string/goBackCD"
+			    android:src="@drawable/ic_action_previous_item"/>
+	    </RelativeLayout>
+        <TextView
+           	android:background="@drawable/dockbutton"
+            android:layout_weight="5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/allSongsTitle"
+            android:textColor="@color/docktext"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textSize="16sp"/>
+	    <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/songPath"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="songPathClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+			    android:contentDescription="@string/songPathCD"
+			    android:src="@drawable/ic_action_about"/>
+	    </RelativeLayout>
+    </LinearLayout>
     
     <ListView
         android:id="@+id/android:list"
         android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:layout_below="@+id/songPath"
+		android:layout_below="@+id/songPathLayout"
 		android:layout_above="@+id/dock"
 		android:divider="#00000000">
     </ListView>

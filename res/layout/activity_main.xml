@@ -35,7 +35,7 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
-			    android:contentDescription="@string/songsCD"
+			    android:contentDescription="@string/goBackCD"
 			    android:src="@drawable/ic_action_previous_item"/>
 	    </RelativeLayout>
 		<RelativeLayout
@@ -73,12 +73,13 @@
                 	android:gravity="center"
                 	android:singleLine="true"
                 	android:textSize="12sp"/>
+            	<!-- album text has been set transparent -->
             	<TextView
                 	android:id="@+id/albumText"
                 	android:layout_width="match_parent"
         	    	android:layout_height="wrap_content"
                 	android:text="@string/album"
-                	android:textColor="@color/docktext"
+                	android:textColor="@color/transparent"
                 	android:layout_below="@+id/artistText"
                 	android:gravity="center"
                 	android:singleLine="true"

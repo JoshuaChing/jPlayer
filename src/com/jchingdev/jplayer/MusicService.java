@@ -61,6 +61,9 @@ public class MusicService extends Service implements OnCompletionListener {
 	private int shufflePositionIndex = 0;
 	private boolean noSongs;
 	
+	////PLAYLIST VARIABLES////
+	private List<String> playlists = new ArrayList<String>();
+	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
 	private boolean isPaused = true;
@@ -93,6 +96,8 @@ public class MusicService extends Service implements OnCompletionListener {
 		startService(new Intent(this, MusicService.class));
 		//update all song lists
 		updateSongList();
+		//update playlists
+		updatePlaylists();
 		//check if songs exist
 		if (!noSongs){
 			populateShuffleList();
@@ -186,11 +191,21 @@ public class MusicService extends Service implements OnCompletionListener {
 		shufflePositionIndex = i;
 	}
 	
+	//update playlists
+	private void updatePlaylists(){
+		playlists.add("All Songs");
+	}
+	
 	////PUBLIC METHODS////
 	
 	//destroy music
 	public void stopSong(){
 		mp.stop();
+	}
+	
+	//get playlists
+	public List<String> getPlaylists(){
+		return playlists;
 	}
 	
 	//get song list size

@@ -31,7 +31,6 @@ public class SongListActivity extends ListActivity {
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
 	private SongItemAdapter songItemAdapter;
-	private TextView songPath;
 	private boolean noSongs;
 	
 	////NOW PLAYING VARIABLES////
@@ -49,8 +48,6 @@ public class SongListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
-		//set up song path text view
-		songPath = (TextView)findViewById(R.id.songPath);
 		//set up play button
 		playButton = (ImageView)findViewById(R.id.playButtonImage);
 		playButtonResourceID = R.drawable.ic_action_play;
@@ -94,7 +91,6 @@ public class SongListActivity extends ListActivity {
 			noSongs = mService.getIsNoSongs();
 			//check if songs exist
 			if (!noSongs){
-				songPath.setText("Song Folder: "+mService.getOnlySongPath());
 				updateSongList();
 				//set play button image
 				setPlayButtonImage();
@@ -116,15 +112,14 @@ public class SongListActivity extends ListActivity {
 		}
 	};
 	
-	@Override
 	//When back button is pressed
+	@Override
 	public void onBackPressed(){
-		//check if songs exists
-		if (!noSongs)
-			mService.stopSong();
-		stopService(new Intent(this, MusicService.class));
 		SongListActivity.this.finish();
-	}	
+		Intent intent = new Intent(this,PlaylistActivity.class);
+		startActivity(intent);
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+	}
 		
 	////PROTECTED METHODS////
 		
@@ -166,7 +161,7 @@ public class SongListActivity extends ListActivity {
 	public void alertNoSongs(){
 		new AlertDialog.Builder(this)
 		.setTitle("Error")
-		.setMessage("no mp3 files found")
+		.setMessage("no mp3 files found in the folder: "+mService.getOnlySongPath())
 		.setIcon(R.drawable.ic_action_error)
 		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int which){
@@ -222,8 +217,8 @@ public class SongListActivity extends ListActivity {
 	
 	public void songPathClicked(View view){
 		new AlertDialog.Builder(this)
-		.setTitle("Song List")
-		.setMessage(songList.size()+ "  mp3 files found")
+		.setTitle("All Songs")
+		.setMessage(songList.size()+ "  mp3 files found in the folder: "+mService.getOnlySongPath())
 		.setIcon(R.drawable.ic_action_about)
 		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int which){
@@ -262,5 +257,12 @@ public class SongListActivity extends ListActivity {
 				mService.nextSong();
 		}
 	
+		//playlists button clicked
+		public void playlistsButtonClicked(View view){
+			SongListActivity.this.finish();
+			Intent intent = new Intent(this,PlaylistActivity.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		}
 	
 }
