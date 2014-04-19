@@ -10,10 +10,12 @@ public class SongItem {
 	private String songFile;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private byte[] art;
+	private int listPosition;
 	
 	////CONSTRUCTOR////
 	
-	public SongItem(String sp, String sf){
+	public SongItem(String sp, String sf, int lp){
+		this.listPosition = lp;
 		this.songPath = sp;
 		this.songFile = sf;
 		this.name = sf.substring(0,sf.length()-4);
@@ -39,6 +41,7 @@ public class SongItem {
 		this.setArtist(songItem.getArtist());
 		this.setAlbum(songItem.getAlbum());
 		this.setArt(songItem.getArt());
+		this.setListPosition(songItem.getListPosition());
 	}
 
 	public void setName(String n){
@@ -57,6 +60,10 @@ public class SongItem {
 		this.art = art;
 	}
 	
+	public void setListPosition(int i){
+		this.listPosition=i;
+	}
+	
 	////GET METHODS////
 	
 	public String getName(){
@@ -73,6 +80,14 @@ public class SongItem {
 
 	public byte[] getArt() {
 		return art;
+	}
+	
+	public String getCompleteSongPath(){
+		return songPath + songFile;
+	}
+	
+	public int getListPosition(){
+		return listPosition;
 	}
 
 }

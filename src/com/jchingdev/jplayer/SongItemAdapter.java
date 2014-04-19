@@ -33,6 +33,11 @@ public class SongItemAdapter extends ArrayAdapter<SongItem> implements Filterabl
 	}
 	
 	@Override
+	public SongItem getItem(int position){
+		return displayedObjects.get(position);
+	}
+	
+	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
 		View v = convertView;
 		//check if null

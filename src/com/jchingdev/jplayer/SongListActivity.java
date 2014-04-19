@@ -154,7 +154,7 @@ public class SongListActivity extends ListActivity {
 		
 	//method to play selected song
 	protected void onListItemClick(ListView list,View view,int position, long id){
-		mService.selectSong(position);
+		mService.selectSong(((SongItem) list.getItemAtPosition(position)).getListPosition());
 		SongListActivity.this.finish();
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
@@ -178,7 +178,7 @@ public class SongListActivity extends ListActivity {
 			
 		//go through the list from service
 		for (int i=0; i<mService.getSongListSize();i++){
-			SongItem songItem = new SongItem(SD_PATH, mService.getOnlySongFile(i));
+			SongItem songItem = new SongItem(SD_PATH, mService.getOnlySongFile(i),i);
 			songList.add(songItem);
 		}
 		
