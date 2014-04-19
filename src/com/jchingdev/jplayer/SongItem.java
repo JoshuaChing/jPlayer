@@ -82,10 +82,6 @@ public class SongItem {
 		return art;
 	}
 	
-	public String getCompleteSongPath(){
-		return songPath + songFile;
-	}
-	
 	public int getListPosition(){
 		return listPosition;
 	}

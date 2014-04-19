@@ -34,6 +34,7 @@ public class SongListActivity extends ListActivity {
 	private EditText searchFilter;
 	
 	////SONG LIST VARIABLES////
+	private boolean hasAlreadyBeenUpdated = false;
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
 	private SongItemAdapter songItemAdapter;
@@ -119,7 +120,8 @@ public class SongListActivity extends ListActivity {
 			noSongs = mService.getIsNoSongs();
 			//check if songs exist
 			if (!noSongs){
-				updateSongList();
+				if (!hasAlreadyBeenUpdated)
+					updateSongList();
 				//set play button image
 				setPlayButtonImage();
 				//set now playing text
@@ -185,6 +187,7 @@ public class SongListActivity extends ListActivity {
 		songItemAdapter = new SongItemAdapter(this,R.layout.song_item,songList);
 		setListAdapter(songItemAdapter);
 		getListView().setTextFilterEnabled(true);
+		hasAlreadyBeenUpdated = true;
 	}
 	
 	//alert user that no songs exist
