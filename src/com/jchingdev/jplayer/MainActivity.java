@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private TextView currentTimeText;
 	private TextView maxTimeText;
 	private TextView nowPlayingText;
-	private TextView albumText;
+	//private TextView albumText; ALBUM TEXT HAS BEEN REMOVED
 	private TextView artistText;
 	private ImageView albumArt;
 	private ImageView albumArtBackground;
@@ -67,7 +67,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		//set up meta data views
 		albumArt = (ImageView)findViewById(R.id.albumArt);
 		albumArtBackground = (ImageView)findViewById(R.id.albumArtBackground);
-		albumText = (TextView)findViewById(R.id.albumText);
+		//albumText = (TextView)findViewById(R.id.albumText); ALBUM TEXT HAS BEEN REMOVED
 		artistText = (TextView)findViewById(R.id.artistText);
 		//set up now playing text
 		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
@@ -274,11 +274,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			albumArt.setImageResource(R.drawable.jandroid);
 			albumArtBackground.setImageResource(R.drawable.jandroid);
 		}
-		//check if album text is null
-		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!= null)
+		//check if album text is null ALBUM TEXT HAS BEEN REMOVED
+		/**if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!= null)
 				albumText.setText(metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM));
 		else
-			albumText.setText("Unknown Album");
+			albumText.setText("Unknown Album");**/
 		//check if artist text is null
 		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
 			artistText.setText(metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST));

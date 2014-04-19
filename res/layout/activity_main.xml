@@ -73,8 +73,8 @@
                 	android:gravity="center"
                 	android:singleLine="true"
                 	android:textSize="12sp"/>
-            	<!-- album text has been set transparent -->
-            	<TextView
+            	<!-- album text has been removed -->
+            	<!--<TextView
                 	android:id="@+id/albumText"
                 	android:layout_width="match_parent"
         	    	android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 	android:layout_below="@+id/artistText"
                 	android:gravity="center"
                 	android:singleLine="true"
-                	android:textSize="12sp"/>
+                	android:textSize="12sp"/>-->
             </RelativeLayout>
         </RelativeLayout>
 	     <Button
