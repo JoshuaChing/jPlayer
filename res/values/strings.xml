@@ -9,21 +9,19 @@
     <string name="artist">"No mp3 files found"</string>
     <string name="startTime">"00:00</string>
     <string name="maxTime">00:00</string>
-    <string name="songPath">/song path/</string>
     <string name="noSongs">No mp3 files found</string>
     <string name="album_artCD">Album Art</string>
     <string name="nextCD">Next</string>
     <string name="previousCD">Previous</string>
     <string name="playCD">Play</string>
-    <string name="backCD">Back</string>
     <string name="shuffleCD">Shuffle</string>
     <string name="loopCD">Loop</string>
     <string name="goBackCD">Go Back</string>
+    <string name="playlistsArtCD">Playlists Art</string>
+    <string name="songPathCD">Song Path</string>
     <string name="title">Playlists</string>
     <string name="newPlaylist">Add Playlist</string>
-    <string name="songPathCD">Song Path</string>
     <string name="allSongsTitle">All Songs</string>
-    <string name="playlistsArtCD">Playlists Art</string>
     <string name="search">Search</string>
 
     <color name="transparent">#00FFFFFF</color>
