@@ -340,7 +340,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		mService.nextSong();
 	}
 	
-	//songs button clicked
+	//songs button clicked (goes to song list)
 	public void songsButtonClicked(View v){
 		MainActivity.this.finish();
 		Intent intent = new Intent(this,SongListActivity.class);

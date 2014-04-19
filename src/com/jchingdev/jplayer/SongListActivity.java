@@ -140,14 +140,15 @@ public class SongListActivity extends ListActivity {
 		}
 	};
 	
-	//When back button is pressed
 	@Override
+	//When back button is pressed
 	public void onBackPressed(){
+		//check if songs exists
+		if (!mService.getIsNoSongs())
+			mService.stopSong();
+		stopService(new Intent(this, MusicService.class));
 		SongListActivity.this.finish();
-		Intent intent = new Intent(this,PlaylistActivity.class);
-		startActivity(intent);
-		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
-	}
+	}	
 		
 	////PROTECTED METHODS////
 		
@@ -229,7 +230,7 @@ public class SongListActivity extends ListActivity {
 	
 	////PUBLIC METHODS////
 	
-	//back button
+	//back button (goes to now playing song)
 	public void backButtonClicked(View view){
 		//check if songs exist
 		if (noSongs)
@@ -288,10 +289,11 @@ public class SongListActivity extends ListActivity {
 	
 		//playlists button clicked
 		public void playlistsButtonClicked(View view){
-			SongListActivity.this.finish();
+			//PLAYLIST ACTIVITY DISABLED
+			/*SongListActivity.this.finish();
 			Intent intent = new Intent(this,PlaylistActivity.class);
 			startActivity(intent);
-			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);*/
 		}
 	
 }
