@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongListActivity"
-    android:background="@color/lightNavyFUI" >
+    android:background="@color/lightNavyFUI"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true" >
     
    	<LinearLayout
    	    android:id="@+id/songPathLayout"
@@ -60,11 +62,19 @@
 	    </RelativeLayout>
     </LinearLayout>
     
+   	<EditText android:id="@+id/searchFilter"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="wrap_content"
+   	    android:hint="@string/search"
+   	    android:inputType="textVisiblePassword"
+   	    android:layout_below="@+id/songPathLayout"
+   	    android:layout_margin="10dp"/>
+   	
     <ListView
-        android:id="@+id/android:list"
+        android:id="@android:id/list"
         android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:layout_below="@+id/songPathLayout"
+		android:layout_below="@+id/searchFilter"
 		android:layout_above="@+id/dock"
 		android:divider="#00000000">
     </ListView>

@@ -23,6 +23,8 @@
     <string name="newPlaylist">Add Playlist</string>
     <string name="songPathCD">Song Path</string>
     <string name="allSongsTitle">All Songs</string>
+    <string name="playlistsArtCD">Playlists Art</string>
+    <string name="search">Search</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>

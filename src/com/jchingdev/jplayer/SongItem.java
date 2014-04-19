@@ -3,7 +3,7 @@ package com.jchingdev.jplayer;
 import android.media.MediaMetadataRetriever;
 
 public class SongItem {
-	private String name;
+	public String name;
 	private String artist;
 	private String album;
 	private String songPath;
@@ -34,6 +34,13 @@ public class SongItem {
 	
 	////SET METHODS////
 	
+	public SongItem(SongItem songItem) {
+		this.setName (songItem.getName());
+		this.setArtist(songItem.getArtist());
+		this.setAlbum(songItem.getAlbum());
+		this.setArt(songItem.getArt());
+	}
+
 	public void setName(String n){
 		this.name = n;
 	}

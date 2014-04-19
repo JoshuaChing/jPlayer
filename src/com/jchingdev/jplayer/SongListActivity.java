@@ -15,8 +15,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,6 +29,9 @@ public class SongListActivity extends ListActivity {
 	////SERVICE VARIABLES////
 	MusicService mService;
 	boolean mBound = false;
+	
+	////SONG FILTER VARIABLE////
+	private EditText searchFilter;
 	
 	////SONG LIST VARIABLES////
 	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
@@ -54,6 +60,28 @@ public class SongListActivity extends ListActivity {
 		//set up now playing text
 		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
 		artistText = (TextView)findViewById(R.id.artistText);
+		//set up search filter
+		searchFilter = (EditText)findViewById(R.id.searchFilter);
+		searchFilter.addTextChangedListener(new TextWatcher(){
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				songItemAdapter.getFilter().filter(s.toString());
+			}
+		});
 	}
 
 	@Override
@@ -155,6 +183,7 @@ public class SongListActivity extends ListActivity {
 		
 		songItemAdapter = new SongItemAdapter(this,R.layout.song_item,songList);
 		setListAdapter(songItemAdapter);
+		getListView().setTextFilterEnabled(true);
 	}
 	
 	//alert user that no songs exist
