@@ -75,35 +75,37 @@ public final class R {
         public static final int songitembackground=0x7f020014;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a001f;
+        public static final int action_settings=0x7f0a0021;
         public static final int albumArt=0x7f0a0006;
         public static final int albumArtBackground=0x7f0a0000;
-        public static final int albumArtSL=0x7f0a001b;
-        public static final int albumTextSL=0x7f0a001e;
-        public static final int artistSL=0x7f0a001d;
+        public static final int albumArtSL=0x7f0a001d;
+        public static final int albumTextSL=0x7f0a0020;
+        public static final int artistSL=0x7f0a001f;
         public static final int artistText=0x7f0a0004;
-        public static final int backButtonLayout=0x7f0a001a;
+        public static final int backButtonLayout=0x7f0a001b;
         public static final int currentTime=0x7f0a0009;
         public static final int dock=0x7f0a0008;
+        public static final int drawer_layout=0x7f0a0016;
         public static final int forwardButton=0x7f0a0011;
         public static final int lazyButton=0x7f0a0005;
+        public static final int left_drawer=0x7f0a001c;
         public static final int loopButton=0x7f0a0012;
         public static final int loopButtonImage=0x7f0a0013;
         public static final int maxTime=0x7f0a000b;
-        public static final int nameSL=0x7f0a001c;
+        public static final int nameSL=0x7f0a001e;
         public static final int newPlaylist=0x7f0a0015;
-        public static final int noSongs=0x7f0a0019;
+        public static final int noSongs=0x7f0a001a;
         public static final int nowPlaying=0x7f0a0002;
         public static final int nowPlayingText=0x7f0a0003;
         public static final int playButton=0x7f0a000f;
         public static final int playButtonImage=0x7f0a0010;
         public static final int rewindButton=0x7f0a000e;
-        public static final int searchFilter=0x7f0a0018;
+        public static final int searchFilter=0x7f0a0019;
         public static final int seekBar=0x7f0a000a;
         public static final int shuffleButton=0x7f0a000c;
         public static final int shuffleButtonImage=0x7f0a000d;
-        public static final int songPath=0x7f0a0017;
-        public static final int songPathLayout=0x7f0a0016;
+        public static final int songPath=0x7f0a0018;
+        public static final int songPathLayout=0x7f0a0017;
         public static final int songs=0x7f0a0001;
         public static final int timeDisplay=0x7f0a0007;
         public static final int title=0x7f0a0014;
@@ -112,8 +114,9 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int activity_playlist=0x7f030001;
         public static final int activity_song_list=0x7f030002;
-        public static final int playlist_item=0x7f030003;
-        public static final int song_item=0x7f030004;
+        public static final int drawer_item=0x7f030003;
+        public static final int playlist_item=0x7f030004;
+        public static final int song_item=0x7f030005;
     }
     public static final class menu {
         public static final int list=0x7f090000;

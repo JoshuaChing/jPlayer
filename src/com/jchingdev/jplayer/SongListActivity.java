@@ -15,10 +15,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,6 +34,11 @@ public class SongListActivity extends ListActivity {
 	
 	////SONG FILTER VARIABLE////
 	private EditText searchFilter;
+	
+	////NAV DRAWER VARIABLES////
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private String[] mDrawerItems = {"Item A","Item B","Item C","Item D","Item E"};
 	
 	////SONG LIST VARIABLES////
 	private boolean hasAlreadyBeenUpdated = false;
@@ -83,6 +90,12 @@ public class SongListActivity extends ListActivity {
 				songItemAdapter.getFilter().filter(s.toString());
 			}
 		});
+		//set up nav drawer and display
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerList = (ListView) findViewById (R.id.left_drawer);
+		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,R.layout.drawer_item,mDrawerItems);
+		mDrawerList.setAdapter(displayList);
+		
 	}
 
 	@Override
