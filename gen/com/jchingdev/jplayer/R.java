@@ -18,15 +18,16 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f070002;
-        public static final int cloudFUI=0x7f070013;
+        public static final int cloudFUI=0x7f070014;
         public static final int darkBlueFUI=0x7f07000d;
+        public static final int darkDarkGrayFUI=0x7f070010;
         public static final int darkGray=0x7f070005;
         public static final int darkGrayFUI=0x7f07000f;
         public static final int darkGrayTrans25=0x7f070008;
         public static final int darkGrayTrans50=0x7f070007;
         public static final int darkGrayTrans75=0x7f070006;
-        public static final int darkNavyFUI=0x7f070012;
-        public static final int docktext=0x7f070014;
+        public static final int darkNavyFUI=0x7f070013;
+        public static final int docktext=0x7f070015;
         /**  FLAT UI COLOURS 
          */
         public static final int lightBlueFUI=0x7f07000c;
@@ -34,8 +35,8 @@ public final class R {
         public static final int lightGrayFUI=0x7f07000e;
         public static final int lightGrayTrans75=0x7f07000a;
         public static final int lightGreen=0x7f07000b;
-        public static final int lightNavyFUI=0x7f070011;
-        public static final int silverFUI=0x7f070010;
+        public static final int lightNavyFUI=0x7f070012;
+        public static final int silverFUI=0x7f070011;
         public static final int skyBlue3=0x7f070001;
         public static final int transparent=0x7f070000;
         public static final int white=0x7f070003;
@@ -53,35 +54,36 @@ public final class R {
     }
     public static final class drawable {
         public static final int dockbutton=0x7f020000;
-        public static final int ic_action_about=0x7f020001;
-        public static final int ic_action_error=0x7f020002;
-        public static final int ic_action_next=0x7f020003;
-        public static final int ic_action_pause=0x7f020004;
-        public static final int ic_action_play=0x7f020005;
-        public static final int ic_action_previous=0x7f020006;
-        public static final int ic_action_previous_item=0x7f020007;
-        public static final int ic_action_repeat=0x7f020008;
-        public static final int ic_action_repeat_focused=0x7f020009;
-        public static final int ic_action_search=0x7f02000a;
-        public static final int ic_action_shuffle=0x7f02000b;
-        public static final int ic_action_shuffle_focused=0x7f02000c;
-        public static final int ic_drawer=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
-        public static final int jandroid=0x7f02000f;
-        public static final int progress=0x7f020010;
-        public static final int progressbackground=0x7f020011;
-        public static final int progressfillbackground=0x7f020012;
-        public static final int progressthumb=0x7f020013;
-        public static final int searchfilter=0x7f020014;
-        public static final int songitembackground=0x7f020015;
+        public static final int draweritembackground=0x7f020001;
+        public static final int ic_action_about=0x7f020002;
+        public static final int ic_action_error=0x7f020003;
+        public static final int ic_action_next=0x7f020004;
+        public static final int ic_action_pause=0x7f020005;
+        public static final int ic_action_play=0x7f020006;
+        public static final int ic_action_previous=0x7f020007;
+        public static final int ic_action_previous_item=0x7f020008;
+        public static final int ic_action_repeat=0x7f020009;
+        public static final int ic_action_repeat_focused=0x7f02000a;
+        public static final int ic_action_search=0x7f02000b;
+        public static final int ic_action_shuffle=0x7f02000c;
+        public static final int ic_action_shuffle_focused=0x7f02000d;
+        public static final int ic_drawer=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
+        public static final int jandroid=0x7f020010;
+        public static final int progress=0x7f020011;
+        public static final int progressbackground=0x7f020012;
+        public static final int progressfillbackground=0x7f020013;
+        public static final int progressthumb=0x7f020014;
+        public static final int searchfilter=0x7f020015;
+        public static final int songitembackground=0x7f020016;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0021;
+        public static final int action_settings=0x7f0a0023;
         public static final int albumArt=0x7f0a0006;
         public static final int albumArtBackground=0x7f0a0000;
-        public static final int albumArtSL=0x7f0a001d;
-        public static final int albumTextSL=0x7f0a0020;
-        public static final int artistSL=0x7f0a001f;
+        public static final int albumArtSL=0x7f0a001f;
+        public static final int albumTextSL=0x7f0a0022;
+        public static final int artistSL=0x7f0a0021;
         public static final int artistText=0x7f0a0004;
         public static final int backButtonLayout=0x7f0a001b;
         public static final int currentTime=0x7f0a0009;
@@ -90,10 +92,12 @@ public final class R {
         public static final int forwardButton=0x7f0a0011;
         public static final int lazyButton=0x7f0a0005;
         public static final int left_drawer=0x7f0a001c;
+        public static final int left_drawerList=0x7f0a001e;
+        public static final int left_drawerTitle=0x7f0a001d;
         public static final int loopButton=0x7f0a0012;
         public static final int loopButtonImage=0x7f0a0013;
         public static final int maxTime=0x7f0a000b;
-        public static final int nameSL=0x7f0a001e;
+        public static final int nameSL=0x7f0a0020;
         public static final int newPlaylist=0x7f0a0015;
         public static final int noSongs=0x7f0a001a;
         public static final int nowPlaying=0x7f0a0002;
@@ -135,6 +139,7 @@ public final class R {
         public static final int lazyButton=0x7f060002;
         public static final int loopCD=0x7f06000e;
         public static final int maxTime=0x7f060007;
+        public static final int menu=0x7f060017;
         public static final int menuCD=0x7f060012;
         public static final int newPlaylist=0x7f060014;
         public static final int nextCD=0x7f06000a;

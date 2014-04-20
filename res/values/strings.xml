@@ -24,6 +24,7 @@
     <string name="newPlaylist">Add Playlist</string>
     <string name="allSongsTitle">All Songs</string>
     <string name="search">Search</string>
+    <string name="menu">Menu</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>
@@ -43,6 +44,7 @@
     <color name="darkBlueFUI">#2980b9</color>
     <color name="lightGrayFUI">#95a5a6</color>
     <color name="darkGrayFUI">#7f8c8d</color>
+    <color name="darkDarkGrayFUI">#545C5C</color>
     <color name="silverFUI">#bdc3c7</color>
     <color name="lightNavyFUI">#34495e</color>
     <color name="darkNavyFUI">#2c3e50</color>

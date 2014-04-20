@@ -209,14 +209,30 @@
     	
 </RelativeLayout>
 
- 	<!-- The navigation drawer -->
-    <ListView android:id="@+id/left_drawer"
-        android:layout_width="240dp"
+<!-- The navigation drawer -->
+<RelativeLayout
+    android:id="@+id/left_drawer"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start">
+    <TextView
+        android:id="@+id/left_drawerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/menu"
+        android:textColor="@color/white"
+        android:background="@color/darkDarkGrayFUI"
+        android:gravity="center"/>
+    <ListView android:id="@+id/left_drawerList"
+        android:layout_below="@+id/left_drawerTitle"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         android:choiceMode="singleChoice"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
-        android:background="@color/silverFUI"/>
+        android:background="@color/lightGrayFUI"/>
+ </RelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

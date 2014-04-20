@@ -39,6 +39,7 @@ public class SongListActivity extends ListActivity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private String[] mDrawerItems = {"Item A","Item B","Item C","Item D","Item E"};
+	private View mDrawerContainer;
 	
 	////SONG LIST VARIABLES////
 	private boolean hasAlreadyBeenUpdated = false;
@@ -92,7 +93,8 @@ public class SongListActivity extends ListActivity {
 		});
 		//set up nav drawer and display
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById (R.id.left_drawer);
+		mDrawerContainer = findViewById(R.id.left_drawer);
+		mDrawerList = (ListView) findViewById (R.id.left_drawerList);
 		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,R.layout.drawer_item,mDrawerItems);
 		mDrawerList.setAdapter(displayList);
 		
@@ -313,7 +315,7 @@ public class SongListActivity extends ListActivity {
 		
 		//menu button clicked
 		public void menuButtonClicked(View view){
-			mDrawerLayout.openDrawer(mDrawerList);
+			mDrawerLayout.openDrawer(mDrawerContainer);
 		}
 	
 }
