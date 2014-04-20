@@ -65,14 +65,15 @@ public final class R {
         public static final int ic_action_search=0x7f02000a;
         public static final int ic_action_shuffle=0x7f02000b;
         public static final int ic_action_shuffle_focused=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int jandroid=0x7f02000e;
-        public static final int progress=0x7f02000f;
-        public static final int progressbackground=0x7f020010;
-        public static final int progressfillbackground=0x7f020011;
-        public static final int progressthumb=0x7f020012;
-        public static final int searchfilter=0x7f020013;
-        public static final int songitembackground=0x7f020014;
+        public static final int ic_drawer=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int jandroid=0x7f02000f;
+        public static final int progress=0x7f020010;
+        public static final int progressbackground=0x7f020011;
+        public static final int progressfillbackground=0x7f020012;
+        public static final int progressthumb=0x7f020013;
+        public static final int searchfilter=0x7f020014;
+        public static final int songitembackground=0x7f020015;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0021;
@@ -127,25 +128,26 @@ public final class R {
         public static final int action_settings=0x7f060001;
         public static final int album=0x7f060004;
         public static final int album_artCD=0x7f060009;
-        public static final int allSongsTitle=0x7f060014;
+        public static final int allSongsTitle=0x7f060015;
         public static final int app_name=0x7f060000;
         public static final int artist=0x7f060005;
         public static final int goBackCD=0x7f06000f;
         public static final int lazyButton=0x7f060002;
         public static final int loopCD=0x7f06000e;
         public static final int maxTime=0x7f060007;
-        public static final int newPlaylist=0x7f060013;
+        public static final int menuCD=0x7f060012;
+        public static final int newPlaylist=0x7f060014;
         public static final int nextCD=0x7f06000a;
         public static final int noSongs=0x7f060008;
         public static final int nowPlaying=0x7f060003;
         public static final int playCD=0x7f06000c;
         public static final int playlistsArtCD=0x7f060010;
         public static final int previousCD=0x7f06000b;
-        public static final int search=0x7f060015;
+        public static final int search=0x7f060016;
         public static final int shuffleCD=0x7f06000d;
         public static final int songPathCD=0x7f060011;
         public static final int startTime=0x7f060006;
-        public static final int title=0x7f060012;
+        public static final int title=0x7f060013;
     }
     public static final class style {
         /** 

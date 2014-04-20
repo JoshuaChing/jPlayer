@@ -91,7 +91,7 @@ public class SongListActivity extends ListActivity {
 			}
 		});
 		//set up nav drawer and display
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById (R.id.left_drawer);
 		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,R.layout.drawer_item,mDrawerItems);
 		mDrawerList.setAdapter(displayList);
@@ -303,13 +303,17 @@ public class SongListActivity extends ListActivity {
 				mService.nextSong();
 		}
 	
-		//playlists button clicked
-		public void playlistsButtonClicked(View view){
-			//PLAYLIST ACTIVITY DISABLED
-			/*SongListActivity.this.finish();
+		//playlists button clicked PLAYLIST ACTIVITY DISABLED
+		/*public void playlistsButtonClicked(View view){
+			SongListActivity.this.finish();
 			Intent intent = new Intent(this,PlaylistActivity.class);
 			startActivity(intent);
-			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);*/
+			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		}*/
+		
+		//menu button clicked
+		public void menuButtonClicked(View view){
+			mDrawerLayout.openDrawer(mDrawerList);
 		}
 	
 }

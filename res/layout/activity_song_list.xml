@@ -22,7 +22,7 @@
         android:baselineAligned="false">  
          
        <RelativeLayout
-	         android:layout_weight="1"
+	         android:layout_weight="1.4"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
 	     	<Button
@@ -30,13 +30,15 @@
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
-	        	android:onClick="playlistsButtonClicked"/>
+	        	android:onClick="menuButtonClicked"
+	        	android:drawableRight="@drawable/ic_launcher"/>
 	     	<ImageView
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
-			    android:contentDescription="@string/goBackCD"
-			    android:src="@drawable/ic_action_previous_item"/>
+			    android:contentDescription="@string/menuCD"
+			    android:src="@drawable/ic_drawer"/>
+	   
 	    </RelativeLayout>
         <TextView
            	android:background="@drawable/dockbutton"

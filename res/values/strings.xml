@@ -19,6 +19,7 @@
     <string name="goBackCD">Go Back</string>
     <string name="playlistsArtCD">Playlists Art</string>
     <string name="songPathCD">Song Path</string>
+    <string name="menuCD">Menu</string>
     <string name="title">Playlists</string>
     <string name="newPlaylist">Add Playlist</string>
     <string name="allSongsTitle">All Songs</string>
