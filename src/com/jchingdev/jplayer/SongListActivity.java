@@ -20,6 +20,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -263,7 +264,8 @@ public class SongListActivity extends ListActivity {
 			
 	}
 	
-	public void songPathClicked(View view){
+	//SONGPATH BUTTON REPLACED WITH SEARCH BUTTON
+	/*public void songPathClicked(View view){
 		new AlertDialog.Builder(this)
 		.setTitle("All Songs")
 		.setMessage(songList.size()+ "  mp3 files found in the folder: "+mService.getOnlySongPath())
@@ -274,48 +276,70 @@ public class SongListActivity extends ListActivity {
 				}
 		})
 		.show();
+	}*/
+	
+	public void searchButtonClicked(View view){
+		if (searchFilter.getVisibility()==View.VISIBLE){
+			
+			searchFilter.setVisibility(View.GONE);
+			
+			InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+			//check if no view has focus:
+			View v=this.getCurrentFocus();
+			if(v==null)
+	    	return;
+			
+			//hide keyboard
+			inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+			
+			//clear search filter
+			searchFilter.getText().clear();
+		}
+		else
+			searchFilter.setVisibility(View.VISIBLE);
 	}
 	
 	//play button clicked
-		public void playButtonClicked(View v){
-			//check if songs exist
-			if (noSongs)
-				alertNoSongs();
-			else{
-				mService.playButton();
-				setPlayButtonImage();
-			}
+	public void playButtonClicked(View v){
+		//check if songs exist
+		if (noSongs)
+			alertNoSongs();
+		else{
+			mService.playButton();
+			setPlayButtonImage();
 		}
+	}
 		
-		//rewind button clicked
-		public void rewindButtonClicked(View v){
-			//check if songs exist
-			if (noSongs)
-				alertNoSongs();
-			else
-				mService.previousSong();
-		}
+	//rewind button clicked
+	public void rewindButtonClicked(View v){
+		//check if songs exist
+		if (noSongs)
+			alertNoSongs();
+		else
+			mService.previousSong();
+	}
 
-		//forward button clicked
-		public void forwardButtonClicked(View v){
-			//check if songs exist
-			if (noSongs)
-				alertNoSongs();
-			else
-				mService.nextSong();
-		}
+	//forward button clicked
+	public void forwardButtonClicked(View v){
+		//check if songs exist
+		if (noSongs)
+			alertNoSongs();
+		else
+			mService.nextSong();
+	}
+
+	//playlists button clicked PLAYLIST ACTIVITY DISABLED
+	/*public void playlistsButtonClicked(View view){
+		SongListActivity.this.finish();
+		Intent intent = new Intent(this,PlaylistActivity.class);
+		startActivity(intent);
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+	}*/
 	
-		//playlists button clicked PLAYLIST ACTIVITY DISABLED
-		/*public void playlistsButtonClicked(View view){
-			SongListActivity.this.finish();
-			Intent intent = new Intent(this,PlaylistActivity.class);
-			startActivity(intent);
-			overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
-		}*/
-		
-		//menu button clicked
-		public void menuButtonClicked(View view){
-			mDrawerLayout.openDrawer(mDrawerContainer);
-		}
+	//menu button clicked
+	public void menuButtonClicked(View view){
+		mDrawerLayout.openDrawer(mDrawerContainer);
+	}
 	
 }

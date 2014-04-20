@@ -10,9 +10,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongListActivity"
-    android:background="@color/lightNavyFUI"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true" >
+    android:background="@color/lightNavyFUI">
+    <!--android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"-->
     
    	<LinearLayout
    	    android:id="@+id/songPathLayout"
@@ -56,18 +56,18 @@
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
 	     	<Button
-	        	android:id="@+id/songPath"
+	        	android:id="@+id/searchButton"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
-	        	android:onClick="songPathClicked"/>
+	        	android:onClick="searchButtonClicked"/>
 	     	<ImageView
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
-			    android:contentDescription="@string/songPathCD"
-			    android:src="@drawable/ic_action_about"/>
+			    android:contentDescription="@string/searchCD"
+			    android:src="@drawable/ic_action_search2"/>
 	    </RelativeLayout>
     </LinearLayout>
     
@@ -80,7 +80,8 @@
    	    android:layout_below="@+id/songPathLayout"
    	    android:layout_margin="10dp"
    	    android:textSize="14sp"
-   	    android:drawableLeft="@drawable/ic_action_search"/>
+   	    android:drawableLeft="@drawable/ic_action_search"
+   	    android:visibility="gone"/>
    	
     <ListView
         android:id="@android:id/list"
