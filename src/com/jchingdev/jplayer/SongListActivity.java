@@ -281,8 +281,6 @@ public class SongListActivity extends ListActivity {
 	public void searchButtonClicked(View view){
 		if (searchFilter.getVisibility()==View.VISIBLE){
 			
-			searchFilter.setVisibility(View.GONE);
-			
 			InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
 
 			//check if no view has focus:
@@ -293,11 +291,16 @@ public class SongListActivity extends ListActivity {
 			//hide keyboard
 			inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 			
+			//hide search filter
+			searchFilter.setVisibility(View.GONE);
+			
 			//clear search filter
 			searchFilter.getText().clear();
 		}
-		else
+		else{
+			//display search filter
 			searchFilter.setVisibility(View.VISIBLE);
+		}
 	}
 	
 	//play button clicked

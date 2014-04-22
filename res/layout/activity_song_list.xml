@@ -10,7 +10,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongListActivity"
-    android:background="@color/lightNavyFUI">
+    android:background="@color/lightNavyFUI"
+    android:animateLayoutChanges="true">
     <!--android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"-->
     
@@ -22,7 +23,7 @@
         android:baselineAligned="false">  
          
        <RelativeLayout
-	         android:layout_weight="1.4"
+	         android:layout_weight="1.2"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
 	     	<Button
@@ -30,15 +31,22 @@
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
-	        	android:onClick="menuButtonClicked"
-	        	android:drawableRight="@drawable/ic_launcher"/>
+	        	android:onClick="menuButtonClicked"/>
 	     	<ImageView
+	     	    android:id="@+id/drawerBars"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
 			    android:contentDescription="@string/menuCD"
 			    android:src="@drawable/ic_drawer"/>
-	   
+	     	<ImageView
+	     	    android:layout_marginLeft="-10dp"
+	     	    android:layout_width="wrap_content"
+	     	    android:layout_height="wrap_content"
+	     	    android:layout_centerVertical="true"
+	     	    android:contentDescription="@string/menuCD"
+	     	    android:src="@drawable/ic_launcher"
+	     	    android:layout_toRightOf="@+id/drawerBars"/>
 	    </RelativeLayout>
         <TextView
            	android:background="@drawable/dockbutton"
