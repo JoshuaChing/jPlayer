@@ -3,7 +3,7 @@
 
     <string name="app_name">jPlayer</string>
     <string name="action_settings">Settings</string>
-    <string name="lazyButton">lazy icon</string>
+    <string name="sensor">Sensor</string>
     <string name="nowPlaying">"Now playing"</string>
     <string name="album">"album"</string>
     <string name="artist">"No mp3 files found"</string>

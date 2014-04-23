@@ -113,7 +113,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			//set play button image
 			setPlayButtonImage();
 			//set lazy button text
-			setLazyButtonText();
+			setLazyButtonImage();
 			//set now playing text
 			setNowPlayingText();
 			//set seek bar max duration
@@ -312,13 +312,13 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			iv.setImageResource(R.drawable.ic_action_shuffle);
 	}
 	
-	private void setLazyButtonText(){
-		TextView tv = (TextView)findViewById(R.id.lazyButton);
-		if(!mService.getIsLazy()){
-			tv.setTextColor(getResources().getColor(R.color.docktext));
+	private void setLazyButtonImage(){
+		ImageView iv = (ImageView)findViewById(R.id.lazyButtonImage);
+		if (mService.getIsLazy()){
+			iv.setImageResource(R.drawable.sensor_icon_focused);
 		}
 		else
-			tv.setTextColor(getResources().getColor(R.color.skyBlue3));
+			iv.setImageResource(R.drawable.sensor_icon);
 		
 	}
 	
@@ -377,7 +377,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	//lazy button clicked
 	public void lazyButtonClicked(View v){
 		mService.lazyButton();
-		setLazyButtonText();
+		setLazyButtonImage();
 		if (!mService.getIsLazy()){
 			new AlertDialog.Builder(this)
 				.setTitle("Lazy Button Deactivated")

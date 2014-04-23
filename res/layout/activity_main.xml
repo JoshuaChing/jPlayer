@@ -20,7 +20,6 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:baselineAligned="false">  
-         
        <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
@@ -86,15 +85,24 @@
                 	android:textSize="12sp"/>-->
             </RelativeLayout>
         </RelativeLayout>
-	     <Button
-	        android:id="@+id/lazyButton"
-	        android:layout_weight="1"
-	        android:layout_height="match_parent"
-	        android:layout_width="0dp"
-	        android:background="@drawable/dockbutton"
-			android:textColor="@color/docktext"
-			android:text="@string/lazyButton"
-			android:onClick="lazyButtonClicked"/>     
+	     <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/lazyButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="lazyButtonClicked"/>
+	     	<ImageView
+	     	    android:id="@+id/lazyButtonImage"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+			    android:contentDescription="@string/sensor"
+			    android:src="@drawable/sensor_icon"/>
+	    </RelativeLayout>     
         
     </LinearLayout>
     
