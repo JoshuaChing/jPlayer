@@ -38,8 +38,9 @@ public class SongListActivity extends ListActivity {
 	
 	////NAV DRAWER VARIABLES////
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
-	private String[] mDrawerItems = {"Item A","Item B","Item C","Item D","Item E"};
+	private ListView mDrawerListView;
+	private String[] mDrawerItems = {"Item A","Item B","Item C","Item D","Item E"}; //temporary
+	private ArrayList<NavDrawerItem> drawerList;
 	private View mDrawerContainer;
 	
 	////SONG LIST VARIABLES////
@@ -93,11 +94,13 @@ public class SongListActivity extends ListActivity {
 			}
 		});
 		//set up nav drawer and display
-		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-		mDrawerContainer = findViewById(R.id.left_drawer);
-		mDrawerList = (ListView) findViewById (R.id.left_drawerList);
-		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,R.layout.drawer_item,mDrawerItems);
-		mDrawerList.setAdapter(displayList);
+		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout); //entire activity layout
+		mDrawerContainer = findViewById(R.id.left_drawer); //only drawer layout
+		mDrawerListView = (ListView) findViewById (R.id.left_drawerList); //list view of drawer layout
+		
+		updateNavDrawerList();
+		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,R.layout.drawer_item,mDrawerItems); //temporary
+		mDrawerListView.setAdapter(displayList);
 		
 	}
 
@@ -189,6 +192,14 @@ public class SongListActivity extends ListActivity {
 		else
 			artistText.setText("Unknown Artist");
 		nowPlayingText.setText(mService.getNowPlayingText());
+	}
+	
+	//method to add items to nav drawer list
+	private void updateNavDrawerList(){
+		drawerList.add(new NavDrawerItem("Now Playing",R.drawable.ic_action_play_over_video));
+		drawerList.add(new NavDrawerItem("Settings",R.drawable.ic_action_settings));
+		drawerList.add(new NavDrawerItem("Help",R.drawable.ic_action_help));
+		drawerList.add(new NavDrawerItem("About",R.drawable.ic_action_about));
 	}
 	
 	//method to get all songs from service's list
