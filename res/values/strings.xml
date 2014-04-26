@@ -26,6 +26,7 @@
     <string name="allSongsTitle">All Songs</string>
     <string name="search">Search</string>
     <string name="menu">Menu</string>
+    <string name="navDrawerText">Menu Item</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>

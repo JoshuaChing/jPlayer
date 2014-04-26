@@ -84,12 +84,12 @@ public final class R {
         public static final int songitembackground=0x7f02001c;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0025;
+        public static final int action_settings=0x7f0a0027;
         public static final int albumArt=0x7f0a0007;
         public static final int albumArtBackground=0x7f0a0000;
-        public static final int albumArtSL=0x7f0a0021;
-        public static final int albumTextSL=0x7f0a0024;
-        public static final int artistSL=0x7f0a0023;
+        public static final int albumArtSL=0x7f0a0023;
+        public static final int albumTextSL=0x7f0a0026;
+        public static final int artistSL=0x7f0a0025;
         public static final int artistText=0x7f0a0004;
         public static final int backButtonLayout=0x7f0a001d;
         public static final int currentTime=0x7f0a000a;
@@ -105,7 +105,9 @@ public final class R {
         public static final int loopButton=0x7f0a0013;
         public static final int loopButtonImage=0x7f0a0014;
         public static final int maxTime=0x7f0a000c;
-        public static final int nameSL=0x7f0a0022;
+        public static final int nameSL=0x7f0a0024;
+        public static final int navDrawerIcon=0x7f0a0021;
+        public static final int navDrawerText=0x7f0a0022;
         public static final int newPlaylist=0x7f0a0016;
         public static final int noSongs=0x7f0a001c;
         public static final int nowPlaying=0x7f0a0002;
@@ -128,8 +130,9 @@ public final class R {
         public static final int activity_playlist=0x7f030001;
         public static final int activity_song_list=0x7f030002;
         public static final int drawer_item=0x7f030003;
-        public static final int playlist_item=0x7f030004;
-        public static final int song_item=0x7f030005;
+        public static final int nav_drawer_item=0x7f030004;
+        public static final int playlist_item=0x7f030005;
+        public static final int song_item=0x7f030006;
     }
     public static final class menu {
         public static final int list=0x7f090000;
@@ -148,6 +151,7 @@ public final class R {
         public static final int maxTime=0x7f060007;
         public static final int menu=0x7f060018;
         public static final int menuCD=0x7f060012;
+        public static final int navDrawerText=0x7f060019;
         public static final int newPlaylist=0x7f060015;
         public static final int nextCD=0x7f06000a;
         public static final int noSongs=0x7f060008;
