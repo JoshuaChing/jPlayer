@@ -34,10 +34,9 @@
     <string name="shuffle">Shuffle songs</string>
     <string name="loop">Loop through playlist</string>
     <string name="sensorSettings">Enable device\'s sensor</string>
-    <string name="sensorDescription">
-        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
-        Most device\'s sensor is located at the top of the phone. 
-    </string>
+    <string name="help">Help</string>
+    <string name="sensorDescription">        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
+        Most device\'s sensor is located at the top of the phone. </string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>

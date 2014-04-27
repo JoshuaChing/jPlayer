@@ -119,7 +119,10 @@ public class SongListActivity extends ListActivity {
 					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				case 2: //help
-					System.out.println(position);
+					Intent helpIntent = new Intent(SongListActivity.this, HelpActivity.class);
+					startActivity(helpIntent);
+					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				case 3: //about
 					Intent aboutIntent = new Intent(SongListActivity.this, AboutActivity.class);
