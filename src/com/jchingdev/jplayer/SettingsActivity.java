@@ -94,13 +94,13 @@ public class SettingsActivity extends Activity {
 	public void checkBoxClicked(View view){
 		switch (view.getId()){
 		case R.id.shuffleCheckBox:
-			mService.setIsShuffle(shuffle.isChecked());
+			mService.shuffleButton();
 			break;
 		case R.id.loopCheckBox:
-			mService.setIsLooping(looping.isChecked());
+			mService.loopButton();
 			break;
 		case R.id.sensorCheckBox:
-			mService.setIsLazy(sensor.isChecked());
+			mService.lazyButton();
 			break;
 		default:
 			System.out.println("Error");
