@@ -380,7 +380,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		setLazyButtonImage();
 		if (!mService.getIsLazy()){
 			new AlertDialog.Builder(this)
-				.setTitle("Lazy Button Deactivated")
+				.setTitle("Device Sensor Disabled")
 				.setMessage("Sensor disabled")
 				.setIcon(R.drawable.ic_launcher)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
@@ -392,7 +392,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		}
 		else{
 			new AlertDialog.Builder(this)
-				.setTitle("Lazy Button Activated")
+				.setTitle("Device Sensor Enabled")
 				.setMessage("Wave your hand over the phone's sensor to change song")
 				.setIcon(R.drawable.ic_launcher)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
