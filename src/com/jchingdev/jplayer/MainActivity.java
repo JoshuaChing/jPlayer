@@ -141,8 +141,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	@Override
 	public void onBackPressed(){
 		MainActivity.this.finish();
-		Intent intent = new Intent(this,SongListActivity.class);
-		startActivity(intent);
+		//Intent intent = new Intent(this,SongListActivity.class);
+		//startActivity(intent);
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
@@ -343,8 +343,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	//songs button clicked (goes to song list)
 	public void songsButtonClicked(View v){
 		MainActivity.this.finish();
-		Intent intent = new Intent(this,SongListActivity.class);
-		startActivity(intent);
+		//Intent intent = new Intent(this,SongListActivity.class);
+		//startActivity(intent);
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	

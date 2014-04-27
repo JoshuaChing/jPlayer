@@ -109,7 +109,7 @@ public class SongListActivity extends ListActivity {
 				// TODO Auto-generated method stub
 				switch(position){
 				case 0: //now playing
-					System.out.println(position);
+					backButtonClicked(view);
 					break;
 				case 1: //settings
 					System.out.println(position);
@@ -202,7 +202,7 @@ public class SongListActivity extends ListActivity {
 	//method to play selected song
 	protected void onListItemClick(ListView list,View view,int position, long id){
 		mService.selectSong(((SongItem) list.getItemAtPosition(position)).getListPosition());
-		SongListActivity.this.finish();
+		//SongListActivity.this.finish();
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
 		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
@@ -293,7 +293,7 @@ public class SongListActivity extends ListActivity {
 			alertNoSongs();
 		else
 		{
-			SongListActivity.this.finish();
+			//SongListActivity.this.finish();
 			Intent intent = new Intent(this,MainActivity.class);
 			startActivity(intent);
 			overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
