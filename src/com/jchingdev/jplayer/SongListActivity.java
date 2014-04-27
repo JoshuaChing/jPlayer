@@ -109,8 +109,8 @@ public class SongListActivity extends ListActivity {
 				// TODO Auto-generated method stub
 				switch(position){
 				case 0: //now playing
-					mDrawerLayout.closeDrawer(mDrawerContainer);
 					backButtonClicked(view);
+					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				case 1: //settings
 					System.out.println(position);
@@ -119,7 +119,10 @@ public class SongListActivity extends ListActivity {
 					System.out.println(position);
 					break;
 				case 3: //about
-					System.out.println(position);
+					Intent intent = new Intent(SongListActivity.this, AboutActivity.class);
+					startActivity(intent);
+					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				default: //default
 					System.out.println("Error");
