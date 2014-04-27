@@ -21,7 +21,6 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -39,7 +38,6 @@ public class SongListActivity extends ListActivity {
 	////NAV DRAWER VARIABLES////
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
-	private String[] mDrawerItems = {"Item A","Item B","Item C","Item D","Item E"}; //temporary
 	private ArrayList<NavDrawerItem> drawerList = new ArrayList<NavDrawerItem>();
 	private NavDrawerItemAdapter navDrawerItemAdapter;
 	private View mDrawerContainer;
@@ -100,7 +98,7 @@ public class SongListActivity extends ListActivity {
 		mDrawerListView = (ListView) findViewById (R.id.left_drawerList); //list view of drawer layout
 		
 		updateNavDrawerList();
-		navDrawerItemAdapter = new NavDrawerItemAdapter(this,R.layout.nav_drawer_item,drawerList); //temporary
+		navDrawerItemAdapter = new NavDrawerItemAdapter(this,R.layout.nav_drawer_item,drawerList);
 		mDrawerListView.setAdapter(navDrawerItemAdapter);
 		
 	}
