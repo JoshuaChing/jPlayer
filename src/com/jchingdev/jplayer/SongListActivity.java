@@ -109,6 +109,7 @@ public class SongListActivity extends ListActivity {
 				// TODO Auto-generated method stub
 				switch(position){
 				case 0: //now playing
+					mDrawerLayout.closeDrawer(mDrawerContainer);
 					backButtonClicked(view);
 					break;
 				case 1: //settings
