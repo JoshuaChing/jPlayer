@@ -12,6 +12,7 @@ import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
 	
@@ -23,6 +24,7 @@ public class SettingsActivity extends Activity {
 	private CheckBox shuffle;
 	private CheckBox looping;
 	private CheckBox sensor;
+	private TextView folderPath;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class SettingsActivity extends Activity {
 		shuffle = (CheckBox)findViewById(R.id.shuffleCheckBox);
 		looping = (CheckBox)findViewById(R.id.loopCheckBox);
 		sensor = (CheckBox)findViewById(R.id.sensorCheckBox);
+		folderPath = (TextView)findViewById(R.id.folderPath);
 	}
 
 	@Override
@@ -70,6 +73,7 @@ public class SettingsActivity extends Activity {
 				shuffle.setChecked(mService.getIsShuffle());
 				looping.setChecked(mService.getIsLooping());
 				sensor.setChecked(mService.getIsLazy());
+				folderPath.setText(mService.getOnlySongPath());
 			}
 			@Override
 			public void onServiceDisconnected(ComponentName arg0){
@@ -106,6 +110,11 @@ public class SettingsActivity extends Activity {
 			System.out.println("Error");
 			break;
 		}
+	}
+	
+	//when folder path button clicked
+	public void folderPathButtonClicked(View view){
+		
 	}
 
 }

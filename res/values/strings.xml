@@ -34,9 +34,16 @@
     <string name="shuffle">Shuffle songs</string>
     <string name="loop">Loop through playlist</string>
     <string name="sensorSettings">Enable device\'s sensor</string>
-    <string name="help">Help</string>
-    <string name="sensorDescription">        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
-        Most device\'s sensor is located at the top of the phone. </string>
+    <string name="sensorDescription">
+        <i>
+        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
+        Most device\'s sensor is located at the top of the phone. 
+        </i>	</string>
+	<string name="folderPathTitle">Music folder path: </string>
+	<string name="folderPath">/Folder Path/</string>
+	<string name="changeFolderPath">Set new music folder path</string>
+	<string name="folderPathDescription"><i>This is where your music files are located.</i></string>
+	<string name="help">Help</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>

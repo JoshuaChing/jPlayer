@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
     android:background="@color/lightNavyFUI">
-
+	
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -47,10 +47,14 @@
 		    android:background="@drawable/dockbutton"/> 
     </LinearLayout>
     
-    <RelativeLayout
+    <ScrollView
+        android:layout_below="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header">
+        android:paddingBottom="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     	<RelativeLayout
     	    android:id="@+id/shuffle"
     	    android:padding="10dp" 
@@ -63,7 +67,8 @@
     	        android:layout_centerVertical="true"
     	        android:text="@string/shuffle"
     	        android:textSize="14sp"
-    	        android:textColor="@color/cloudFUI"/>
+    	        android:textColor="@color/cloudFUI"
+    	        android:textStyle="bold"/>
     	    <CheckBox 
     	        android:id="@+id/shuffleCheckBox"
     	        android:layout_width="wrap_content"
@@ -84,7 +89,8 @@
     	        android:layout_centerVertical="true"
     	        android:text="@string/loop"
     	        android:textSize="14sp"
-    	        android:textColor="@color/cloudFUI"/>
+    	        android:textColor="@color/cloudFUI"
+    	        android:textStyle="bold"/>
     	    <CheckBox 
     	        android:id="@+id/loopCheckBox"
     	        android:layout_width="wrap_content"
@@ -108,7 +114,8 @@
     	        android:layout_centerVertical="true"
     	        android:text="@string/sensorSettings"
     	        android:textSize="14sp"
-    	        android:textColor="@color/cloudFUI"/>
+    	        android:textColor="@color/cloudFUI"
+    	        android:textStyle="bold"/>
     	    <CheckBox
     	        android:id="@+id/sensorCheckBox" 
     	        android:layout_width="wrap_content"
@@ -117,17 +124,67 @@
     	        android:onClick="checkBoxClicked"/>
     	</RelativeLayout>
     	<TextView
-    	        android:layout_width="match_parent"
-    	        android:layout_height="wrap_content"
-    	        android:paddingLeft="10dp"
-    	        android:paddingRight="10dp"
-    	        android:layout_below="@+id/sensor"
-    	        android:textStyle="italic"
-    	        android:textSize="12sp"
-    	        android:textColor="@color/cloudFUI"
-    	        android:text="@string/sensorDescription"/>
+   	    	android:id="@+id/sensorDescription"
+   	        android:layout_width="match_parent"
+   	        android:layout_height="wrap_content"
+   	        android:paddingLeft="10dp"
+   	        android:paddingRight="10dp"
+   	        android:paddingBottom="10dp"
+   	        android:layout_below="@+id/sensor"
+   	        android:textStyle="italic"
+   	        android:textSize="12sp"
+   	        android:textColor="@color/cloudFUI"
+   	        android:text="@string/sensorDescription"/>
+    	<TextView
+    	    android:id="@+id/folderPathTitle"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:paddingTop="10dp"
+    	    android:paddingLeft="10dp"
+    	    android:paddingRight="10dp"
+    	    android:paddingBottom="5dp"
+    	    android:layout_below="@+id/sensorDescription"
+    	    android:textSize="14sp"
+    	    android:textColor="@color/cloudFUI"
+    	    android:text="@string/folderPathTitle"
+    	    android:textStyle="bold"/>
+    	<TextView
+    	    android:id="@+id/folderPath"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:paddingLeft="10dp"
+    	    android:paddingRight="10dp"
+    	    android:paddingBottom="5dp"
+    	    android:layout_below="@+id/folderPathTitle"
+    		android:textSize="14sp"
+    		android:textColor="@color/cloudFUI"
+    		android:text="@string/folderPath"/>
+    	<TextView
+    	    android:id="@+id/folderPathDescription"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:paddingLeft="10dp"
+    	    android:paddingRight="10dp"
+    	    android:paddingBottom="5dp"
+    	    android:layout_below="@+id/folderPath"
+    		android:textSize="12sp"
+    		android:textStyle="italic"
+    		android:textColor="@color/cloudFUI"
+    		android:text="@string/folderPathDescription"/>
+    	<Button
+    	    android:layout_below="@+id/folderPathDescription"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_margin="10dp"
+    	    android:padding="10dp"
+    	    android:textSize="14sp"
+    	    android:textColor="@color/cloudFUI"
+    	    android:background="@drawable/rounddockbutton"
+    	    android:text="@string/changeFolderPath"
+    	    android:drawableLeft="@drawable/ic_action_collection"
+    	    android:onClick="folderPathButtonClicked"/>
     </RelativeLayout>
-
+	</ScrollView>
     
     
 </RelativeLayout>
