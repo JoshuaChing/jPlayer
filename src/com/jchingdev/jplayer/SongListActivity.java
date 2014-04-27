@@ -21,6 +21,8 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -100,6 +102,31 @@ public class SongListActivity extends ListActivity {
 		updateNavDrawerList();
 		navDrawerItemAdapter = new NavDrawerItemAdapter(this,R.layout.nav_drawer_item,drawerList);
 		mDrawerListView.setAdapter(navDrawerItemAdapter);
+		mDrawerListView.setOnItemClickListener(new OnItemClickListener(){
+		//handling nav drawer click events
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				switch(position){
+				case 0: //now playing
+					System.out.println(position);
+					break;
+				case 1: //settings
+					System.out.println(position);
+					break;
+				case 2: //help
+					System.out.println(position);
+					break;
+				case 3: //about
+					System.out.println(position);
+					break;
+				default: //default
+					System.out.println("Error");
+					break;
+				}
+			}
+			
+		});
 		
 	}
 
