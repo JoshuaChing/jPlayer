@@ -126,17 +126,19 @@ public final class R {
         public static final int title=0x7f0a0015;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_playlist=0x7f030001;
-        public static final int activity_song_list=0x7f030002;
-        public static final int nav_drawer_item=0x7f030003;
-        public static final int playlist_item=0x7f030004;
-        public static final int song_item=0x7f030005;
+        public static final int activity_about=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_playlist=0x7f030002;
+        public static final int activity_song_list=0x7f030003;
+        public static final int nav_drawer_item=0x7f030004;
+        public static final int playlist_item=0x7f030005;
+        public static final int song_item=0x7f030006;
     }
     public static final class menu {
-        public static final int list=0x7f090000;
-        public static final int main=0x7f090001;
-        public static final int playlist=0x7f090002;
+        public static final int about=0x7f090000;
+        public static final int list=0x7f090001;
+        public static final int main=0x7f090002;
+        public static final int playlist=0x7f090003;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -146,6 +148,7 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int artist=0x7f060005;
         public static final int goBackCD=0x7f06000f;
+        public static final int hello_world=0x7f06001b;
         public static final int loopCD=0x7f06000e;
         public static final int maxTime=0x7f060007;
         public static final int menu=0x7f060018;
@@ -165,6 +168,7 @@ public final class R {
         public static final int songPathCD=0x7f060011;
         public static final int startTime=0x7f060006;
         public static final int title=0x7f060014;
+        public static final int title_activity_about=0x7f06001a;
     }
     public static final class style {
         /** 
