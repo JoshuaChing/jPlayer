@@ -13,6 +13,7 @@ public class AboutActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
+		//display jPlayer version
 		TextView versionName = (TextView)findViewById(R.id.app_version);
 		try {
 			versionName.setText("Version "+getPackageManager().getPackageInfo(getPackageName(), 0).versionName);

@@ -65,9 +65,11 @@
     	        android:textSize="14sp"
     	        android:textColor="@color/cloudFUI"/>
     	    <CheckBox 
+    	        android:id="@+id/shuffleCheckBox"
     	        android:layout_width="wrap_content"
     	        android:layout_height="wrap_content"
-    	        android:layout_alignParentRight="true"/>
+    	        android:layout_alignParentRight="true"
+    	        android:onClick="checkBoxClicked"/>
     	</RelativeLayout>
     	<RelativeLayout
     	    android:id="@+id/loop"
@@ -84,9 +86,11 @@
     	        android:textSize="14sp"
     	        android:textColor="@color/cloudFUI"/>
     	    <CheckBox 
+    	        android:id="@+id/loopCheckBox"
     	        android:layout_width="wrap_content"
     	        android:layout_height="wrap_content"
-    	        android:layout_alignParentRight="true"/>
+    	        android:layout_alignParentRight="true"
+    	        android:onClick="checkBoxClicked"/>
     	</RelativeLayout>
     	<RelativeLayout
     	    android:id="@+id/sensor"
@@ -109,7 +113,8 @@
     	        android:id="@+id/sensorCheckBox" 
     	        android:layout_width="wrap_content"
     	        android:layout_height="wrap_content"
-    	        android:layout_alignParentRight="true"/>
+    	        android:layout_alignParentRight="true"
+    	        android:onClick="checkBoxClicked"/>
     	</RelativeLayout>
     	<TextView
     	        android:layout_width="match_parent"

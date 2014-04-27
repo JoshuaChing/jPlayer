@@ -263,6 +263,21 @@ public class MusicService extends Service implements OnCompletionListener {
 		return isLazy;
 	}
 	
+	//set is shuffle
+	public void setIsShuffle(boolean s){
+		isShuffle = s;
+	}
+	
+	//set is looping
+	public void setIsLooping(boolean l){
+		isLooping = l;
+	}
+	
+	//set is lazy
+	public void setIsLazy(boolean l){
+		isLazy = l;
+	}
+	
 	//pause
 	public void pause(){
 		mp.pause();
