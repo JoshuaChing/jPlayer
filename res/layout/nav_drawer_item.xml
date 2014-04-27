@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/draweritembackground"
-    android:padding="20dp">
+    android:padding="15dp">
 	
     <ImageView
         android:layout_centerVertical="true"
         android:id="@+id/navDrawerIcon"
         android:contentDescription="@string/menuCD"
-		android:layout_width="18dp"
-        android:layout_height="18dp"
+		android:layout_width="32dp"
+        android:layout_height="32dp"
         android:src="@drawable/ic_action_help"/>
     
 		<TextView

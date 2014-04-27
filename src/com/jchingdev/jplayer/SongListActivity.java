@@ -40,7 +40,8 @@ public class SongListActivity extends ListActivity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
 	private String[] mDrawerItems = {"Item A","Item B","Item C","Item D","Item E"}; //temporary
-	private ArrayList<NavDrawerItem> drawerList;
+	private ArrayList<NavDrawerItem> drawerList = new ArrayList<NavDrawerItem>();
+	private NavDrawerItemAdapter navDrawerItemAdapter;
 	private View mDrawerContainer;
 	
 	////SONG LIST VARIABLES////
@@ -99,8 +100,8 @@ public class SongListActivity extends ListActivity {
 		mDrawerListView = (ListView) findViewById (R.id.left_drawerList); //list view of drawer layout
 		
 		updateNavDrawerList();
-		ArrayAdapter<String> displayList = new ArrayAdapter<String>(this,R.layout.drawer_item,mDrawerItems); //temporary
-		mDrawerListView.setAdapter(displayList);
+		navDrawerItemAdapter = new NavDrawerItemAdapter(this,R.layout.nav_drawer_item,drawerList); //temporary
+		mDrawerListView.setAdapter(navDrawerItemAdapter);
 		
 	}
 
