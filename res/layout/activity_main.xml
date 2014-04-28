@@ -60,7 +60,7 @@
                 	android:textStyle="bold"
                 	android:gravity="center"
                 	android:layout_centerVertical="true"
-                	android:singleLine="true"
+                	android:maxLines="2"
                 	android:textSize="14sp"/>
             	<TextView
                 	android:id="@+id/artistText"

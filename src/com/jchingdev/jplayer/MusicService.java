@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -53,7 +54,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	
 	////SONG LIST VARIABLES////
-	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
+	private static String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	//private static final String SD_PATH = "/storage/sdcard0/Music/"; //internal storage for HTC one x
 	private List<String> songList = new ArrayList<String>();
 	private Integer[] shuffleList;
@@ -70,6 +71,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	private boolean isLooping = false;
 	private boolean isShuffle = false;
 	private boolean isLazy = false;
+	private SharedPreferences settings;
+	private SharedPreferences.Editor changeSettings;
 	
 	////BINDER SET UP////
 	private final IBinder mBinder = new LocalBinder();
@@ -93,6 +96,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	@Override
 	public void onCreate(){
 		//Toast.makeText(this,"Welcome to jPlayer", Toast.LENGTH_LONG).show();
+		loadSettings();
 		startService(new Intent(this, MusicService.class));
 		//update all song lists
 		updateSongList();
@@ -114,6 +118,8 @@ public class MusicService extends Service implements OnCompletionListener {
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 		l = new ProximitySensorEventListener();
+		if (isLazy)//turn on sensor if needed
+			sensorManager.registerListener(l, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
 	
@@ -194,6 +200,16 @@ public class MusicService extends Service implements OnCompletionListener {
 	//update playlists
 	private void updatePlaylists(){
 		playlists.add("All Songs");
+	}
+	
+	//load settings
+	private void loadSettings(){
+		settings = getSharedPreferences("SETTINGS",MODE_PRIVATE);
+		changeSettings = settings.edit();
+		isShuffle = settings.getBoolean("isShuffle",false);
+		isLooping = settings.getBoolean("isLooping",false);
+		isLazy = settings.getBoolean("isLazy", false);
+		SD_PATH = settings.getString("SD_PATH",Environment.getExternalStorageDirectory().getPath() +"/Music/");
 	}
 	
 	////PUBLIC METHODS////
@@ -321,6 +337,8 @@ public class MusicService extends Service implements OnCompletionListener {
 		}
 		else
 			isLooping = true;
+		changeSettings.putBoolean("isLooping",isLooping);
+		changeSettings.commit();
 	}
 	
 	//loop button
@@ -335,6 +353,8 @@ public class MusicService extends Service implements OnCompletionListener {
 				//find index of current song in shuffle list
 				setShufflePositionIndex(songPosition);
 			}
+			changeSettings.putBoolean("isShuffle",isShuffle);
+			changeSettings.commit();
 		}
 	
 	//play button
@@ -415,5 +435,7 @@ public class MusicService extends Service implements OnCompletionListener {
 			isLazy=true;
 			sensorManager.registerListener(l, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
 		}
+		changeSettings.putBoolean("isLazy",isLazy);
+		changeSettings.commit();
 	}
 }
