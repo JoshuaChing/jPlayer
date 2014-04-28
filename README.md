@@ -8,6 +8,9 @@ Whether you are running on a treadmill or driving a car, just wave your hand ove
 
 Possible Features to Add:
 - changing music folder path
+- sensor logic to play/pause music
+- artist filtering
+- albums filtering
 - playlists
 
 Enjoy!
