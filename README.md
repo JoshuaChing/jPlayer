@@ -7,7 +7,10 @@ This application uses the devices's proximity sensor (if available) to detect th
 Whether you are running on a treadmill or driving a car, just wave your hand over the device's sensor to change songs.
 
 Possible Features to Add:
-- saving settings state
+- changing music folder path
+- sensor logic to play/pause music
+- artist filtering
+- albums filtering
 - playlists
 
 Enjoy!
