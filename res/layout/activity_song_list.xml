@@ -49,6 +49,7 @@
 	     	    android:layout_toRightOf="@+id/drawerBars"/>
 	    </RelativeLayout>
         <TextView
+            android:id="@+id/title"
            	android:background="@drawable/dockbutton"
             android:layout_weight="5"
             android:layout_width="0dp"
@@ -99,6 +100,16 @@
 		android:layout_above="@+id/dock"
 		android:divider="#00000000">
     </ListView>
+    
+     <ListView
+        android:id="@+id/alternateList" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dock"
+        android:layout_below="@+id/searchFilter"
+        android:divider="#00000000"
+        android:visibility="gone">
+     </ListView>
     
     <TextView 
         android:id="@+id/noSongs"

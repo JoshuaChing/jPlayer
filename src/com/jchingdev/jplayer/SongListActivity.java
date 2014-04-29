@@ -5,7 +5,6 @@ import com.jchingdev.jplayer.MusicService.LocalBinder;
 
 import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.app.AlertDialog;
@@ -23,6 +22,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,10 +46,10 @@ public class SongListActivity extends ListActivity {
 	
 	////SONG LIST VARIABLES////
 	private boolean hasAlreadyBeenUpdated = false;
-	private static final String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
 	private SongItemAdapter songItemAdapter;
 	private boolean noSongs;
+	private ListView alternateList;
 	
 	////NOW PLAYING VARIABLES////
 	private Handler handler = new Handler();
@@ -66,6 +66,8 @@ public class SongListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
+		//set up alternate list view
+		alternateList = (ListView)findViewById(R.id.alternateList);
 		//set up play button
 		playButton = (ImageView)findViewById(R.id.playButtonImage);
 		playButtonResourceID = R.drawable.ic_action_play;
@@ -110,11 +112,12 @@ public class SongListActivity extends ListActivity {
 				switch(position){
 				case 0: //now playing
 					backButtonClicked(view);
-					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				case 1://all songs
+					displayAllSongs();
 					break;
 				case 2://artists
+					displayArtistsList();
 					break;
 				case 3://albums
 					break;
@@ -122,24 +125,22 @@ public class SongListActivity extends ListActivity {
 					Intent settingsIntent = new Intent(SongListActivity.this, SettingsActivity.class);
 					startActivity(settingsIntent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
-					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				case 5: //help
 					Intent helpIntent = new Intent(SongListActivity.this, HelpActivity.class);
 					startActivity(helpIntent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
-					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				case 6: //about
 					Intent aboutIntent = new Intent(SongListActivity.this, AboutActivity.class);
 					startActivity(aboutIntent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
-					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
 				default: //default
 					System.out.println("Error");
 					break;
 				}
+				mDrawerLayout.closeDrawer(mDrawerContainer);
 			}
 			
 		});
@@ -252,7 +253,7 @@ public class SongListActivity extends ListActivity {
 			
 		//go through the list from service
 		for (int i=0; i<mService.getSongListSize();i++){
-			SongItem songItem = new SongItem(SD_PATH, mService.getOnlySongFile(i),i);
+			SongItem songItem = new SongItem(mService.getOnlySongPath(), mService.getOnlySongFile(i),i);
 			songList.add(songItem);
 		}
 		
@@ -260,6 +261,24 @@ public class SongListActivity extends ListActivity {
 		setListAdapter(songItemAdapter);
 		getListView().setTextFilterEnabled(true);
 		hasAlreadyBeenUpdated = true;
+	}
+	
+	//method to display all songs
+	private void displayAllSongs(){
+		alternateList.setVisibility(View.GONE);
+		getListView().setVisibility(View.VISIBLE);
+		TextView title = (TextView)findViewById(R.id.title);
+		title.setText("All Songs");
+	}
+	
+	//method to display artists list
+	private void displayArtistsList(){
+		getListView().setVisibility(View.GONE);
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.artist_item,mService.getArtistsList());
+		alternateList.setAdapter(arrayAdapter);
+		alternateList.setVisibility(View.VISIBLE);
+		TextView title = (TextView)findViewById(R.id.title);
+		title.setText("Artists");
 	}
 	
 	//alert user that no songs exist

@@ -86,18 +86,19 @@ public final class R {
         public static final int songitembackground=0x7f02001e;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0036;
+        public static final int action_settings=0x7f0a0037;
         public static final int albumArt=0x7f0a000c;
         public static final int albumArtBackground=0x7f0a0006;
-        public static final int albumArtSL=0x7f0a0032;
-        public static final int albumTextSL=0x7f0a0035;
+        public static final int albumArtSL=0x7f0a0033;
+        public static final int albumTextSL=0x7f0a0036;
+        public static final int alternateList=0x7f0a002b;
         public static final int app_developer=0x7f0a0004;
         public static final int app_icon=0x7f0a0001;
         public static final int app_name=0x7f0a0002;
         public static final int app_version=0x7f0a0003;
-        public static final int artistSL=0x7f0a0034;
+        public static final int artistSL=0x7f0a0035;
         public static final int artistText=0x7f0a0009;
-        public static final int backButtonLayout=0x7f0a002c;
+        public static final int backButtonLayout=0x7f0a002d;
         public static final int currentTime=0x7f0a000f;
         public static final int dock=0x7f0a000e;
         public static final int drawerBars=0x7f0a0028;
@@ -109,19 +110,19 @@ public final class R {
         public static final int header=0x7f0a0005;
         public static final int lazyButton=0x7f0a000a;
         public static final int lazyButtonImage=0x7f0a000b;
-        public static final int left_drawer=0x7f0a002d;
-        public static final int left_drawerList=0x7f0a002f;
-        public static final int left_drawerTitle=0x7f0a002e;
+        public static final int left_drawer=0x7f0a002e;
+        public static final int left_drawerList=0x7f0a0030;
+        public static final int left_drawerTitle=0x7f0a002f;
         public static final int loop=0x7f0a001e;
         public static final int loopButton=0x7f0a0018;
         public static final int loopButtonImage=0x7f0a0019;
         public static final int loopCheckBox=0x7f0a001f;
         public static final int maxTime=0x7f0a0011;
-        public static final int nameSL=0x7f0a0033;
-        public static final int navDrawerIcon=0x7f0a0030;
-        public static final int navDrawerText=0x7f0a0031;
+        public static final int nameSL=0x7f0a0034;
+        public static final int navDrawerIcon=0x7f0a0031;
+        public static final int navDrawerText=0x7f0a0032;
         public static final int newPlaylist=0x7f0a001b;
-        public static final int noSongs=0x7f0a002b;
+        public static final int noSongs=0x7f0a002c;
         public static final int nowPlaying=0x7f0a0007;
         public static final int nowPlayingText=0x7f0a0008;
         public static final int playButton=0x7f0a0015;
@@ -149,9 +150,10 @@ public final class R {
         public static final int activity_playlist=0x7f030003;
         public static final int activity_settings=0x7f030004;
         public static final int activity_song_list=0x7f030005;
-        public static final int nav_drawer_item=0x7f030006;
-        public static final int playlist_item=0x7f030007;
-        public static final int song_item=0x7f030008;
+        public static final int artist_item=0x7f030006;
+        public static final int nav_drawer_item=0x7f030007;
+        public static final int playlist_item=0x7f030008;
+        public static final int song_item=0x7f030009;
     }
     public static final class menu {
         public static final int about=0x7f090000;

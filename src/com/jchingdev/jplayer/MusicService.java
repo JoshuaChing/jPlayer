@@ -66,7 +66,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	////PLAYLIST VARIABLES////
 	private List<String> playlists = new ArrayList<String>();
 	
-	////ARTISTS LIST VARIABLES////
+	////ALTERNATE LIST VARIABLES////
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private List<String> artistsList = new ArrayList<String>();
 	
@@ -243,6 +243,10 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get playlists
 	public List<String> getPlaylists(){
 		return playlists;
+	}
+	
+	public List<String> getArtistsList(){
+		return artistsList;
 	}
 	
 	//get song list size
