@@ -112,19 +112,25 @@ public class SongListActivity extends ListActivity {
 					backButtonClicked(view);
 					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
-				case 1: //settings
+				case 1://all songs
+					break;
+				case 2://artists
+					break;
+				case 3://albums
+					break;
+				case 4: //settings
 					Intent settingsIntent = new Intent(SongListActivity.this, SettingsActivity.class);
 					startActivity(settingsIntent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
-				case 2: //help
+				case 5: //help
 					Intent helpIntent = new Intent(SongListActivity.this, HelpActivity.class);
 					startActivity(helpIntent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 					mDrawerLayout.closeDrawer(mDrawerContainer);
 					break;
-				case 3: //about
+				case 6: //about
 					Intent aboutIntent = new Intent(SongListActivity.this, AboutActivity.class);
 					startActivity(aboutIntent);
 					overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
@@ -233,6 +239,9 @@ public class SongListActivity extends ListActivity {
 	//method to add items to nav drawer list
 	private void updateNavDrawerList(){
 		drawerList.add(new NavDrawerItem("Now Playing",R.drawable.ic_action_play_over_video));
+		drawerList.add(new NavDrawerItem("All Songs",R.drawable.ic_action_play_over_video));
+		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_play_over_video));
+		drawerList.add(new NavDrawerItem("Albums",R.drawable.ic_action_play_over_video));
 		drawerList.add(new NavDrawerItem("Settings",R.drawable.ic_action_settings));
 		drawerList.add(new NavDrawerItem("Help",R.drawable.ic_action_help));
 		drawerList.add(new NavDrawerItem("About",R.drawable.ic_action_about));

@@ -13,6 +13,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Binder;
@@ -64,6 +65,10 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	////PLAYLIST VARIABLES////
 	private List<String> playlists = new ArrayList<String>();
+	
+	////ARTISTS LIST VARIABLES////
+	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
+	private List<String> artistsList = new ArrayList<String>();
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -165,6 +170,22 @@ public class MusicService extends Service implements OnCompletionListener {
 		if (home.listFiles(new Mp3Filter()).length > 0){
 			for (File file: home.listFiles(new Mp3Filter())){
 				songList.add(file.getName());
+				metaData.setDataSource(SD_PATH+file.getName());
+				String tempArtist;
+				String tempAlbum;
+				//check if artists exists or if its "unknown artist"
+				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+					tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+				else
+					tempArtist = "Unknown Artist";
+				//check if album exists or if its "unknown album"
+				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
+					tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+				else
+					tempAlbum = "Unknown Albumt";
+				//check if artists list contains the value, add it in if it doesn't
+				if (!artistsList.contains(tempArtist))
+					artistsList.add(tempArtist);
 			}
 		}
 		
