@@ -108,7 +108,8 @@
         android:layout_above="@+id/dock"
         android:layout_below="@+id/searchFilter"
         android:divider="#00000000"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:background="@color/lightNavyFUI">
      </ListView>
     
     <TextView 

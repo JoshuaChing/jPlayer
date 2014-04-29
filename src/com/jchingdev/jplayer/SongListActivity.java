@@ -266,14 +266,14 @@ public class SongListActivity extends ListActivity {
 	//method to display all songs
 	private void displayAllSongs(){
 		alternateList.setVisibility(View.GONE);
-		getListView().setVisibility(View.VISIBLE);
+		//getListView().setVisibility(View.VISIBLE);
 		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("All Songs");
 	}
 	
 	//method to display artists list
 	private void displayArtistsList(){
-		getListView().setVisibility(View.GONE);
+		//getListView().setVisibility(View.GONE);
 		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.artist_item,mService.getArtistsList());
 		alternateList.setAdapter(arrayAdapter);
 		alternateList.setVisibility(View.VISIBLE);
