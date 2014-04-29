@@ -172,17 +172,11 @@ public class MusicService extends Service implements OnCompletionListener {
 				songList.add(file.getName());
 				metaData.setDataSource(SD_PATH+file.getName());
 				String tempArtist;
-				String tempAlbum;
 				//check if artists exists or if its "unknown artist"
 				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
 					tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
 				else
 					tempArtist = "Unknown Artist";
-				//check if album exists or if its "unknown album"
-				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
-					tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
-				else
-					tempAlbum = "Unknown Albumt";
 				//check if artists list contains the value, add it in if it doesn't
 				if (!artistsList.contains(tempArtist))
 					artistsList.add(tempArtist);
@@ -247,6 +241,36 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	public List<String> getArtistsList(){
 		return artistsList;
+	}
+	
+	//get a list of albums from the artist given
+	public List<String> getArtistsAlbumsList(String artist){
+		List<String> albums = new ArrayList<String>();
+		albums.add("All Songs");
+		for (int i = 0; i < songList.size(); i++){
+			metaData.setDataSource(SD_PATH+songList.get(i));
+			
+			String tempArtist;
+			String tempAlbum;
+			
+			//check if artists exists or if its "unknown artist"
+			if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+				tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+			else
+				tempArtist = "Unknown Artist";
+			
+			//check if artists matches
+			if (tempArtist==artist){
+				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
+					tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+				else
+					tempAlbum = "Unknown Album";
+				//check if tempAlbum exists in list
+				if (!albums.contains(tempAlbum))
+					albums.add(tempAlbum);
+			}
+		}
+		return albums;
 	}
 	
 	//get song list size

@@ -1,6 +1,8 @@
 package com.jchingdev.jplayer;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import com.jchingdev.jplayer.MusicService.LocalBinder;
 
 import android.media.MediaMetadataRetriever;
@@ -51,6 +53,10 @@ public class SongListActivity extends ListActivity {
 	private boolean noSongs;
 	private ListView alternateList;
 	
+	//logic path
+	private boolean artistView = false;
+	private boolean artistAlbumView = false;
+	
 	////NOW PLAYING VARIABLES////
 	private Handler handler = new Handler();
 	private ImageView playButton;
@@ -68,6 +74,7 @@ public class SongListActivity extends ListActivity {
 		setContentView(R.layout.activity_song_list);
 		//set up alternate list view
 		alternateList = (ListView)findViewById(R.id.alternateList);
+		setAlternateListClickHandle();
 		//set up play button
 		playButton = (ImageView)findViewById(R.id.playButtonImage);
 		playButtonResourceID = R.drawable.ic_action_play;
@@ -269,18 +276,48 @@ public class SongListActivity extends ListActivity {
 		//getListView().setVisibility(View.VISIBLE);
 		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("All Songs");
+		
+		artistView = false;
+		artistAlbumView = false;
 	}
 	
 	//method to display artists list
 	private void displayArtistsList(){
 		//getListView().setVisibility(View.GONE);
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.artist_item,mService.getArtistsList());
-		alternateList.setAdapter(arrayAdapter);
+		newAlternateListAdapterData(mService.getArtistsList());
 		alternateList.setVisibility(View.VISIBLE);
 		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("Artists");
+		
+		artistView = true;
+		artistAlbumView = false;
 	}
 	
+	//method to set new single line data to alternate list
+	private void newAlternateListAdapterData(List<String> list){
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.artist_item,list);
+		alternateList.setAdapter(arrayAdapter);
+	}
+	
+	private void setAlternateListClickHandle(){
+		alternateList.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				// TODO Auto-generated method stub
+				if (artistView){
+					String artistSelected = (alternateList.getItemAtPosition(position).toString());
+					newAlternateListAdapterData(mService.getArtistsAlbumsList(artistSelected));
+					TextView title = (TextView)findViewById(R.id.title);
+					title.setText(artistSelected);
+					
+					artistView = false;
+					artistAlbumView = true;
+				}
+			}
+			
+		});
+	}
 	//alert user that no songs exist
 	public void alertNoSongs(){
 		new AlertDialog.Builder(this)
