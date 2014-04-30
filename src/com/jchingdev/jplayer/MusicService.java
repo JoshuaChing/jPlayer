@@ -261,7 +261,7 @@ public class MusicService extends Service implements OnCompletionListener {
 				tempArtist = "Unknown Artist";
 			
 			//check if artists matches
-			if (tempArtist==artist){
+			if (tempArtist.equals(artist)){
 				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
 					tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
 				else
