@@ -342,6 +342,14 @@ public class SongListActivity extends ListActivity {
 						artistAlbumSongView = true;
 					}
 				}
+				//viewing list of songs of albums of an artist
+				else if (artistAlbumSongView){
+					if (position!= 0 && position !=1){
+						String songSelected = (alternateList.getItemAtPosition(position).toString());
+						mService.selectSong(songSelected+".mp3");
+						backButtonClicked(view); //goes to now playing (ignore bad naming)
+					}
+				}
 			}
 			
 		});

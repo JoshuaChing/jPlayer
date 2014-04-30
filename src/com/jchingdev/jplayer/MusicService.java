@@ -70,6 +70,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private List<String> artistsList = new ArrayList<String>();
 	private String viewingArtist;
+	private String viewingAlbum;
+	private boolean viewArtistAllSongs = false;
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -207,7 +209,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	//set index of shuffle position
 	private void setShufflePositionIndex(int currentSongPosition){
 		int i = 0;
-		while (shuffleList[i]!=currentSongPosition){
+		while (shuffleList[i]!=currentSongPosition && i<songList.size()){
 			i++;
 		}	
 		shufflePositionIndex = i;
@@ -246,8 +248,6 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
-		viewingArtist = artist;
-		
 		List<String> albums = new ArrayList<String>();
 		albums.add("Go back to 'Artists'");
 		albums.add("All Songs");
@@ -274,6 +274,7 @@ public class MusicService extends Service implements OnCompletionListener {
 					albums.add(tempAlbum);
 			}
 		}
+		viewingArtist = artist;
 		return albums;
 	}
 	
@@ -318,6 +319,8 @@ public class MusicService extends Service implements OnCompletionListener {
 				}
 			}
 		}
+		viewingAlbum = album;
+		viewArtistAllSongs = getAll;
 		return songs;
 	}
 	
@@ -517,6 +520,20 @@ public class MusicService extends Service implements OnCompletionListener {
 	//select song
 	public void selectSong(int newPosition){
 		songPosition = newPosition;
+		setShufflePositionIndex(newPosition);
+		setSong();
+		mp.start();
+		isPaused = false;
+	}
+	
+	//select song by name
+	public void selectSong(String name){
+		int i = 0;
+		while ((!songList.get(i).equals(name)) && i<songList.size()){
+			i++;
+		}
+		songPosition = i;
+		setShufflePositionIndex(i);
 		setSong();
 		mp.start();
 		isPaused = false;
