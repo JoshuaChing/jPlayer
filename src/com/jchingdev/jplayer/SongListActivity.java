@@ -48,6 +48,7 @@ public class SongListActivity extends ListActivity {
 	
 	////SONG LIST VARIABLES////
 	private TextView title;
+	private TextView subtitle;
 	
 	private boolean hasAlreadyBeenUpdated = false;
 	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
@@ -76,8 +77,9 @@ public class SongListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
-		//set up title
+		//set up title and subtitle
 		title = (TextView)findViewById(R.id.title);
+		subtitle = (TextView)findViewById(R.id.subtitle);
 		//set up alternate list view
 		alternateList = (ListView)findViewById(R.id.alternateList);
 		setAlternateListClickHandle();
@@ -280,7 +282,9 @@ public class SongListActivity extends ListActivity {
 	private void displayAllSongs(){
 		alternateList.setVisibility(View.GONE);
 		//getListView().setVisibility(View.VISIBLE);
+		//set title hide subtitle
 		title.setText("Songs");
+		subtitle.setVisibility(View.GONE);
 		
 		artistView = false;
 		artistAlbumView = false;
@@ -292,7 +296,9 @@ public class SongListActivity extends ListActivity {
 		//getListView().setVisibility(View.GONE);
 		newAlternateListAdapterData(mService.getArtistsList());
 		alternateList.setVisibility(View.VISIBLE);
+		//set title hide subtitle
 		title.setText("Artists");
+		subtitle.setVisibility(View.GONE);
 		
 		initialAlternateListSwitch = ials;
 		artistView = true;
@@ -335,7 +341,10 @@ public class SongListActivity extends ListActivity {
 							newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected,true));
 						else
 							newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected,false));
+						//set title and subtitle
 						title.setText(albumSelected);
+						subtitle.setText(mService.getViewingArtist());
+						subtitle.setVisibility(View.VISIBLE);
 					
 						artistView = false;
 						artistAlbumView = false;
@@ -348,7 +357,9 @@ public class SongListActivity extends ListActivity {
 					if (position == 0){
 						String artistSelected = mService.getViewingArtist();
 						newAlternateListAdapterData(mService.getArtistsAlbumsList(artistSelected));
+						//set title hide subtitle
 						title.setText(artistSelected);
+						subtitle.setVisibility(View.GONE);
 						
 						artistView = false;
 						artistAlbumView = true;
