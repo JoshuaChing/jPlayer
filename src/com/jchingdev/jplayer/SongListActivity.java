@@ -57,6 +57,7 @@ public class SongListActivity extends ListActivity {
 	private boolean initialAlternateListSwitch = false;
 	private boolean artistView = false;
 	private boolean artistAlbumView = false;
+	private boolean artistAlbumSongView = false;
 	
 	////NOW PLAYING VARIABLES////
 	private Handler handler = new Handler();
@@ -280,6 +281,7 @@ public class SongListActivity extends ListActivity {
 		
 		artistView = false;
 		artistAlbumView = false;
+		artistAlbumSongView = false;
 	}
 	
 	//method to display artists list
@@ -293,11 +295,12 @@ public class SongListActivity extends ListActivity {
 		initialAlternateListSwitch = true;
 		artistView = true;
 		artistAlbumView = false;
+		artistAlbumSongView = false;
 	}
 	
 	//method to set new single line data to alternate list
 	private void newAlternateListAdapterData(List<String> list){
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.artist_item,list);
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.alternate_list_single_item,list);
 		alternateList.setAdapter(arrayAdapter);
 	}
 	
@@ -307,7 +310,7 @@ public class SongListActivity extends ListActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
-				if (artistView){
+				if (artistView){//viewing list of artists
 					String artistSelected = (alternateList.getItemAtPosition(position).toString());
 					newAlternateListAdapterData(mService.getArtistsAlbumsList(artistSelected));
 					TextView title = (TextView)findViewById(R.id.title);
@@ -315,6 +318,19 @@ public class SongListActivity extends ListActivity {
 					
 					artistView = false;
 					artistAlbumView = true;
+					artistAlbumSongView = false;
+				}
+				else if (artistAlbumView){//viewing list of albums of an artist
+					if (position != 0 && position != 1){
+						String albumSelected = (alternateList.getItemAtPosition(position).toString());
+						newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected));
+						TextView title = (TextView)findViewById(R.id.title);
+						title.setText(albumSelected);
+					
+						artistView = false;
+						artistAlbumView = false;
+						artistAlbumSongView = true;
+					}
 				}
 			}
 			

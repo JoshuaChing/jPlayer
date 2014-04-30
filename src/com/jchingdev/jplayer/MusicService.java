@@ -69,6 +69,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	////ALTERNATE LIST VARIABLES////
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private List<String> artistsList = new ArrayList<String>();
+	private String viewingArtist;
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -245,6 +246,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
+		viewingArtist = artist;
+		
 		List<String> albums = new ArrayList<String>();
 		albums.add("Go back to 'Artists'");
 		albums.add("All Songs");
@@ -272,6 +275,41 @@ public class MusicService extends Service implements OnCompletionListener {
 			}
 		}
 		return albums;
+	}
+	
+	//get a list of songs from the album and viewing artist given
+	public List<String> getArtistsAlbumsSongsList(String album){
+		List<String> songs = new ArrayList<String>();
+		songs.add("Go back to '"+viewingArtist+"'");
+		songs.add("Play all");
+		for (int i = 0; i < songList.size(); i++){
+			metaData.setDataSource(SD_PATH+songList.get(i));
+			
+			String tempArtist;
+			String tempAlbum;
+			
+			//check if artists exists or if its "unknown artist"
+			if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+				tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+			else
+				tempArtist = "Unknown Artist";
+			
+			//check if artists matches
+			if (tempArtist.equals(viewingArtist)){
+				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
+					tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+				else
+					tempAlbum = "Unknown Album";
+				
+				//check if album matches
+				if (tempAlbum.equals(album)){
+					//check if tempAlbum exists in list
+					if (!songs.contains(songList.get(i).substring(0,songList.get(i).length()-4)))
+						songs.add(songList.get(i).substring(0,songList.get(i).length()-4));
+				}
+			}
+		}
+		return songs;
 	}
 	
 	//get song list size

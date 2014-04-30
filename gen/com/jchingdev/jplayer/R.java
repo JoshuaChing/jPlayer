@@ -150,7 +150,7 @@ public final class R {
         public static final int activity_playlist=0x7f030003;
         public static final int activity_settings=0x7f030004;
         public static final int activity_song_list=0x7f030005;
-        public static final int artist_item=0x7f030006;
+        public static final int alternate_list_single_item=0x7f030006;
         public static final int nav_drawer_item=0x7f030007;
         public static final int playlist_item=0x7f030008;
         public static final int song_item=0x7f030009;
