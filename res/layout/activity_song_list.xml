@@ -106,7 +106,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/dock"
-        android:layout_below="@+id/searchFilter"
+        android:layout_below="@+id/songPathLayout"
         android:divider="#00000000"
         android:visibility="gone"
         android:background="@color/lightNavyFUI">

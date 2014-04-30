@@ -54,6 +54,7 @@ public class SongListActivity extends ListActivity {
 	private ListView alternateList;
 	
 	//logic path
+	private boolean initialAlternateListSwitch = false;
 	private boolean artistView = false;
 	private boolean artistAlbumView = false;
 	
@@ -289,6 +290,7 @@ public class SongListActivity extends ListActivity {
 		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("Artists");
 		
+		initialAlternateListSwitch = true;
 		artistView = true;
 		artistAlbumView = false;
 	}
@@ -391,7 +393,13 @@ public class SongListActivity extends ListActivity {
 	}*/
 	
 	public void searchButtonClicked(View view){
-		if (searchFilter.getVisibility()==View.VISIBLE){
+		 //check if first time clicking (search filter may be already visible)
+		if ((artistView || artistAlbumView)&&initialAlternateListSwitch){
+			searchFilter.setVisibility(View.VISIBLE);
+			alternateList.setVisibility(View.GONE);
+			initialAlternateListSwitch = false;
+		}
+		else if (searchFilter.getVisibility()==View.VISIBLE){
 			
 			InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
 
