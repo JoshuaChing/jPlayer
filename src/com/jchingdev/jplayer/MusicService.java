@@ -324,6 +324,16 @@ public class MusicService extends Service implements OnCompletionListener {
 		return songs;
 	}
 	
+	//get viewing artist
+	public String getViewingArtist(){
+		return viewingArtist;
+	}
+	
+	//get viewing album
+	public String getViewingAlbum(){
+		return viewingAlbum;
+	}
+	
 	//get song list size
 	public int getSongListSize(){
 		return songList.size();

@@ -47,6 +47,8 @@ public class SongListActivity extends ListActivity {
 	private View mDrawerContainer;
 	
 	////SONG LIST VARIABLES////
+	private TextView title;
+	
 	private boolean hasAlreadyBeenUpdated = false;
 	private ArrayList<SongItem> songList = new ArrayList<SongItem>();
 	private SongItemAdapter songItemAdapter;
@@ -74,6 +76,8 @@ public class SongListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_song_list);
+		//set up title
+		title = (TextView)findViewById(R.id.title);
 		//set up alternate list view
 		alternateList = (ListView)findViewById(R.id.alternateList);
 		setAlternateListClickHandle();
@@ -276,7 +280,6 @@ public class SongListActivity extends ListActivity {
 	private void displayAllSongs(){
 		alternateList.setVisibility(View.GONE);
 		//getListView().setVisibility(View.VISIBLE);
-		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("Songs");
 		
 		artistView = false;
@@ -289,7 +292,6 @@ public class SongListActivity extends ListActivity {
 		//getListView().setVisibility(View.GONE);
 		newAlternateListAdapterData(mService.getArtistsList());
 		alternateList.setVisibility(View.VISIBLE);
-		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("Artists");
 		
 		initialAlternateListSwitch = ials;
@@ -314,7 +316,6 @@ public class SongListActivity extends ListActivity {
 				if (artistView){
 					String artistSelected = (alternateList.getItemAtPosition(position).toString());
 					newAlternateListAdapterData(mService.getArtistsAlbumsList(artistSelected));
-					TextView title = (TextView)findViewById(R.id.title);
 					title.setText(artistSelected);
 					
 					artistView = false;
@@ -334,7 +335,6 @@ public class SongListActivity extends ListActivity {
 							newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected,true));
 						else
 							newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected,false));
-						TextView title = (TextView)findViewById(R.id.title);
 						title.setText(albumSelected);
 					
 						artistView = false;
@@ -344,7 +344,17 @@ public class SongListActivity extends ListActivity {
 				}
 				//viewing list of songs of albums of an artist
 				else if (artistAlbumSongView){
-					if (position!= 0 && position !=1){
+					//go back to 'Specific Artist'
+					if (position == 0){
+						String artistSelected = mService.getViewingArtist();
+						newAlternateListAdapterData(mService.getArtistsAlbumsList(artistSelected));
+						title.setText(artistSelected);
+						
+						artistView = false;
+						artistAlbumView = true;
+						artistAlbumSongView = false;
+					}
+					else if (position!= 0 && position !=1){
 						String songSelected = (alternateList.getItemAtPosition(position).toString());
 						mService.selectSong(songSelected+".mp3");
 						backButtonClicked(view); //goes to now playing (ignore bad naming)
