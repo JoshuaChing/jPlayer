@@ -122,7 +122,7 @@ public class SongListActivity extends ListActivity {
 				case 0: //now playing
 					backButtonClicked(view);
 					break;
-				case 1://all songs
+				case 1://Songs
 					displayAllSongs();
 					break;
 				case 2://artists
@@ -249,7 +249,7 @@ public class SongListActivity extends ListActivity {
 	//method to add items to nav drawer list
 	private void updateNavDrawerList(){
 		drawerList.add(new NavDrawerItem("Now Playing",R.drawable.ic_action_play_over_video));
-		drawerList.add(new NavDrawerItem("All Songs",R.drawable.ic_action_collection));
+		drawerList.add(new NavDrawerItem("Songs",R.drawable.ic_action_collection));
 		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_collection));
 		drawerList.add(new NavDrawerItem("Albums",R.drawable.ic_action_collection));
 		drawerList.add(new NavDrawerItem("Settings",R.drawable.ic_action_settings));
@@ -277,7 +277,7 @@ public class SongListActivity extends ListActivity {
 		alternateList.setVisibility(View.GONE);
 		//getListView().setVisibility(View.VISIBLE);
 		TextView title = (TextView)findViewById(R.id.title);
-		title.setText("All Songs");
+		title.setText("Songs");
 		
 		artistView = false;
 		artistAlbumView = false;
