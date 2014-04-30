@@ -408,10 +408,14 @@ public class SongListActivity extends ListActivity {
 			
 			//clear search filter
 			searchFilter.getText().clear();
+			
+			if (artistView || artistAlbumView)
+				alternateList.setVisibility(View.VISIBLE);
 		}
 		else{
 			//display search filter
 			searchFilter.setVisibility(View.VISIBLE);
+			alternateList.setVisibility(View.GONE);
 		}
 	}
 	
