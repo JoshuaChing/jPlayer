@@ -420,7 +420,7 @@ public class SongListActivity extends ListActivity {
 	
 	public void searchButtonClicked(View view){
 		//check if first time clicking (search filter may be already visible)
-		if ((artistView || artistAlbumView)&&initialAlternateListSwitch){
+		if ((artistView || artistAlbumView || artistAlbumSongView)&&initialAlternateListSwitch){
 			searchFilter.setVisibility(View.VISIBLE);
 			alternateList.setVisibility(View.GONE);
 			initialAlternateListSwitch = false;
@@ -443,7 +443,7 @@ public class SongListActivity extends ListActivity {
 			//clear search filter
 			searchFilter.getText().clear();
 			
-			if (artistView || artistAlbumView)
+			if (artistView || artistAlbumView || artistAlbumSongView)
 				alternateList.setVisibility(View.VISIBLE);
 		}
 		else{
