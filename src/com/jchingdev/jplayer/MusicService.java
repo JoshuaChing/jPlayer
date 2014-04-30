@@ -246,6 +246,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
 		List<String> albums = new ArrayList<String>();
+		albums.add("Go back to 'Artists'");
 		albums.add("All Songs");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));

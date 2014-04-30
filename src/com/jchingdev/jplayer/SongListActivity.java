@@ -248,9 +248,9 @@ public class SongListActivity extends ListActivity {
 	//method to add items to nav drawer list
 	private void updateNavDrawerList(){
 		drawerList.add(new NavDrawerItem("Now Playing",R.drawable.ic_action_play_over_video));
-		drawerList.add(new NavDrawerItem("All Songs",R.drawable.ic_action_play_over_video));
-		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_play_over_video));
-		drawerList.add(new NavDrawerItem("Albums",R.drawable.ic_action_play_over_video));
+		drawerList.add(new NavDrawerItem("All Songs",R.drawable.ic_action_collection));
+		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_collection));
+		drawerList.add(new NavDrawerItem("Albums",R.drawable.ic_action_collection));
 		drawerList.add(new NavDrawerItem("Settings",R.drawable.ic_action_settings));
 		drawerList.add(new NavDrawerItem("Help",R.drawable.ic_action_help));
 		drawerList.add(new NavDrawerItem("About",R.drawable.ic_action_about));
@@ -393,7 +393,7 @@ public class SongListActivity extends ListActivity {
 	}*/
 	
 	public void searchButtonClicked(View view){
-		 //check if first time clicking (search filter may be already visible)
+		//check if first time clicking (search filter may be already visible)
 		if ((artistView || artistAlbumView)&&initialAlternateListSwitch){
 			searchFilter.setVisibility(View.VISIBLE);
 			alternateList.setVisibility(View.GONE);
