@@ -126,7 +126,7 @@ public class SongListActivity extends ListActivity {
 					displayAllSongs();
 					break;
 				case 2://artists
-					displayArtistsList();
+					displayArtistsList(true);
 					break;
 				case 3://albums
 					break;
@@ -285,14 +285,14 @@ public class SongListActivity extends ListActivity {
 	}
 	
 	//method to display artists list
-	private void displayArtistsList(){
+	private void displayArtistsList(boolean ials){
 		//getListView().setVisibility(View.GONE);
 		newAlternateListAdapterData(mService.getArtistsList());
 		alternateList.setVisibility(View.VISIBLE);
 		TextView title = (TextView)findViewById(R.id.title);
 		title.setText("Artists");
 		
-		initialAlternateListSwitch = true;
+		initialAlternateListSwitch = ials;
 		artistView = true;
 		artistAlbumView = false;
 		artistAlbumSongView = false;
@@ -310,7 +310,8 @@ public class SongListActivity extends ListActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				// TODO Auto-generated method stub
-				if (artistView){//viewing list of artists
+				//viewing list of artists
+				if (artistView){
 					String artistSelected = (alternateList.getItemAtPosition(position).toString());
 					newAlternateListAdapterData(mService.getArtistsAlbumsList(artistSelected));
 					TextView title = (TextView)findViewById(R.id.title);
@@ -320,10 +321,19 @@ public class SongListActivity extends ListActivity {
 					artistAlbumView = true;
 					artistAlbumSongView = false;
 				}
-				else if (artistAlbumView){//viewing list of albums of an artist
-					if (position != 0 && position != 1){
+				//viewing list of albums of an artist
+				else if (artistAlbumView){
+					 //go back to 'Artists'
+					if (position == 0){
+						displayArtistsList(false);
+					}
+					else{
 						String albumSelected = (alternateList.getItemAtPosition(position).toString());
-						newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected));
+						//check whether to get all songs or no
+						if (position ==1)
+							newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected,true));
+						else
+							newAlternateListAdapterData(mService.getArtistsAlbumsSongsList(albumSelected,false));
 						TextView title = (TextView)findViewById(R.id.title);
 						title.setText(albumSelected);
 					

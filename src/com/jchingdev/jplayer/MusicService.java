@@ -278,7 +278,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	}
 	
 	//get a list of songs from the album and viewing artist given
-	public List<String> getArtistsAlbumsSongsList(String album){
+	public List<String> getArtistsAlbumsSongsList(String album, boolean getAll){
 		List<String> songs = new ArrayList<String>();
 		songs.add("Go back to '"+viewingArtist+"'");
 		songs.add("Play all");
@@ -296,16 +296,25 @@ public class MusicService extends Service implements OnCompletionListener {
 			
 			//check if artists matches
 			if (tempArtist.equals(viewingArtist)){
-				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
-					tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
-				else
-					tempAlbum = "Unknown Album";
-				
-				//check if album matches
-				if (tempAlbum.equals(album)){
-					//check if tempAlbum exists in list
-					if (!songs.contains(songList.get(i).substring(0,songList.get(i).length()-4)))
+				//get all songs if getAll is true
+				if (getAll){
+					songs.add(songList.get(i).substring(0,songList.get(i).length()-4));
+				}
+				//otherwise filter by album
+				else{
+					if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
+						tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+					else
+						tempAlbum = "Unknown Album";
+					
+					//check if album matches
+					if (tempAlbum.equals(album)){
+						//check if tempAlbum exists in list
+						//if (!songs.contains(songList.get(i).substring(0,songList.get(i).length()-4)))
+						
+						//add song to list
 						songs.add(songList.get(i).substring(0,songList.get(i).length()-4));
+					}
 				}
 			}
 		}
