@@ -73,6 +73,9 @@ public class MusicService extends Service implements OnCompletionListener {
 	private String viewingAlbum;
 	private boolean viewArtistAllSongs = false;
 	private boolean playlistSpecifications = false;
+	private String specifiedArtist;
+	private String specifiedAlbum;
+	private boolean specifiedArtistAllSongs = false;
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -244,8 +247,8 @@ public class MusicService extends Service implements OnCompletionListener {
 				tempArtist = "Unknown Artist";
 			
 			//first check if artist is same as viewing artist
-			if (tempArtist.equals(viewingArtist)){
-				if (viewArtistAllSongs)//check if its play all
+			if (tempArtist.equals(specifiedArtist)){
+				if (specifiedArtistAllSongs)//check if its play all
 					return true;
 				else{
 					String tempAlbum;
@@ -256,7 +259,7 @@ public class MusicService extends Service implements OnCompletionListener {
 						tempAlbum = "Unknown Album";
 					
 					//check if album is same as viewing album
-					if (tempAlbum.equals(viewingAlbum)){
+					if (tempAlbum.equals(specifiedAlbum)){
 						return true;
 					}
 					else{
@@ -479,6 +482,12 @@ public class MusicService extends Service implements OnCompletionListener {
 	//set playlist specifications (specific artist,album,etc)
 	public void setPlaylistSpecifications(boolean b){
 		playlistSpecifications = b;
+		//define specifications
+		if (playlistSpecifications){
+			specifiedArtist = viewingArtist;
+			specifiedAlbum = viewingArtist;
+			specifiedArtistAllSongs = viewArtistAllSongs;
+		}
 	}
 	
 	//get current song time
