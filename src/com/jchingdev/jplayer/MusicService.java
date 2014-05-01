@@ -293,8 +293,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
 		List<String> albums = new ArrayList<String>();
-		albums.add("Go back to 'Artists'");
-		albums.add("All Songs");
+		albums.add("[ Go back to 'Artists' ]");
+		albums.add("[ All Songs ]");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
 			
@@ -325,8 +325,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of songs from the album and viewing artist given
 	public List<String> getArtistsAlbumsSongsList(String album, boolean getAll){
 		List<String> songs = new ArrayList<String>();
-		songs.add("Go back to '"+viewingArtist+"'");
-		songs.add("Play all");
+		songs.add("[ Go back to '"+viewingArtist+"' ]");
+		songs.add("[ Play all ]");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
 			
@@ -376,6 +376,16 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get viewing album
 	public String getViewingAlbum(){
 		return viewingAlbum;
+	}
+	
+	//get specified artist
+	public String getSpecifiedArtist(){
+		return specifiedArtist;
+	}
+	
+	//get specified album
+	public String getSpecifiedAlbum(){
+		return specifiedAlbum;
 	}
 	
 	//get song list size
