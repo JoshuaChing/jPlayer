@@ -293,8 +293,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
 		List<String> albums = new ArrayList<String>();
-		albums.add("[ Go back to 'Artists' ]");
-		albums.add("[ All Songs ]");
+		albums.add("Go back to 'Artists'");
+		albums.add("All Songs");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
 			
@@ -325,8 +325,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of songs from the album and viewing artist given
 	public List<String> getArtistsAlbumsSongsList(String album, boolean getAll){
 		List<String> songs = new ArrayList<String>();
-		songs.add("[ Go back to '"+viewingArtist+"' ]");
-		songs.add("[ Play all ]");
+		songs.add("Go back to '"+viewingArtist+"'");
+		songs.add("Play all");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
 			
@@ -551,22 +551,26 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//nextSong
 	public void nextSong(){
-		//check if shuffling
-		if (isShuffle){
-			//check if last song on list
-			if (shufflePositionIndex >= shuffleList.length-1)
-				shufflePositionIndex = 0;
-			else
-				shufflePositionIndex++;
-			songPosition = shuffleList[shufflePositionIndex];
-		}
-		else{
-			//check if last song on list
-			if (songPosition >= songList.size()-1)
-				songPosition = 0;
-			else
-				songPosition++;
-		}
+		//check for song validity and specifications
+		do{
+			//check if shuffling
+			if (isShuffle){
+				//check if last song on list
+				if (shufflePositionIndex >= shuffleList.length-1)
+					shufflePositionIndex = 0;
+				else
+					shufflePositionIndex++;
+				songPosition = shuffleList[shufflePositionIndex];
+			}
+			else{
+				//check if last song on list
+				if (songPosition >= songList.size()-1)
+					songPosition = 0;
+				else
+					songPosition++;
+			}
+		}while(playlistSpecifications==true&&!checkSpecifiedSongValid(songList.get(songPosition)));
+		
 		setSong();
 		if (!isPaused){
 			mp.start();

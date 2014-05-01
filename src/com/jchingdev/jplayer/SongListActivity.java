@@ -379,6 +379,7 @@ public class SongListActivity extends ListActivity {
 						backButtonClicked(view); //goes to now playing (ignore bad naming)
 					}
 					else{
+						//check if it is still under the same artist or album, otherwise turn off filter
 						if ((!mService.getViewingArtist().equals(mService.getSpecifiedArtist()))||(!mService.getViewingAlbum().equals(mService.getSpecifiedAlbum()))){
 							mService.setPlaylistSpecifications(false);
 						}
