@@ -373,7 +373,7 @@ public class SongListActivity extends ListActivity {
 							mService.selectSong(songSelected+".mp3");
 						}
 						else{// if not just play next song and music service will filter
-							mService.setIsPAused(false);
+							mService.setIsPaused(false);
 							mService.nextSong();	
 						}
 						backButtonClicked(view); //goes to now playing (ignore bad naming)

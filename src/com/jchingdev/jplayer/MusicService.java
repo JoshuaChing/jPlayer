@@ -232,9 +232,41 @@ public class MusicService extends Service implements OnCompletionListener {
 	}
 	
 	//check if specified song is valid
-	private boolean checkSpecifiedSongValid(String tempSong){
+	private boolean checkSpecifiedSongValid(String songFile){
 		if (playlistSpecifications){
+			metaData.setDataSource(SD_PATH+songFile);
 			
+			String tempArtist;
+			//check if artists exists or if its "unknown artist"
+			if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+				tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+			else
+				tempArtist = "Unknown Artist";
+			
+			//first check if artist is same as viewing artist
+			if (tempArtist.equals(viewingArtist)){
+				if (viewArtistAllSongs)//check if its play all
+					return true;
+				else{
+					String tempAlbum;
+					//check if artists exists or if its "unknown artist"
+					if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM)!=null)
+						tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+					else
+						tempAlbum = "Unknown Album";
+					
+					//check if album is same as viewing album
+					if (tempAlbum.equals(viewingAlbum)){
+						return true;
+					}
+					else{
+						return false;
+					}
+				}
+					
+			}
+			else
+				return false;
 		}
 		return true;
 	}
@@ -424,7 +456,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	}
 	
 	//set is paused
-	public void setIsPAused(boolean b){
+	public void setIsPaused(boolean b){
 		isPaused = b;
 	}
 	
