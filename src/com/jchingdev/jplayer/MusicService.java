@@ -72,6 +72,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	private String viewingArtist;
 	private String viewingAlbum;
 	private boolean viewArtistAllSongs = false;
+	private boolean playlistSpecifications = false;
 	
 	////MUSIC PLAYER VARIABLES////
 	private MediaPlayer mp = new MediaPlayer();
@@ -230,6 +231,14 @@ public class MusicService extends Service implements OnCompletionListener {
 		SD_PATH = settings.getString("SD_PATH",Environment.getExternalStorageDirectory().getPath() +"/Music/");
 	}
 	
+	//check if specified song is valid
+	private boolean checkSpecifiedSongValid(String tempSong){
+		if (playlistSpecifications){
+			
+		}
+		return true;
+	}
+	
 	////PUBLIC METHODS////
 	
 	//destroy music
@@ -249,7 +258,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
 		List<String> albums = new ArrayList<String>();
-		albums.add("< Go back to 'Artists'");
+		albums.add("Go back to 'Artists'");
 		albums.add("All Songs");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
@@ -281,7 +290,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of songs from the album and viewing artist given
 	public List<String> getArtistsAlbumsSongsList(String album, boolean getAll){
 		List<String> songs = new ArrayList<String>();
-		songs.add("<< Go back to '"+viewingArtist+"'");
+		songs.add("Go back to '"+viewingArtist+"'");
 		songs.add("Play all");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
@@ -414,6 +423,11 @@ public class MusicService extends Service implements OnCompletionListener {
 		mp.start();
 	}
 	
+	//set is paused
+	public void setIsPAused(boolean b){
+		isPaused = b;
+	}
+	
 	//set time of song
 	public void setTime(int newTime){
 		mp.seekTo(newTime);
@@ -428,6 +442,11 @@ public class MusicService extends Service implements OnCompletionListener {
 			//reset time
 			setTime(0);
 		}catch(IOException e){}
+	}
+	
+	//set playlist specifications (specific artist,album,etc)
+	public void setPlaylistSpecifications(boolean b){
+		playlistSpecifications = b;
 	}
 	
 	//get current song time

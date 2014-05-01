@@ -234,6 +234,7 @@ public class SongListActivity extends ListActivity {
 	//method to play selected song
 	protected void onListItemClick(ListView list,View view,int position, long id){
 		mService.selectSong(((SongItem) list.getItemAtPosition(position)).getListPosition());
+		mService.setPlaylistSpecifications(false); //no specific artistor album to filter
 		//SongListActivity.this.finish();
 		Intent intent = new Intent(this,MainActivity.class);
 		startActivity(intent);
@@ -365,7 +366,19 @@ public class SongListActivity extends ListActivity {
 						artistAlbumView = true;
 						artistAlbumSongView = false;
 					}
-					else if (position!= 0 && position !=1){
+					else if (position == 1){
+						mService.setPlaylistSpecifications(true); //filter for artist and album
+						if (!mService.getIsShuffle()){ //if shuffle is off play first song on list
+							String songSelected = (alternateList.getItemAtPosition(2).toString());
+							mService.selectSong(songSelected+".mp3");
+						}
+						else{// if not just play next song and music service will filter
+							mService.setIsPAused(false);
+							mService.nextSong();	
+						}
+						backButtonClicked(view); //goes to now playing (ignore bad naming)
+					}
+					else{
 						String songSelected = (alternateList.getItemAtPosition(position).toString());
 						mService.selectSong(songSelected+".mp3");
 						backButtonClicked(view); //goes to now playing (ignore bad naming)
