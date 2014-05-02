@@ -29,9 +29,9 @@ public class SongItem {
 			album="Unknown Album";
 		//check if artist text is null
 		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
-				artist=metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-			else
-				artist="Unknown Artist";
+			artist=metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+		else
+			artist="Unknown Artist";
 	}
 	
 	////SET METHODS////

@@ -248,8 +248,15 @@ public class MusicService extends Service implements OnCompletionListener {
 			
 			//first check if artist is same as viewing artist
 			if (tempArtist.equals(specifiedArtist)){
-				if (specifiedArtistAllSongs)//check if its play all
+				if (specifiedArtistAllSongs){//check if its play all
+					//System.out.println(viewingArtist);
+					//System.out.println(viewingAlbum);
+					//System.out.println(viewArtistAllSongs);
+					//System.out.println(specifiedArtist);
+					//System.out.println(specifiedAlbum);
+					//System.out.println(specifiedArtistAllSongs);
 					return true;
+				}
 				else{
 					String tempAlbum;
 					//check if artists exists or if its "unknown artist"
@@ -257,6 +264,14 @@ public class MusicService extends Service implements OnCompletionListener {
 						tempAlbum = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
 					else
 						tempAlbum = "Unknown Album";
+					
+					//System.out.println(viewingArtist);
+					//System.out.println(viewingAlbum);
+					//System.out.println(viewArtistAllSongs);
+					//System.out.println(specifiedArtist);
+					//System.out.println(specifiedAlbum);
+					//System.out.println(specifiedArtistAllSongs);
+					
 					
 					//check if album is same as viewing album
 					if (tempAlbum.equals(specifiedAlbum)){
@@ -495,7 +510,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		//define specifications
 		if (playlistSpecifications){
 			specifiedArtist = viewingArtist;
-			specifiedAlbum = viewingArtist;
+			specifiedAlbum = viewingAlbum;
 			specifiedArtistAllSongs = viewArtistAllSongs;
 		}
 	}
