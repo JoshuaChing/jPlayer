@@ -105,7 +105,7 @@
    	    android:layout_margin="10dp"
    	    android:textSize="14sp"
    	    android:drawableLeft="@drawable/ic_action_search"
-   	    android:visibility="visible"/>
+   	    android:visibility="gone"/>
    	
     <ListView
         android:id="@android:id/list"

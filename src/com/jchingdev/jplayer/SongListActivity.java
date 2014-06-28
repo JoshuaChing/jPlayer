@@ -211,6 +211,7 @@ public class SongListActivity extends ListActivity {
 			else{
 				TextView tv = (TextView)findViewById(R.id.noSongs);
 				tv.setVisibility(View.VISIBLE);
+				alertNoSongs();
 			}
 		}
 		@Override
@@ -396,7 +397,8 @@ public class SongListActivity extends ListActivity {
 	public void alertNoSongs(){
 		new AlertDialog.Builder(this)
 		.setTitle("Error")
-		.setMessage("no mp3 files found in the folder: "+mService.getOnlySongPath())
+		.setMessage("no mp3 files found in the folder: "+mService.getOnlySongPath() +"\n \n" +
+				"If this is not where your music is located, please set a new music folder path in settings.")
 		.setIcon(R.drawable.ic_action_error)
 		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int which){
@@ -465,37 +467,41 @@ public class SongListActivity extends ListActivity {
 	}*/
 	
 	public void searchButtonClicked(View view){
-		//check if first time clicking (search filter may be already visible)
-		if ((artistView || artistAlbumView || artistAlbumSongView)&&initialAlternateListSwitch){
-			searchFilter.setVisibility(View.VISIBLE);
-			alternateList.setVisibility(View.GONE);
-			initialAlternateListSwitch = false;
-		}
-		else if (searchFilter.getVisibility()==View.VISIBLE){
-			
-			InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-
-			//check if no view has focus:
-			View v=this.getCurrentFocus();
-			if(v==null)
-	    	return;
-			
-			//hide keyboard
-			inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-			
-			//hide search filter
-			searchFilter.setVisibility(View.GONE);
-			
-			//clear search filter
-			searchFilter.getText().clear();
-			
-			if (artistView || artistAlbumView || artistAlbumSongView)
-				alternateList.setVisibility(View.VISIBLE);
-		}
+		if (noSongs)
+			alertNoSongs();
 		else{
-			//display search filter
-			searchFilter.setVisibility(View.VISIBLE);
-			alternateList.setVisibility(View.GONE);
+			//check if first time clicking (search filter may be already visible)
+			if ((artistView || artistAlbumView || artistAlbumSongView)&&initialAlternateListSwitch){
+				searchFilter.setVisibility(View.VISIBLE);
+				alternateList.setVisibility(View.GONE);
+				initialAlternateListSwitch = false;
+			}
+			else if (searchFilter.getVisibility()==View.VISIBLE){
+			
+				InputMethodManager inputManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+				//check if no view has focus:
+				View v=this.getCurrentFocus();
+				if(v==null)
+					return;
+			
+				//hide keyboard
+				inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+			
+				//hide search filter
+				searchFilter.setVisibility(View.GONE);
+			
+				//clear search filter
+				searchFilter.getText().clear();
+			
+				if (artistView || artistAlbumView || artistAlbumSongView)
+					alternateList.setVisibility(View.VISIBLE);
+				}
+				else{
+					//display search filter
+					searchFilter.setVisibility(View.VISIBLE);
+					alternateList.setVisibility(View.GONE);
+				}
 		}
 	}
 	
