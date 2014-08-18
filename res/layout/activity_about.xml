@@ -53,7 +53,7 @@
    	    android:layout_width="wrap_content"
    	    android:layout_height="wrap_content"
    	    android:layout_above="@+id/app_name"
-   	    android:src="@drawable/ic_launcher"/>
+   	    android:src="@drawable/ic_launcherapp"/>
    
     <TextView
         android:id="@+id/app_name"
