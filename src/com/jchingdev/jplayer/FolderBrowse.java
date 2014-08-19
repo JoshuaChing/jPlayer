@@ -6,7 +6,9 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -78,6 +80,18 @@ public class FolderBrowse extends ListActivity {
 		{
 			if(file.canRead())
 				getDir(path.get(position));
+			else{
+				new AlertDialog.Builder(this)
+				.setTitle("Error")
+				.setMessage("[" + file.getName() + "] folder can't be read!")
+				.setIcon(R.drawable.ic_action_error)
+				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface dialog, int which){
+							//place alert dialog functions here
+						}
+				})
+				.show();
+			}
 				
 		}
 	
