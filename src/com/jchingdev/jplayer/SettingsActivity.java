@@ -114,7 +114,8 @@ public class SettingsActivity extends Activity {
 	
 	//when folder path button clicked
 	public void folderPathButtonClicked(View view){
-		
+		Intent intent = new Intent(this,FolderBrowse.class);
+		startActivity(intent);
 	}
 
 }

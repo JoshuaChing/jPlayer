@@ -34,33 +34,24 @@
     <string name="shuffle">Shuffle songs</string>
     <string name="loop">Loop through playlist</string>
     <string name="sensorSettings">Enable device\'s sensor</string>
-    <string name="sensorDescription">
-        <i>
-        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
-        Most device\'s sensor is located at the top of the phone. 
-        </i>	</string>
-	<string name="folderPathTitle">Music folder path: </string>
-	<string name="folderPath">/Folder Path/</string>
-	<string name="changeFolderPath">Set new music folder path</string>
-	<string name="folderPathDescription"><i>This is where your music files are located.</i></string>
-	<string name="help">Help</string>
-	<string name="question1">Q: Where are all my songs?</string>
-	<string name="answer1">
-	    A: By default, jPlayer searches for songs in a folder named \"Music\" of your device\'s internal memory.
-	    You can change the path where jPlayer searches for songs in Settings.
-	</string>
-	<string name="question2">Q: How do change songs without touching my device?</string>
-	<string name="answer2">
-	    A: Go to Settings and check off \"Enable device\'s sensor\".
-	    An alternative is to look for the following icon in the top right corner of the Now Playing screen:
-	</string>
-	<string name="question3">Q: What file types are supported by jPlayer?</string>
-	<string name="answer3">A: Currently, jPlayer only supports .mp3 files.</string>
-	<string name="question4">Q: Why are there so many bugs?!?!</string>
-	<string name="answer4">
-	    A: jPlayer is a one man project that is still in its early stages.
-	    Please feel free to report any bugs you find to jchingdev@gmail.com. Thank! :)
-	    </string>
+    <string name="sensorDescription"><i>        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
+        Most device\'s sensor is located at the top of the phone. </i></string>
+    <string name="folderPathTitle">Music folder path: </string>
+    <string name="folderPath">/Folder Path/</string>
+    <string name="changeFolderPath">Set new music folder path</string>
+    <string name="folderPathDescription"><i>This is where your music files are located.</i></string>
+    <string name="help">Help</string>
+    <string name="question1">Q: Where are all my songs?</string>
+    <string name="answer1">	    A: By default, jPlayer searches for songs in a folder named \"Music\" of your device\'s internal memory.
+	    You can change the path where jPlayer searches for songs in Settings.</string>
+    <string name="question2">Q: How do change songs without touching my device?</string>
+    <string name="answer2">	    A: Go to Settings and check off \"Enable device\'s sensor\".
+	    An alternative is to look for the following icon in the top right corner of the Now Playing screen:</string>
+    <string name="question3">Q: What file types are supported by jPlayer?</string>
+    <string name="answer3">A: Currently, jPlayer only supports .mp3 files.</string>
+    <string name="question4">Q: Why are there so many bugs?!?!</string>
+    <string name="answer4">	    A: jPlayer is a one man project that is still in its early stages.
+	    Please feel free to report any bugs you find to jchingdev@gmail.com. Thank! :)</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>
