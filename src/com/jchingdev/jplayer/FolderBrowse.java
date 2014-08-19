@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -109,6 +108,16 @@ public class FolderBrowse extends ListActivity {
 	public void onBackPressed(){
 		FolderBrowse.this.finish();
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+	}
+	
+	//when home folder button is clicked
+	public void homeButtonClicked(View view){
+
+	}
+	
+	//when set folder button is clicked
+	public void setFolderButtonClicked(View view){
+
 	}
 	
 }

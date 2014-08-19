@@ -16,7 +16,7 @@
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
 	     	<Button
-	        	android:id="@+id/songs"
+	        	android:id="@+id/back"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
@@ -39,12 +39,42 @@
             android:textStyle="bold"
             android:singleLine="true"
             android:textSize="16sp"/>
-     	<ImageView
-		    android:layout_width="0dp"
-		    android:layout_height="match_parent"
-		    android:layout_weight="1"
-		    android:contentDescription="@string/about"
-		    android:background="@drawable/dockbutton"/> 
+     	<RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/homeButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="homeButtonClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+			    android:contentDescription="@string/homeCD"
+			    android:src="@drawable/ic_action_help"/>
+	    </RelativeLayout>
+	    <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/setFolderButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="setFolderButtonClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+			    android:contentDescription="@string/setFolderCD"
+			    android:src="@drawable/ic_action_help"/>
+	    </RelativeLayout>  
     </LinearLayout>
     
 	<TextView
