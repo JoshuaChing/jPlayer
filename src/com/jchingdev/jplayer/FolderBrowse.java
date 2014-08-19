@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -95,6 +96,19 @@ public class FolderBrowse extends ListActivity {
 				
 		}
 	
+	}
+	
+	//when back button is clicked
+	public void backButtonClicked(View view){
+		FolderBrowse.this.finish();
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+	}
+	
+	//When back button is pressed on device
+	@Override
+	public void onBackPressed(){
+		FolderBrowse.this.finish();
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
 }

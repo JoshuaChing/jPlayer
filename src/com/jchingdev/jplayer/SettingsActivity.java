@@ -116,6 +116,7 @@ public class SettingsActivity extends Activity {
 	public void folderPathButtonClicked(View view){
 		Intent intent = new Intent(this,FolderBrowse.class);
 		startActivity(intent);
+		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 	}
 
 }

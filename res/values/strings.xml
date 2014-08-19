@@ -33,6 +33,7 @@
     <string name="settings">Settings</string>
     <string name="shuffle">Shuffle songs</string>
     <string name="loop">Loop through playlist</string>
+    <string name="folderBrowseTitle">Set Music Folder Path</string>
     <string name="sensorSettings">Enable device\'s sensor</string>
     <string name="sensorDescription"><i>        Enabling the device\'s sensor allows you to wave over the device\'s sensor to change songs.
         Most device\'s sensor is located at the top of the phone. </i></string>

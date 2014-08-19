@@ -4,16 +4,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FolderBrowse"
-    android:background="@color/black">
+    android:background="@color/lightNavyFUI">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">  
+       <RelativeLayout
+	         android:layout_weight="1"
+	         android:layout_width="0dp"
+	         android:layout_height="match_parent">
+	     	<Button
+	        	android:id="@+id/songs"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="backButtonClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+			    android:contentDescription="@string/goBackCD"
+			    android:src="@drawable/ic_action_previous_item"/>
+	    </RelativeLayout>
+       <TextView
+            android:gravity="center"
+            android:layout_width="0dp"
+      	   	android:layout_height="match_parent"
+      	    android:layout_weight="5"
+            android:text="@string/folderBrowseTitle"
+            android:textColor="@color/docktext"
+            android:background="@drawable/dockbutton"
+            android:textStyle="bold"
+            android:singleLine="true"
+            android:textSize="16sp"/>
+     	<ImageView
+		    android:layout_width="0dp"
+		    android:layout_height="match_parent"
+		    android:layout_weight="1"
+		    android:contentDescription="@string/about"
+		    android:background="@drawable/dockbutton"/> 
+    </LinearLayout>
+    
 	<TextView
-	    android:background="@color/lightNavyFUI"
+	    android:background="@color/darkNavyFUI"
 	    android:color="@color/white"
  		android:id="@+id/path"
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"
-    	android:paddingTop="2dp"
-    	android:paddingBottom="2dp"/>
+    	android:paddingTop="5dp"
+    	android:paddingBottom="5dp"
+    	android:paddingLeft="10dp"
+    	android:paddingRight="10dp"/>
 
 	<ListView
 		android:id="@android:id/list"
