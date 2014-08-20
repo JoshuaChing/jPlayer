@@ -110,10 +110,12 @@ public class FolderBrowse extends ListActivity {
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
+	/*
 	//when home folder button is clicked
 	public void homeButtonClicked(View view){
 
 	}
+	*/
 	
 	//when set folder button is clicked
 	public void setFolderButtonClicked(View view){

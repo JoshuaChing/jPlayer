@@ -39,7 +39,7 @@
             android:textStyle="bold"
             android:singleLine="true"
             android:textSize="16sp"/>
-     	<RelativeLayout
+     	<!--<RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
@@ -55,8 +55,8 @@
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
 			    android:contentDescription="@string/homeCD"
-			    android:src="@drawable/ic_action_help"/>
-	    </RelativeLayout>
+			    android:src="@drawable/ic_action_collection"/>
+	    </RelativeLayout>-->
 	    <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
@@ -73,7 +73,7 @@
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
 			    android:contentDescription="@string/setFolderCD"
-			    android:src="@drawable/ic_action_help"/>
+			    android:src="@drawable/ic_action_accept"/>
 	    </RelativeLayout>  
     </LinearLayout>
     
