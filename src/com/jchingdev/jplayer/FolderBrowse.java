@@ -4,11 +4,18 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jchingdev.jplayer.MusicService.LocalBinder;
+
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.IBinder;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,6 +24,11 @@ import android.widget.TextView;
 
 public class FolderBrowse extends ListActivity {
 
+	 ////SERVICE VARIABLES////
+	 MusicService mService;
+	 boolean mBound = false;
+	
+	 ////FOLDER BROWSE VARIABLES////
 	 private List<String> item = null;
 	 private List<String> path = null;
 	 private String root="/";
@@ -37,6 +49,39 @@ public class FolderBrowse extends ListActivity {
 		getMenuInflater().inflate(R.menu.folder_browse, menu);
 		return true;
 	}
+	
+	@Override
+	protected void onStart(){
+		super.onStart();
+		//bind to music service
+		Intent intent = new Intent(this,MusicService.class);
+		bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+	}
+	
+	@Override
+	protected void onStop(){
+		super.onStop();
+		//remove bind from the music service
+		if (mBound){
+			unbindService(mConnection);
+			mBound = false;
+		}
+	}
+	
+	//defines callback for service binding, passed to bindService
+	private ServiceConnection mConnection = new ServiceConnection(){
+		@Override
+		public void onServiceConnected(ComponentName className, IBinder service){
+			LocalBinder binder =(LocalBinder)service;
+			mService = binder.getService();
+			mBound = true;
+			getDir(mService.getOnlySongPath());
+		}
+		@Override
+		public void onServiceDisconnected(ComponentName arg0){
+			mBound = false;
+		}
+	};
 	
 	private void getDir(String dirPath)
 

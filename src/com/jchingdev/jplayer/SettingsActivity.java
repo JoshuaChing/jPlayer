@@ -63,23 +63,23 @@ public class SettingsActivity extends Activity {
 	}
 	
 	//defines callback for service binding, passed to bindService
-		private ServiceConnection mConnection = new ServiceConnection(){
-			@Override
-			public void onServiceConnected(ComponentName className, IBinder service){
-				LocalBinder binder =(LocalBinder)service;
-				mService = binder.getService();
-				mBound = true;
-				//set checkbox values
-				shuffle.setChecked(mService.getIsShuffle());
-				looping.setChecked(mService.getIsLooping());
-				sensor.setChecked(mService.getIsLazy());
-				folderPath.setText(mService.getOnlySongPath());
-			}
-			@Override
-			public void onServiceDisconnected(ComponentName arg0){
-				mBound = false;
-			}
-		};
+	private ServiceConnection mConnection = new ServiceConnection(){
+		@Override
+		public void onServiceConnected(ComponentName className, IBinder service){
+			LocalBinder binder =(LocalBinder)service;
+			mService = binder.getService();
+			mBound = true;
+			//set checkbox values
+			shuffle.setChecked(mService.getIsShuffle());
+			looping.setChecked(mService.getIsLooping());
+			sensor.setChecked(mService.getIsLazy());
+			folderPath.setText(mService.getOnlySongPath());
+		}
+		@Override
+		public void onServiceDisconnected(ComponentName arg0){
+			mBound = false;
+		}
+	};
 	
 	//When back button is pressed
 	@Override
