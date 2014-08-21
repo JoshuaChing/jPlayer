@@ -186,8 +186,16 @@ public class FolderBrowse extends ListActivity {
 	//when set folder button is clicked
 	public void setFolderButtonClicked(View view){
 		mService.setOnlySongPath(currentLocation);
-		FolderBrowse.this.finish();
-		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
+		new AlertDialog.Builder(this)
+		.setTitle("New Music Folder Saved")
+		.setMessage("Please click OK and then restart jPlayer for these settings to take effect.")
+		.setIcon(R.drawable.ic_launcher)
+		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int which){
+					//place alert dialog functions here
+				}
+		})
+		.show();
 	}
 	
 }

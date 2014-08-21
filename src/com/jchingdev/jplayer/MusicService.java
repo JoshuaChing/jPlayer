@@ -55,7 +55,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	
 	////SONG LIST VARIABLES////
-	private static String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
+	private String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	//private static final String SD_PATH = "/storage/sdcard0/Music/"; //internal storage for HTC one x
 	private List<String> songList = new ArrayList<String>();
 	private Integer[] shuffleList;
