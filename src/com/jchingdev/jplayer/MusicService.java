@@ -39,7 +39,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		@Override
 		public void onSensorChanged(SensorEvent se) {
 			// TODO Auto-generated method stub
-			if (isLazy){	
+			if (isLazy && !noSongs){	
 				if (se.values[0] < proximitySensor.getMaximumRange()){
 					if (!close){
 						close = true;
@@ -150,10 +150,12 @@ public class MusicService extends Service implements OnCompletionListener {
 	public void onCompletion(MediaPlayer arg0) {
 		// TODO Auto-generated method stub
 		if (isLooping){
+			System.out.println("loop");
 			if (isPaused)
 				setSong();
-			else
+			else{
 				nextSong();
+			}
 		}
 		else{
 			setSong();

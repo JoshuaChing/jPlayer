@@ -79,7 +79,7 @@ public class FolderBrowse extends ListActivity {
 			mBound = true;
 			//get current music folder path
 			currentMusicFolder = mService.getOnlySongPath();
-			getDir(currentMusicFolder);
+			getDir(currentMusicFolder.substring(0,currentMusicFolder.length()-1));
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){
@@ -91,7 +91,7 @@ public class FolderBrowse extends ListActivity {
 
     {
 		myPath.setText("Location: " + dirPath);
-		currentLocation = dirPath;
+		currentLocation = dirPath + "/";
 		item = new ArrayList<String>();
 		path = new ArrayList<String>();
 
@@ -179,7 +179,7 @@ public class FolderBrowse extends ListActivity {
 	
 	//when home folder button is clicked
 	public void homeButtonClicked(View view){
-		getDir(currentMusicFolder);
+		getDir(currentMusicFolder.substring(0,currentMusicFolder.length()-1));
 	}
 	
 	
