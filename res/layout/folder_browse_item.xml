@@ -7,6 +7,6 @@
      android:paddingTop="20dp"
      android:paddingBottom="20dp"
      android:textSize="14sp"
-     android:background="@color/lightNavyFUI"
+     android:background="@drawable/songitembackground"
      android:textColor="@color/white"
      android:text="@string/app_name"/>

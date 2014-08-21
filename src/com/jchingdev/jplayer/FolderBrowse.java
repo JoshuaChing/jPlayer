@@ -31,6 +31,7 @@ public class FolderBrowse extends ListActivity {
 	 ////FOLDER BROWSE VARIABLES////
 	 private List<String> item = null;
 	 private List<String> path = null;
+	 private String currentMusicFolder = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	 private String root="/";
 	 private TextView myPath;
 	
@@ -39,7 +40,7 @@ public class FolderBrowse extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_folder_browse);
 		myPath = (TextView)findViewById(R.id.path);
-        getDir(Environment.getExternalStorageDirectory().getPath());
+        getDir(currentMusicFolder);
 		
 	}
 
@@ -75,7 +76,9 @@ public class FolderBrowse extends ListActivity {
 			LocalBinder binder =(LocalBinder)service;
 			mService = binder.getService();
 			mBound = true;
-			getDir(mService.getOnlySongPath());
+			//get current music folder path
+			currentMusicFolder = mService.getOnlySongPath();
+			getDir(currentMusicFolder);
 		}
 		@Override
 		public void onServiceDisconnected(ComponentName arg0){
@@ -95,20 +98,23 @@ public class FolderBrowse extends ListActivity {
 
 		if(!dirPath.equals(root))
 		{
-			//item.add(root);
-			//path.add(root);
+			//item.add("Go back to current Music Folder");
+			//path.add(currentMusicFolder);
 			item.add("../");
 			path.add(f.getParent());
-		}     
+		}
+		
 
 		for(int i=0; i < files.length; i++)
 		{
 			File file = files[i];
 			path.add(file.getPath());
+			//filter for folders
 			if(file.isDirectory())
 				item.add(file.getName() + "/");
-			//else
-				//item.add(file.getName());
+			//filter for mp3 files
+			else if(file.getName().endsWith(".mp3"))
+				item.add(file.getName());
 		}
 		
 		ArrayAdapter<String> fileList = new ArrayAdapter<String>(this, R.layout.folder_browse_item, item);
@@ -121,6 +127,7 @@ public class FolderBrowse extends ListActivity {
 	
 		File file = new File(path.get(position));
 		
+		//check if file is directory
 		if (file.isDirectory())
 		{
 			if(file.canRead())
@@ -139,6 +146,18 @@ public class FolderBrowse extends ListActivity {
 			}
 				
 		}
+		else{
+			new AlertDialog.Builder(this)
+			.setTitle("Error")
+			.setMessage("[" + file.getName() + "] is not a folder!")
+			.setIcon(R.drawable.ic_action_error)
+			.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+					public void onClick(DialogInterface dialog, int which){
+						//place alert dialog functions here
+					}
+			})
+			.show();
+		}
 	
 	}
 	
@@ -155,12 +174,12 @@ public class FolderBrowse extends ListActivity {
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
-	/*
+	
 	//when home folder button is clicked
 	public void homeButtonClicked(View view){
-
+		getDir(currentMusicFolder);
 	}
-	*/
+	
 	
 	//when set folder button is clicked
 	public void setFolderButtonClicked(View view){

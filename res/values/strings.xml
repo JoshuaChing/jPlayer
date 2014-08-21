@@ -25,6 +25,7 @@
     <string name="searchCD">Search</string>
     <string name="setFolderCD">Set Music Folder</string>
     <string name="homeCD">Home Folder</string>
+    <string name="homeFolder">Go back to current Music Folder</string>
     <string name="title">Playlists</string>
     <string name="newPlaylist">Add Playlist</string>
     <string name="allSongsTitle">Songs</string>
