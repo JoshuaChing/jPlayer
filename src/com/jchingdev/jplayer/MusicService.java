@@ -493,6 +493,12 @@ public class MusicService extends Service implements OnCompletionListener {
 		mp.seekTo(newTime);
 	}
 	
+	//set only song path
+	public void setOnlySongPath(String newPath){
+		changeSettings.putString("SD_PATH",newPath);
+		changeSettings.commit();
+	}
+	
 	//start music player
 	public void setSong(){
 		try{

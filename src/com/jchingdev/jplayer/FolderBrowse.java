@@ -34,6 +34,7 @@ public class FolderBrowse extends ListActivity {
 	 private String currentMusicFolder = Environment.getExternalStorageDirectory().getPath() +"/Music/";
 	 private String root="/";
 	 private TextView myPath;
+	 private String currentLocation;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class FolderBrowse extends ListActivity {
 
     {
 		myPath.setText("Location: " + dirPath);
+		currentLocation = dirPath;
 		item = new ArrayList<String>();
 		path = new ArrayList<String>();
 
@@ -183,7 +185,9 @@ public class FolderBrowse extends ListActivity {
 	
 	//when set folder button is clicked
 	public void setFolderButtonClicked(View view){
-
+		mService.setOnlySongPath(currentLocation);
+		FolderBrowse.this.finish();
+		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 	
 }
