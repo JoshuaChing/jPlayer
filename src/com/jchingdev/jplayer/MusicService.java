@@ -62,6 +62,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	private int songPosition = 0;
 	private int shufflePositionIndex = 0;
 	private boolean noSongs;
+	private boolean isNewPath = false;
 	
 	////PLAYLIST VARIABLES////
 	private List<String> playlists = new ArrayList<String>();
@@ -110,22 +111,7 @@ public class MusicService extends Service implements OnCompletionListener {
 		//Toast.makeText(this,"Welcome to jPlayer", Toast.LENGTH_LONG).show();
 		loadSettings();
 		startService(new Intent(this, MusicService.class));
-		//update all song lists
-		updateSongList();
-		//update playlists
-		updatePlaylists();
-		//check if songs exist
-		if (!noSongs){
-			populateShuffleList();
-			updateShuffleList();
-			//set current song
-			try{
-				mp.setDataSource(SD_PATH + songList.get(songPosition));
-				mp.prepare();
-			}catch(IOException e){}
-			//set up the looper listener
-			mp.setOnCompletionListener(this);
-		}
+		init();
 		//set up sensor variables and register
 		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
@@ -289,6 +275,27 @@ public class MusicService extends Service implements OnCompletionListener {
 				return false;
 		}
 		return true;
+	}
+	
+	//initialize playlist
+	private void init(){
+		//update all song lists
+		updateSongList();
+		//update playlists
+		updatePlaylists();
+		//check if songs exist
+		if (!noSongs){
+			populateShuffleList();
+			updateShuffleList();
+			setShufflePositionIndex(songPosition);
+			//set current song
+			try{
+				mp.setDataSource(SD_PATH + songList.get(songPosition));
+				mp.prepare();
+			}catch(IOException e){}
+				//set up the looper listener
+			mp.setOnCompletionListener(this);
+		}
 	}
 	
 	////PUBLIC METHODS////
@@ -460,6 +467,16 @@ public class MusicService extends Service implements OnCompletionListener {
 		return isLazy;
 	}
 	
+	//get is new path
+	public boolean getIsNewPath(){
+		return isNewPath;
+	}
+	
+	//set is new path
+	public void setIsNewPath(boolean np){
+		isNewPath = np;
+	}
+	
 	//set is shuffle
 	public void setIsShuffle(boolean s){
 		isShuffle = s;
@@ -497,8 +514,21 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//set only song path
 	public void setOnlySongPath(String newPath){
+		isNewPath = true;
+		
 		changeSettings.putString("SD_PATH",newPath);
 		changeSettings.commit();
+		
+		mp.stop();
+		mp.reset();
+		isPaused = true;
+		SD_PATH = settings.getString("SD_PATH",Environment.getExternalStorageDirectory().getPath() +"/Music/");
+		
+		songList.clear();
+		artistsList.clear();
+		songPosition = 0;
+		shufflePositionIndex = 0;
+		init();
 	}
 	
 	//start music player

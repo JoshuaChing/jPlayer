@@ -187,12 +187,14 @@ public class FolderBrowse extends ListActivity {
 	public void setFolderButtonClicked(View view){
 		mService.setOnlySongPath(currentLocation);
 		new AlertDialog.Builder(this)
-		.setTitle("New Music Folder Saved")
-		.setMessage("Please click OK and then restart jPlayer for these settings to take effect.")
+		.setTitle("Success!")
+		.setMessage("New music folder path has been saved.")
 		.setIcon(R.drawable.ic_launcher)
 		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int which){
 					//place alert dialog functions here
+					FolderBrowse.this.finish();
+					overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 				}
 		})
 		.show();

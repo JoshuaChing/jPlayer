@@ -197,8 +197,11 @@ public class SongListActivity extends ListActivity {
 			noSongs = mService.getIsNoSongs();
 			//check if songs exist
 			if (!noSongs){
-				if (!hasAlreadyBeenUpdated)
+				if (!hasAlreadyBeenUpdated||mService.getIsNewPath()){
 					updateSongList();
+					displayAllSongs();
+					mService.setIsNewPath(false);
+				}
 				//set play button image
 				setPlayButtonImage();
 				//set now playing text
@@ -229,7 +232,7 @@ public class SongListActivity extends ListActivity {
 		stopService(new Intent(this, MusicService.class));
 		SongListActivity.this.finish();
 	}	
-		
+	
 	////PROTECTED METHODS////
 		
 	//method to play selected song
@@ -267,7 +270,9 @@ public class SongListActivity extends ListActivity {
 	
 	//method to get all songs from service's list
 	private void updateSongList(){
-			
+		
+		songList.clear();
+		
 		//go through the list from service
 		for (int i=0; i<mService.getSongListSize();i++){
 			SongItem songItem = new SongItem(mService.getOnlySongPath(), mService.getOnlySongFile(i),i);
