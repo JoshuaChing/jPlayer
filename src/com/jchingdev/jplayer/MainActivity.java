@@ -198,32 +198,31 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	private Runnable UpdateSongTime = new Runnable(){
 		public void run(){
 			if (!seekBarHandlerPaused){
-			
-			if (!seekBarTouched){
-			//set seek bar progress
-			seekBar.setProgress(mService.getCurrentTime());
-			//set current time text view
-			currentTimeText.setText(
-				String.format("%02d:%02d",
-				TimeUnit.MILLISECONDS.toMinutes(mService.getCurrentTime())-
-				TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(mService.getCurrentTime())),
-				TimeUnit.MILLISECONDS.toSeconds(mService.getCurrentTime())-
-				TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mService.getCurrentTime()))		
-				));
-			}
-			//check if new song is playing
-			if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
-				setNowPlayingText();
-				seekBar.setMax(mService.getMaxTime());
-				setMaxTimeText();
-				setMetaData();
-				nowPlayingSong = mService.getNowPlayingText();
-			}
-			//check if play button needs to be changed
-			if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
-				playButton.setImageResource(R.drawable.ic_action_play);
-			}
-			seekBarHandler.postDelayed(this, 100);
+				if (!seekBarTouched){
+					//set seek bar progress
+					seekBar.setProgress(mService.getCurrentTime());
+					//set current time text view
+					currentTimeText.setText(
+							String.format("%02d:%02d",
+									TimeUnit.MILLISECONDS.toMinutes(mService.getCurrentTime())-
+									TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(mService.getCurrentTime())),
+									TimeUnit.MILLISECONDS.toSeconds(mService.getCurrentTime())-
+									TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(mService.getCurrentTime()))		
+									));
+				}
+				//check if new song is playing
+				if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
+					setNowPlayingText();
+					seekBar.setMax(mService.getMaxTime());
+					setMaxTimeText();
+					setMetaData();
+					nowPlayingSong = mService.getNowPlayingText();
+				}
+				//check if play button needs to be changed
+				if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
+					playButton.setImageResource(R.drawable.ic_action_play);
+				}
+				seekBarHandler.postDelayed(this, 100);
 			}
 			else{
 				seekBarHandler.removeCallbacks(this);

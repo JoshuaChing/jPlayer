@@ -427,8 +427,7 @@ public class SongListActivity extends ListActivity {
 		new AlertDialog.Builder(this)
 		.setTitle("Error")
 		.setMessage("no mp3 files found in the folder: "+mService.getOnlySongPath() +"\n \n" +
-				"If this is not where your music is located, please set a new music folder path in settings." +"\n \n"+
-				"If you recently changed your music folder path, please restart jPlayer for these settings to take effect.")
+				"If this is not where your music is located, please set a new music folder path in settings.")
 		.setIcon(R.drawable.ic_action_error)
 		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface dialog, int which){
