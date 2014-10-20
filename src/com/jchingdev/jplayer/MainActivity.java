@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	////MEDIA PLAYER VARIABLES////
 	private SeekBar seekBar;
 	private Handler seekBarHandler = new Handler();
+	private boolean seekBarHandlerPaused = false;
 	private boolean seekBarTouched = false;
 	private TextView currentTimeText;
 	private TextView maxTimeText;
@@ -96,6 +97,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	@Override
 	protected void onStop(){
 		super.onStop();
+		seekBarHandlerPaused = true;
 		//remove bind from the music service
 		if (mBound){
 			unbindService(mConnection);
@@ -179,11 +181,24 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		return gestureDetector.onTouchEvent(event);
 	}
 	
+	@Override
+	public void onPause(){
+		super.onPause();
+		seekBarHandlerPaused = true;
+	}
+	
+	@Override
+	public void onResume(){
+		super.onPause();
+		seekBarHandlerPaused = false;
+	}
 	////THREADS////
 	
 	//update seek bar and song times
 	private Runnable UpdateSongTime = new Runnable(){
 		public void run(){
+			if (!seekBarHandlerPaused){
+			
 			if (!seekBarTouched){
 			//set seek bar progress
 			seekBar.setProgress(mService.getCurrentTime());
@@ -209,6 +224,10 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				playButton.setImageResource(R.drawable.ic_action_play);
 			}
 			seekBarHandler.postDelayed(this, 100);
+			}
+			else{
+				seekBarHandler.removeCallbacks(this);
+			}
 		}
 	};
 	

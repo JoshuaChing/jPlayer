@@ -528,6 +528,8 @@ public class MusicService extends Service implements OnCompletionListener {
 		artistsList.clear();
 		songPosition = 0;
 		shufflePositionIndex = 0;
+		playlistSpecifications = false;
+		specifiedArtistAllSongs = false;
 		init();
 	}
 	

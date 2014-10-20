@@ -64,6 +64,7 @@ public class SongListActivity extends ListActivity {
 	
 	////NOW PLAYING VARIABLES////
 	private Handler handler = new Handler();
+	private boolean handlerPaused = false;
 	private ImageView playButton;
 	private int playButtonResourceID;
 	private TextView nowPlayingText;
@@ -208,12 +209,23 @@ public class SongListActivity extends ListActivity {
 				setNowPlayingText();
 				//set now playing song string variable
 				nowPlayingSong = mService.getNowPlayingText();
+				//show appropriate lists
+				TextView tv = (TextView)findViewById(R.id.noSongs);
+				tv.setVisibility(View.GONE);
+				getListView().setVisibility(View.VISIBLE);
 				//start now playing thread
 				handler.postDelayed(UpdateNowPlaying, 100);
 			}
 			else{
+				displayAllSongs();
+				searchFilter.setVisibility(View.GONE);
+				searchFilter.getText().clear();
+				setPlayButtonImage();
 				TextView tv = (TextView)findViewById(R.id.noSongs);
 				tv.setVisibility(View.VISIBLE);
+				getListView().setVisibility(View.GONE);
+				nowPlayingText.setText(R.string.nowPlaying);
+				artistText.setText(R.string.artist);
 				alertNoSongs();
 			}
 		}
@@ -231,7 +243,19 @@ public class SongListActivity extends ListActivity {
 			mService.stopSong();
 		stopService(new Intent(this, MusicService.class));
 		SongListActivity.this.finish();
-	}	
+	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		handlerPaused=true;
+	}
+	
+	@Override
+	public void onResume(){
+		super.onPause();
+		handlerPaused=false;
+	}
 	
 	////PROTECTED METHODS////
 		
@@ -428,16 +452,21 @@ public class SongListActivity extends ListActivity {
 	//update seek bar and song times
 	private Runnable UpdateNowPlaying = new Runnable(){
 		public void run(){
-			//check if play button needs to be changed
-			if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
-				playButton.setImageResource(R.drawable.ic_action_play);
+			if (!handlerPaused){
+				//check if play button needs to be changed
+				if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
+					playButton.setImageResource(R.drawable.ic_action_play);
+				}
+				//check if new song is playing
+				if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
+					setNowPlayingText();
+					nowPlayingSong = mService.getNowPlayingText();
+				}
+					handler.postDelayed(this, 100);
 			}
-			//check if new song is playing
-			if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
-				setNowPlayingText();
-				nowPlayingSong = mService.getNowPlayingText();
+			else{
+				handler.removeCallbacks(this);
 			}
-			handler.postDelayed(this, 100);
 		}
 	};
 	
