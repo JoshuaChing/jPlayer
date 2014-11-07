@@ -11,7 +11,6 @@ Screenshot:
 
 Possible Features to Add:
 - improve artist filtering UI
-- sensor logic to play/pause music
 - albums filtering
 - playlists
 
