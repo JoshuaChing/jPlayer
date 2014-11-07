@@ -660,6 +660,8 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//previous song
 	public void previousSong(){
+		do{
+		
 		//check if shuffling
 		if (isShuffle){
 			if (shufflePositionIndex <= 0)
@@ -676,6 +678,9 @@ public class MusicService extends Service implements OnCompletionListener {
 			else
 				songPosition--;
 		}
+		
+		}while(playlistSpecifications==true&&!checkSpecifiedSongValid(songList.get(songPosition)));
+		
 		setSong();
 		if (!isPaused){
 			mp.start();

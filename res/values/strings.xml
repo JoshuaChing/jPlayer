@@ -55,7 +55,7 @@
     <string name="answer3">A: Currently, jPlayer only supports .mp3 files.</string>
     <string name="question4">Q: Why are there so many bugs?!?!</string>
     <string name="answer4">	    A: jPlayer is a one man project that is still in its early stages.
-	    Please feel free to report any bugs you find to jchingdev@gmail.com. Thank! :)</string>
+	    I\'m trying my best to squish all the bugs! Thanks for understanding :).</string>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>
