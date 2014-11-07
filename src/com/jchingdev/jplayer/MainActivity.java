@@ -221,6 +221,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				//check if play button needs to be changed
 				if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
 					playButton.setImageResource(R.drawable.ic_action_play);
+				}else{
+					playButton.setImageResource(R.drawable.ic_action_pause);
 				}
 				seekBarHandler.postDelayed(this, 100);
 			}

@@ -17,6 +17,7 @@ import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Binder;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.IBinder;
 
@@ -29,25 +30,50 @@ public class MusicService extends Service implements OnCompletionListener {
 	private boolean close = false;
 	
 	public class ProximitySensorEventListener implements SensorEventListener{
-
+		
 		@Override
 		public void onAccuracyChanged(Sensor sensor, int accuracy) {
 			// TODO Auto-generated method stub
 			
 		}
+		
+		boolean timerOn = false;
+		CountDownTimer timer = new CountDownTimer(1000,200){
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				playButton();
+				timerOn = false;
+			}
+			
+		};
 
 		@Override
 		public void onSensorChanged(SensorEvent se) {
 			// TODO Auto-generated method stub
+			System.out.println(se.values[0]);
 			if (isLazy && !noSongs){	
 				if (se.values[0] < proximitySensor.getMaximumRange()){
 					if (!close){
 						close = true;
-						nextSong();
+						timerOn = true;
+						timer.start();
 					}
 				}
-				else
+				else{
+					if (timerOn){
+						nextSong();
+					}
 					close = false;
+					timerOn = false;
+					timer.cancel();
+				}
 			}
 		}
 			

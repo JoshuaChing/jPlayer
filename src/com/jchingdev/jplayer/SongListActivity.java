@@ -461,7 +461,8 @@ public class SongListActivity extends ListActivity {
 					setNowPlayingText();
 					nowPlayingSong = mService.getNowPlayingText();
 				}
-					handler.postDelayed(this, 100);
+				setPlayButtonImage();
+				handler.postDelayed(this, 100);
 			}
 			else{
 				handler.removeCallbacks(this);
