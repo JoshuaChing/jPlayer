@@ -7,7 +7,7 @@
 
 	<LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:orientation="horizontal"
         android:baselineAligned="false"
         android:id="@+id/header">  
@@ -106,10 +106,22 @@
 	    	    android:src="@drawable/sensor_icon"
 	    	    android:contentDescription="@string/sensor"
 	    	    android:paddingTop="0dp"
-	    	    android:paddingBottom="20dp"/>
+	    	    android:paddingBottom="0dp"/>
+	    	<TextView
+	    	    android:id="@+id/answer2.1"
+	    	    android:layout_below="@+id/answer2image"
+	    	    android:paddingLeft="10dp"
+	    	    android:paddingRight="10dp"
+	    	    android:paddingBottom="20dp"
+	    	    android:paddingTop="0dp"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_width="match_parent"
+	    	    android:text="@string/answer2.1"
+    	        android:textSize="14sp"
+    	        android:textColor="@color/cloudFUI"/>
 	    	<TextView
 	    	    android:id="@+id/question3"
-	    	    android:layout_below="@+id/answer2image"
+	    	    android:layout_below="@+id/answer2.1"
 	    	    android:padding="10dp"
 	    	    android:layout_height="wrap_content"
 	    	    android:layout_width="match_parent"
