@@ -94,6 +94,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	private List<String> playlists = new ArrayList<String>();
 	
 	////ALTERNATE LIST VARIABLES////
+	private String textArrow;
 	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private List<String> artistsList = new ArrayList<String>();
 	private String viewingArtist;
@@ -134,6 +135,7 @@ public class MusicService extends Service implements OnCompletionListener {
 
 	@Override
 	public void onCreate(){
+		textArrow = getResources().getString(R.string.backArrow);
 		//Toast.makeText(this,"Welcome to jPlayer", Toast.LENGTH_LONG).show();
 		loadSettings();
 		startService(new Intent(this, MusicService.class));
@@ -343,7 +345,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of albums from the artist given
 	public List<String> getArtistsAlbumsList(String artist){
 		List<String> albums = new ArrayList<String>();
-		albums.add("Go back to 'Artists'");
+		albums.add(textArrow + " Go back to Artists");
 		albums.add("All Songs");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));
@@ -375,7 +377,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	//get a list of songs from the album and viewing artist given
 	public List<String> getArtistsAlbumsSongsList(String album, boolean getAll){
 		List<String> songs = new ArrayList<String>();
-		songs.add("Go back to '"+viewingArtist+"'");
+		songs.add(textArrow + " Go back to "+viewingArtist);
 		songs.add("Play all");
 		for (int i = 0; i < songList.size(); i++){
 			metaData.setDataSource(SD_PATH+songList.get(i));

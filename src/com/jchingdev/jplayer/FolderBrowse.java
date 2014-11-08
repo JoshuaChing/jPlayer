@@ -35,11 +35,13 @@ public class FolderBrowse extends ListActivity {
 	 private String root="/";
 	 private TextView myPath;
 	 private String currentLocation;
+	 private String textArrow;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_folder_browse);
+		textArrow = getResources().getString(R.string.backArrow);
 		myPath = (TextView)findViewById(R.id.path);
         getDir(currentMusicFolder);
 		
@@ -102,7 +104,7 @@ public class FolderBrowse extends ListActivity {
 		{
 			//item.add("Go back to current Music Folder");
 			//path.add(currentMusicFolder);
-			item.add("../");
+			item.add(textArrow + " Go back one folder");
 			path.add(f.getParent());
 		}
 		
