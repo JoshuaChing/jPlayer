@@ -6,7 +6,7 @@
     <string name="app_developer">Developed by Joshua Ching</string>
     <string name="app_version">Version 1.0</string>
     <string name="sensor">Sensor</string>
-    <string name="nowPlaying">"Now playing"</string>
+    <string name="nowPlaying">"Now Playing"</string>
     <string name="album">"album"</string>
     <string name="artist">"No mp3 files found"</string>
     <string name="startTime">"00:00</string>

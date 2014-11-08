@@ -74,18 +74,19 @@ public final class R {
         public static final int ic_action_shuffle=0x7f020012;
         public static final int ic_action_shuffle_focused=0x7f020013;
         public static final int ic_drawer=0x7f020014;
-        public static final int ic_launcher=0x7f020015;
-        public static final int ic_launcherapp=0x7f020016;
-        public static final int jandroid=0x7f020017;
-        public static final int progress=0x7f020018;
-        public static final int progressbackground=0x7f020019;
-        public static final int progressfillbackground=0x7f02001a;
-        public static final int progressthumb=0x7f02001b;
-        public static final int rounddockbutton=0x7f02001c;
-        public static final int searchfilter=0x7f02001d;
-        public static final int sensor_icon=0x7f02001e;
-        public static final int sensor_icon_focused=0x7f02001f;
-        public static final int songitembackground=0x7f020020;
+        public static final int ic_drawer2=0x7f020015;
+        public static final int ic_launcher=0x7f020016;
+        public static final int ic_launcherapp=0x7f020017;
+        public static final int jandroid=0x7f020018;
+        public static final int progress=0x7f020019;
+        public static final int progressbackground=0x7f02001a;
+        public static final int progressfillbackground=0x7f02001b;
+        public static final int progressthumb=0x7f02001c;
+        public static final int rounddockbutton=0x7f02001d;
+        public static final int searchfilter=0x7f02001e;
+        public static final int sensor_icon=0x7f02001f;
+        public static final int sensor_icon_focused=0x7f020020;
+        public static final int songitembackground=0x7f020021;
     }
     public static final class id {
         public static final int action_settings=0x7f0a0044;

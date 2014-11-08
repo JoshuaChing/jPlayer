@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.jchingdev.jplayer.MusicService.LocalBinder;
 
-import android.media.MediaMetadataRetriever;
+//import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -68,9 +68,9 @@ public class SongListActivity extends ListActivity {
 	private ImageView playButton;
 	private int playButtonResourceID;
 	private TextView nowPlayingText;
-	private String nowPlayingSong;
+	//private String nowPlayingSong;
 	private TextView artistText;
-	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
+	//private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	
 	////OVERRIDE METHODS////
 	
@@ -208,7 +208,7 @@ public class SongListActivity extends ListActivity {
 				//set now playing text
 				//setNowPlayingText();
 				//set now playing song string variable
-				nowPlayingSong = mService.getNowPlayingText();
+				//nowPlayingSong = mService.getNowPlayingText();
 				//show appropriate lists
 				TextView tv = (TextView)findViewById(R.id.noSongs);
 				tv.setVisibility(View.GONE);
@@ -457,10 +457,10 @@ public class SongListActivity extends ListActivity {
 					playButton.setImageResource(R.drawable.ic_action_play);
 				}
 				//check if new song is playing
-				if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
+				/*if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
 					//setNowPlayingText();
 					nowPlayingSong = mService.getNowPlayingText();
-				}
+				}*/
 				setPlayButtonImage();
 				handler.postDelayed(this, 100);
 			}
