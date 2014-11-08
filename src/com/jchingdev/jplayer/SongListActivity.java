@@ -206,7 +206,7 @@ public class SongListActivity extends ListActivity {
 				//set play button image
 				setPlayButtonImage();
 				//set now playing text
-				setNowPlayingText();
+				//setNowPlayingText();
 				//set now playing song string variable
 				nowPlayingSong = mService.getNowPlayingText();
 				//show appropriate lists
@@ -271,7 +271,7 @@ public class SongListActivity extends ListActivity {
 		
 	////PRIVATE METHODS////
 	
-	private void setNowPlayingText(){
+	/*private void setNowPlayingText(){
 		metaData.setDataSource(mService.getSongPath());
 		//check if artist text is null
 		if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
@@ -279,7 +279,7 @@ public class SongListActivity extends ListActivity {
 		else
 			artistText.setText("Unknown Artist");
 		nowPlayingText.setText(mService.getNowPlayingText());
-	}
+	}*/
 	
 	//method to add items to nav drawer list
 	private void updateNavDrawerList(){
@@ -458,7 +458,7 @@ public class SongListActivity extends ListActivity {
 				}
 				//check if new song is playing
 				if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
-					setNowPlayingText();
+					//setNowPlayingText();
 					nowPlayingSong = mService.getNowPlayingText();
 				}
 				setPlayButtonImage();

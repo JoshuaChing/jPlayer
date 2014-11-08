@@ -175,7 +175,7 @@
                 		android:textSize="12sp"
                 		android:paddingLeft="2dp"
                 		/>
-            		<TextView
+            		<!--<TextView
                 		android:id="@+id/artistText"
                 		android:layout_width="match_parent"
         	    		android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                 		android:layout_below="@+id/nowPlayingText"
                 		android:gravity="center"
                 		android:singleLine="true"
-                		android:textSize="12sp"/>
+                		android:textSize="12sp"/>-->
             	</RelativeLayout>
     	</RelativeLayout>
     	<RelativeLayout
