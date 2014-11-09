@@ -67,9 +67,9 @@ public class SongListActivity extends ListActivity {
 	private boolean handlerPaused = false;
 	private ImageView playButton;
 	private int playButtonResourceID;
-	private TextView nowPlayingText;
+	//private TextView nowPlayingText;
 	//private String nowPlayingSong;
-	private TextView artistText;
+	//private TextView artistText;
 	//private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	
 	////OVERRIDE METHODS////
@@ -88,8 +88,8 @@ public class SongListActivity extends ListActivity {
 		playButton = (ImageView)findViewById(R.id.playButtonImage);
 		playButtonResourceID = R.drawable.ic_action_play;
 		//set up now playing text
-		nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
-		artistText = (TextView)findViewById(R.id.artistText);
+		//nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
+		//artistText = (TextView)findViewById(R.id.artistText);
 		//set up search filter
 		searchFilter = (EditText)findViewById(R.id.searchFilter);
 		searchFilter.addTextChangedListener(new TextWatcher(){
@@ -285,7 +285,7 @@ public class SongListActivity extends ListActivity {
 	private void updateNavDrawerList(){
 		drawerList.add(new NavDrawerItem("Now Playing",R.drawable.ic_action_play_over_video));
 		drawerList.add(new NavDrawerItem("Songs",R.drawable.ic_action_collection));
-		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_collection));
+		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_group));
 		//drawerList.add(new NavDrawerItem("Albums",R.drawable.ic_action_collection));
 		drawerList.add(new NavDrawerItem("Settings",R.drawable.ic_action_settings));
 		drawerList.add(new NavDrawerItem("Help",R.drawable.ic_action_help));
