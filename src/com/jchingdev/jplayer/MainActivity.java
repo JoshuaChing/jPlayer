@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.GestureDetector;
@@ -30,6 +31,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	////SERVICE VARIABLES////
 	MusicService mService;
 	boolean mBound = false;
+	private PackageManager PM;
+	private boolean hasProximitySensor;
 
 	////MEDIA PLAYER VARIABLES////
 	private SeekBar seekBar;
@@ -59,6 +62,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//package manager to check for sensor
+		PM = this.getPackageManager();
+		hasProximitySensor = PM.hasSystemFeature(PackageManager.FEATURE_SENSOR_PROXIMITY);
 		//set up seek bar
 		seekBar = (SeekBar)findViewById(R.id.seekBar);
 		seekBar.setOnSeekBarChangeListener(this);
@@ -396,6 +402,8 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 	
 	//lazy button clicked
 	public void lazyButtonClicked(View v){
+		if (hasProximitySensor){
+			
 		mService.lazyButton();
 		setLazyButtonImage();
 		if (!mService.getIsLazy()){
@@ -423,6 +431,19 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				})
 				.show();
 		}
+	}else{
+		new AlertDialog.Builder(this)
+		.setTitle("Device Sensor Not Found")
+		.setMessage("Your device does not have a proximity sensor to use this feature.")
+		.setIcon(R.drawable.ic_action_error)
+		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+				public void onClick(DialogInterface dialog, int which){
+					//place alert dialog functions here
+				}
+		})
+		.show();
+	}
+		
 	}
 	
 }

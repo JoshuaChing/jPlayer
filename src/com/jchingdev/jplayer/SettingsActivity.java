@@ -5,10 +5,13 @@ import com.jchingdev.jplayer.MusicService.LocalBinder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.view.Menu;
 import android.view.View;
 import android.widget.CheckBox;
@@ -19,6 +22,8 @@ public class SettingsActivity extends Activity {
 	////SERVICE VARIABLES////
 	MusicService mService;
 	boolean mBound = false;
+	private PackageManager PM;
+	private boolean hasProximitySensor;
 	
 	////SETTINGS VARIABLE////
 	private CheckBox shuffle;
@@ -30,6 +35,9 @@ public class SettingsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+		//package manager to check for sensor
+		PM = this.getPackageManager();
+		hasProximitySensor = PM.hasSystemFeature(PackageManager.FEATURE_SENSOR_PROXIMITY);
 		//set up checkbox views
 		shuffle = (CheckBox)findViewById(R.id.shuffleCheckBox);
 		looping = (CheckBox)findViewById(R.id.loopCheckBox);
@@ -104,7 +112,21 @@ public class SettingsActivity extends Activity {
 			mService.loopButton();
 			break;
 		case R.id.sensorCheckBox:
-			mService.lazyButton();
+			if (hasProximitySensor)
+				mService.lazyButton();
+			else{
+				sensor.setChecked(false);
+				new AlertDialog.Builder(this)
+				.setTitle("Device Sensor Not Found")
+				.setMessage("Your device does not have a proximity sensor to use this feature.")
+				.setIcon(R.drawable.ic_action_error)
+				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface dialog, int which){
+							//place alert dialog functions here
+						}
+				})
+				.show();
+			}
 			break;
 		default:
 			System.out.println("Error");
