@@ -224,8 +224,8 @@ public class SongListActivity extends ListActivity {
 				TextView tv = (TextView)findViewById(R.id.noSongs);
 				tv.setVisibility(View.VISIBLE);
 				getListView().setVisibility(View.GONE);
-				nowPlayingText.setText(R.string.nowPlaying);
-				artistText.setText(R.string.artist);
+				//nowPlayingText.setText(R.string.nowPlaying);
+				//artistText.setText(R.string.artist);
 				alertNoSongs();
 			}
 		}
