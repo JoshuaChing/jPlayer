@@ -410,7 +410,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 			new AlertDialog.Builder(this)
 				.setTitle("Device Sensor Disabled")
 				.setMessage("Sensor disabled.")
-				.setIcon(R.drawable.ic_launcher)
+				.setIcon(R.drawable.ic_launcherapp)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog, int which){
 							//place alert dialog functions here
@@ -423,7 +423,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				.setTitle("Device Sensor Enabled")
 				.setMessage("Wave your hand over the phone's sensor to change song." + "\n" +"\n" +
 						"Hold your hand over the phone's sensor to play/pause song.")
-				.setIcon(R.drawable.ic_launcher)
+				.setIcon(R.drawable.ic_launcherapp)
 				.setPositiveButton("OK", new DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog, int which){
 							//place alert dialog functions here

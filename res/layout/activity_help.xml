@@ -60,7 +60,7 @@
 	        	android:layout_height="wrap_content"
 	        	android:layout_width="match_parent"
 	        	android:text="@string/question1"
-    	        android:textSize="14sp"
+    	        android:textSize="18sp"
     	        android:textColor="@color/cloudFUI"
     	        android:textStyle="bold"/>
 	    	<TextView
@@ -82,7 +82,7 @@
 	    	    android:layout_height="wrap_content"
 	    	    android:layout_width="match_parent"
 	    	    android:text="@string/question2"
-	    	    android:textSize="14sp"
+	    	    android:textSize="18sp"
 	    	    android:textColor="@color/cloudFUI"
 	    	    android:textStyle="bold"/>
 	    	<TextView
@@ -126,7 +126,7 @@
 	    	    android:layout_height="wrap_content"
 	    	    android:layout_width="match_parent"
 	    	    android:text="@string/question3"
-	    	    android:textSize="14sp"
+	    	    android:textSize="18sp"
 	    	    android:textColor="@color/cloudFUI"
 	    	    android:textStyle="bold"/>
 	    	<TextView
@@ -148,7 +148,7 @@
 	    	    android:layout_height="wrap_content"
 	    	    android:layout_width="match_parent"
 	    	    android:text="@string/question4"
-	    	    android:textSize="14sp"
+	    	    android:textSize="18sp"
 	    	    android:textColor="@color/cloudFUI"
 	    	    android:textStyle="bold"/>
 	    	<TextView
@@ -156,13 +156,53 @@
 	    	    android:layout_below="@+id/question4"
 	    	    android:paddingLeft="10dp"
 	    	    android:paddingRight="10dp"
-	    	    android:paddingBottom="30dp"
+	    	    android:paddingBottom="60dp"
 	    	    android:paddingTop="0dp"
 	    	    android:layout_height="wrap_content"
 	    	    android:layout_width="match_parent"
 	    	    android:text="@string/answer4"
     	        android:textSize="14sp"
     	        android:textColor="@color/cloudFUI"/>
+	    
+	    	<ImageView
+   	    		android:id="@+id/app_icon"
+   	    		android:contentDescription="@string/app_name"
+   	    		android:layout_centerHorizontal="true"
+   	    		android:layout_width="wrap_content"
+   	    		android:layout_height="wrap_content"
+   	   			android:layout_below="@+id/answer4"
+   	    		android:src="@drawable/ic_launcherapp"/>
+	    	
+	    	<TextView
+        		android:id="@+id/app_name"
+        		android:layout_centerHorizontal="true"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="@string/app_name"
+       			android:textSize="16sp"
+        		android:textStyle="bold"
+        		android:textColor="@color/cloudFUI"
+        		android:layout_below="@+id/app_icon"/>
+	    	
+	    	<TextView
+        		android:id="@+id/app_version"
+        		android:layout_below="@+id/app_name"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_centerHorizontal="true"
+        		android:text="@string/app_version"
+        		android:textSize="14sp"
+        		android:textColor="@color/cloudFUI"/>
+	    	
+	    	<TextView android:id="@+id/app_developer"
+        		android:layout_below="@+id/app_version"
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:layout_centerHorizontal="true"
+        		android:text="@string/app_developer"
+        		android:textSize="14sp"
+        		android:textColor="@color/cloudFUI"
+        		android:paddingBottom="30dp"/>
 	    </RelativeLayout>
      	
 	</ScrollView>
