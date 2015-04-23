@@ -7,7 +7,7 @@ import com.jchingdev.jplayer.MusicService.LocalBinder;
 
 //import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
-import android.os.Handler;
+//import android.os.Handler;
 import android.os.IBinder;
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -16,7 +16,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.support.v4.widget.DrawerLayout;
+//import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -26,7 +26,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
+//import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -40,11 +40,11 @@ public class SongListActivity extends ListActivity {
 	private EditText searchFilter;
 	
 	////NAV DRAWER VARIABLES////
-	private DrawerLayout mDrawerLayout;
+	/*private DrawerLayout mDrawerLayout;
 	private ListView mDrawerListView;
 	private ArrayList<NavDrawerItem> drawerList = new ArrayList<NavDrawerItem>();
 	private NavDrawerItemAdapter navDrawerItemAdapter;
-	private View mDrawerContainer;
+	private View mDrawerContainer;*/
 	
 	////SONG LIST VARIABLES////
 	private TextView title;
@@ -63,10 +63,10 @@ public class SongListActivity extends ListActivity {
 	private boolean artistAlbumSongView = false;
 	
 	////NOW PLAYING VARIABLES////
-	private Handler handler = new Handler();
+	/*private Handler handler = new Handler();
 	private boolean handlerPaused = false;
 	private ImageView playButton;
-	private int playButtonResourceID;
+	private int playButtonResourceID;*/
 	//private TextView nowPlayingText;
 	//private String nowPlayingSong;
 	//private TextView artistText;
@@ -85,8 +85,8 @@ public class SongListActivity extends ListActivity {
 		alternateList = (ListView)findViewById(R.id.alternateList);
 		setAlternateListClickHandle();
 		//set up play button
-		playButton = (ImageView)findViewById(R.id.playButtonImage);
-		playButtonResourceID = R.drawable.ic_action_play;
+		/*playButton = (ImageView)findViewById(R.id.playButtonImage);
+		playButtonResourceID = R.drawable.ic_action_play;*/
 		//set up now playing text
 		//nowPlayingText = (TextView)findViewById(R.id.nowPlayingText);
 		//artistText = (TextView)findViewById(R.id.artistText);
@@ -113,7 +113,7 @@ public class SongListActivity extends ListActivity {
 			}
 		});
 		//set up nav drawer and display
-		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout); //entire activity layout
+		/*mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout); //entire activity layout
 		mDrawerContainer = findViewById(R.id.left_drawer); //only drawer layout
 		mDrawerListView = (ListView) findViewById (R.id.left_drawerList); //list view of drawer layout
 		
@@ -135,8 +135,8 @@ public class SongListActivity extends ListActivity {
 				case 2://artists
 					displayArtistsList(true);
 					break;
-				/*case 3://albums
-					break;*/
+				//case 3://albums
+					//break;
 				case 3: //settings
 					Intent settingsIntent = new Intent(SongListActivity.this, SettingsActivity.class);
 					startActivity(settingsIntent);
@@ -159,7 +159,7 @@ public class SongListActivity extends ListActivity {
 				mDrawerLayout.closeDrawer(mDrawerContainer);
 			}
 			
-		});
+		});*/
 		
 	}
 
@@ -204,7 +204,7 @@ public class SongListActivity extends ListActivity {
 					mService.setIsNewPath(false);
 				}
 				//set play button image
-				setPlayButtonImage();
+				//setPlayButtonImage();
 				//set now playing text
 				//setNowPlayingText();
 				//set now playing song string variable
@@ -214,13 +214,13 @@ public class SongListActivity extends ListActivity {
 				tv.setVisibility(View.GONE);
 				getListView().setVisibility(View.VISIBLE);
 				//start now playing thread
-				handler.postDelayed(UpdateNowPlaying, 100);
+				//handler.postDelayed(UpdateNowPlaying, 100);
 			}
 			else{
 				displayAllSongs();
 				searchFilter.setVisibility(View.GONE);
 				searchFilter.getText().clear();
-				setPlayButtonImage();
+				//setPlayButtonImage();
 				TextView tv = (TextView)findViewById(R.id.noSongs);
 				tv.setVisibility(View.VISIBLE);
 				getListView().setVisibility(View.GONE);
@@ -245,7 +245,7 @@ public class SongListActivity extends ListActivity {
 		SongListActivity.this.finish();
 	}
 	
-	@Override
+	/*@Override
 	public void onPause(){
 		super.onPause();
 		handlerPaused=true;
@@ -255,7 +255,7 @@ public class SongListActivity extends ListActivity {
 	public void onResume(){
 		super.onPause();
 		handlerPaused=false;
-	}
+	}*/
 	
 	////PROTECTED METHODS////
 		
@@ -282,7 +282,7 @@ public class SongListActivity extends ListActivity {
 	}*/
 	
 	//method to add items to nav drawer list
-	private void updateNavDrawerList(){
+	/*private void updateNavDrawerList(){
 		drawerList.add(new NavDrawerItem("Now Playing",R.drawable.ic_action_play_over_video));
 		drawerList.add(new NavDrawerItem("Songs",R.drawable.ic_action_collection));
 		drawerList.add(new NavDrawerItem("Artists",R.drawable.ic_action_group));
@@ -290,7 +290,7 @@ public class SongListActivity extends ListActivity {
 		drawerList.add(new NavDrawerItem("Settings",R.drawable.ic_action_settings));
 		drawerList.add(new NavDrawerItem("Help",R.drawable.ic_action_help));
 		drawerList.add(new NavDrawerItem("About",R.drawable.ic_action_about));
-	}
+	}*/
 	
 	//method to get all songs from service's list
 	private void updateSongList(){
@@ -438,37 +438,37 @@ public class SongListActivity extends ListActivity {
 	}
 	
 	//set play button image
-	private void setPlayButtonImage(){
+	/*private void setPlayButtonImage(){
 		if (mService.getIsPaused()){
 			playButton.setImageResource(R.drawable.ic_action_play);
 		}
 		else
 			playButton.setImageResource(R.drawable.ic_action_pause);
-	}
+	}*/
 	
 	////THREADS////
 	
 	//update seek bar and song times
-	private Runnable UpdateNowPlaying = new Runnable(){
+	/*private Runnable UpdateNowPlaying = new Runnable(){
 		public void run(){
 			if (!handlerPaused){
 				//check if play button needs to be changed
 				if (mService.getIsPaused()==true && playButton.getId() != playButtonResourceID){
 					playButton.setImageResource(R.drawable.ic_action_play);
-				}
+				}*/
 				//check if new song is playing
 				/*if (!(nowPlayingSong.equals(mService.getNowPlayingText()))){
 					//setNowPlayingText();
 					nowPlayingSong = mService.getNowPlayingText();
 				}*/
-				setPlayButtonImage();
+				/*setPlayButtonImage();
 				handler.postDelayed(this, 100);
 			}
 			else{
 				handler.removeCallbacks(this);
 			}
 		}
-	};
+	};*/
 	
 	////PUBLIC METHODS////
 	
@@ -541,7 +541,7 @@ public class SongListActivity extends ListActivity {
 	}
 	
 	//play button clicked
-	public void playButtonClicked(View v){
+	/*public void playButtonClicked(View v){
 		//check if songs exist
 		if (noSongs)
 			alertNoSongs();
@@ -567,6 +567,30 @@ public class SongListActivity extends ListActivity {
 			alertNoSongs();
 		else
 			mService.nextSong();
+	}*/
+	
+	//songs button clicked
+	public void songsButtonClicked(View v){
+		displayAllSongs();
+	}
+	
+	//artists button clicked
+	public void artistsButtonClicked(View v){
+		displayArtistsList(true);
+	}
+	
+	//settings button clicked
+	public void settingsButtonClicked(View v){
+		Intent settingsIntent = new Intent(SongListActivity.this, SettingsActivity.class);
+		startActivity(settingsIntent);
+		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+	}
+	
+	//help button clicked
+	public void helpButtonClicked(View v){
+		Intent helpIntent = new Intent(SongListActivity.this, HelpActivity.class);
+		startActivity(helpIntent);
+		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 	}
 
 	//playlists button clicked PLAYLIST ACTIVITY DISABLED
@@ -578,8 +602,8 @@ public class SongListActivity extends ListActivity {
 	}*/
 	
 	//menu button clicked
-	public void menuButtonClicked(View view){
+	/*public void menuButtonClicked(View view){
 		mDrawerLayout.openDrawer(mDrawerContainer);
-	}
+	}*/
 	
 }

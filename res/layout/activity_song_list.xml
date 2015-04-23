@@ -26,19 +26,32 @@
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
-	     	<Button
+	         <Button
+	        	android:id="@+id/searchButton"
+	        	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:background="@drawable/dockbutton"
+	        	android:onClick="searchButtonClicked"/>
+	     	<ImageView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+			    android:contentDescription="@string/searchCD"
+			    android:src="@drawable/ic_action_search2"/>
+	     	<!--<Button
 	        	android:id="@+id/songs"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
-	        	android:onClick="menuButtonClicked"/>
-	     	<ImageView
+	        	android:onClick="menuButtonClicked"/>-->
+	     	<!--<ImageView
 	     	    android:id="@+id/drawerBars"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
 			    android:contentDescription="@string/menuCD"
-			    android:src="@drawable/ic_drawer2"/>
+			    android:src="@drawable/ic_drawer2"/>-->
 	     	<!--<ImageView
 	     	    android:layout_marginLeft="-10dp"
 	     	    android:layout_width="wrap_content"
@@ -80,18 +93,18 @@
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
 	     	<Button
-	        	android:id="@+id/searchButton"
+	        	android:id="@+id/nowPlaying"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
 	        	android:background="@drawable/dockbutton"
-	        	android:onClick="searchButtonClicked"/>
+	        	android:onClick="backButtonClicked"/>
 	     	<ImageView
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
-			    android:contentDescription="@string/searchCD"
-			    android:src="@drawable/ic_action_search2"/>
+			    android:contentDescription="@string/nowPlaying"
+			    android:src="@drawable/ic_action_next_item"/>
 	    </RelativeLayout>
     </LinearLayout>
     
@@ -141,7 +154,7 @@
     <LinearLayout 
 	    android:id="@+id/dock"
 	    android:layout_width="match_parent"
-	    android:layout_height="50dp"
+	    android:layout_height="55dp"
 	    android:orientation="horizontal"
 	    android:layout_alignParentBottom="true"
 	    android:baselineAligned="true">
@@ -150,19 +163,35 @@
         	android:id="@+id/backButtonLayout"
 	        android:layout_width="0dp"
 	        android:layout_height="match_parent"
-	        android:layout_weight="5">
+	        android:layout_weight="1">
     		<Button
-                android:id="@+id/nowPlaying"
+                android:id="@+id/songs"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/dockbutton"
-                android:onClick="backButtonClicked"
+                android:onClick="songsButtonClicked"
                 android:padding="0dp"/>
-            	<RelativeLayout
-               		android:layout_width="match_parent"
-                	android:layout_height="match_parent"
-                	android:gravity="center">
-            		<TextView
+            <RelativeLayout
+               	android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/songsDockImage"
+			   		android:layout_width="wrap_content"
+			    	android:layout_height="wrap_content"
+			    	android:contentDescription="@string/allSongsTitle"
+			    	android:layout_centerHorizontal="true"
+			   		android:src="@drawable/ic_action_collection"/>
+                <TextView
+                	android:layout_width="match_parent"
+        	    	android:layout_height="wrap_content"
+                	android:text="@string/allSongsTitle"
+                	android:textColor="@color/docktext"
+                	android:layout_below="@+id/songsDockImage"
+                	android:gravity="center"
+                	android:singleLine="true"
+                	android:textSize="12sp"/>
+            		<!--<TextView
                 		android:id="@+id/nowPlayingText"
                 		android:layout_width="match_parent"
         	    		android:layout_height="wrap_content"
@@ -174,7 +203,7 @@
                 		android:singleLine="true"
                 		android:textSize="12sp"
                 		android:paddingLeft="2dp"
-                		/>
+                		/>-->
             		<!--<TextView
                 		android:id="@+id/artistText"
                 		android:layout_width="match_parent"
@@ -185,13 +214,41 @@
                 		android:gravity="center"
                 		android:singleLine="true"
                 		android:textSize="12sp"/>-->
-            	</RelativeLayout>
+            </RelativeLayout>
     	</RelativeLayout>
     	<RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
-	    	<Button
+            <Button
+                android:id="@+id/artists"
+              	android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dockbutton"
+                android:onClick="artistsButtonClicked"
+                android:padding="0dp"/>
+            <RelativeLayout
+              	android:layout_width="match_parent"
+               	android:layout_height="match_parent"
+               	android:gravity="center">
+               	<ImageView
+               	    android:id="@+id/artistsDockImage"
+			  	 	android:layout_width="wrap_content"
+			   		android:layout_height="wrap_content"
+			   		android:contentDescription="@string/artists"
+			   		android:layout_centerHorizontal="true"
+			  		android:src="@drawable/ic_action_group"/>
+               	<TextView
+               		android:layout_width="match_parent"
+        	   		android:layout_height="wrap_content"
+               		android:text="@string/artists"
+               		android:textColor="@color/docktext"
+               		android:layout_below="@+id/artistsDockImage"
+               		android:gravity="center"
+               		android:singleLine="true"
+               		android:textSize="12sp"/>
+            </RelativeLayout>
+	    	<!--<Button
 	        	android:id="@+id/rewindButton"
 	        	android:layout_width="match_parent"
 	       	 	android:layout_height="match_parent"
@@ -203,13 +260,41 @@
 			    android:layout_centerHorizontal="true"
         		android:layout_centerVertical="true"
 			    android:contentDescription="@string/previousCD"
-			    android:src="@drawable/ic_action_previous"/>
+			    android:src="@drawable/ic_action_previous"/>-->
 	    </RelativeLayout>
 	    <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
-	     	<Button
+            <Button
+                android:id="@+id/settings"
+              	android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dockbutton"
+                android:onClick="settingsButtonClicked"
+                android:padding="0dp"/>
+            <RelativeLayout
+              	android:layout_width="match_parent"
+               	android:layout_height="match_parent"
+               	android:gravity="center">
+               	<ImageView
+               	    android:id="@+id/settingsDockImage"
+			  	 	android:layout_width="wrap_content"
+			   		android:layout_height="wrap_content"
+			   		android:contentDescription="@string/settings"
+			   		android:layout_centerHorizontal="true"
+			  		android:src="@drawable/ic_action_settings"/>
+               	<TextView
+               		android:layout_width="match_parent"
+        	   		android:layout_height="wrap_content"
+               		android:text="@string/settings"
+               		android:textColor="@color/docktext"
+               		android:layout_below="@+id/settingsDockImage"
+               		android:gravity="center"
+               		android:singleLine="true"
+               		android:textSize="12sp"/>
+            </RelativeLayout>
+	     	<!--<Button
 	       	 	android:id="@+id/playButton"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
@@ -222,13 +307,41 @@
 			    android:layout_centerHorizontal="true"
         		android:layout_centerVertical="true"
 			    android:contentDescription="@string/playCD"
-			    android:src="@drawable/ic_action_play"/>
+			    android:src="@drawable/ic_action_play"/>-->
 	     </RelativeLayout>
 	     <RelativeLayout
 	         android:layout_weight="1"
 	         android:layout_width="0dp"
 	         android:layout_height="match_parent">
-	     	<Button
+            <Button
+                android:id="@+id/help"
+              	android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dockbutton"
+                android:onClick="helpButtonClicked"
+                android:padding="0dp"/>
+            <RelativeLayout
+              	android:layout_width="match_parent"
+               	android:layout_height="match_parent"
+               	android:gravity="center">
+               	<ImageView
+               	    android:id="@+id/helpDockImage"
+			  	 	android:layout_width="wrap_content"
+			   		android:layout_height="wrap_content"
+			   		android:contentDescription="@string/help"
+			   		android:layout_centerHorizontal="true"
+			  		android:src="@drawable/ic_action_help"/>
+               	<TextView
+               		android:layout_width="match_parent"
+        	   		android:layout_height="wrap_content"
+               		android:text="@string/help"
+               		android:textColor="@color/docktext"
+               		android:layout_below="@+id/helpDockImage"
+               		android:gravity="center"
+               		android:singleLine="true"
+               		android:textSize="12sp"/>
+            </RelativeLayout>
+	     	<!--<Button
 	        	android:id="@+id/forwardButton"
 	        	android:layout_width="match_parent"
 	        	android:layout_height="match_parent"
@@ -240,7 +353,7 @@
 			    android:layout_centerHorizontal="true"
         		android:layout_centerVertical="true"
 			    android:contentDescription="@string/nextCD"
-			    android:src="@drawable/ic_action_next"/>
+			    android:src="@drawable/ic_action_next"/>-->
 	     </RelativeLayout>
     
 	</LinearLayout>
@@ -248,7 +361,7 @@
 </RelativeLayout>
 
 <!-- The navigation drawer -->
-<RelativeLayout
+<!--<RelativeLayout
     android:id="@+id/left_drawer"
     android:layout_width="240dp"
     android:layout_height="match_parent"
@@ -271,6 +384,6 @@
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
         android:background="@color/lightGrayFUI"/>
- </RelativeLayout>
+ </RelativeLayout>-->
 
 </android.support.v4.widget.DrawerLayout>
