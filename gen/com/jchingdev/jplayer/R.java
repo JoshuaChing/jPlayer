@@ -20,6 +20,7 @@ public final class R {
         public static final int black=0x7f070002;
         public static final int cloudFUI=0x7f070015;
         /**  #3498db 
+ COLOUR OF BUTTONS 
          */
         public static final int darkBlueFUI=0x7f07000d;
         public static final int darkDarkGrayFUI=0x7f070010;
@@ -29,6 +30,7 @@ public final class R {
         public static final int darkGrayTrans50=0x7f070007;
         public static final int darkGrayTrans75=0x7f070006;
         /**  #34495e 
+ COLOUR OF SONG ITEMS 
          */
         public static final int darkNavyFUI=0x7f070013;
         public static final int docktext=0x7f070016;
@@ -36,11 +38,14 @@ public final class R {
          */
         public static final int lightBlueFUI=0x7f07000c;
         public static final int lightGray=0x7f070009;
+        /**  COLOUR OF BUTTONS HOVER 
+         */
         public static final int lightGrayFUI=0x7f07000e;
         public static final int lightGrayTrans75=0x7f07000a;
         public static final int lightGreen=0x7f07000b;
         public static final int lightNavyFUI=0x7f070012;
         /**  #2c3e50 
+ COLOUR OF SONG ITEMS HOVER 
          */
         public static final int locationGrayFUI=0x7f070014;
         public static final int silverFUI=0x7f070011;

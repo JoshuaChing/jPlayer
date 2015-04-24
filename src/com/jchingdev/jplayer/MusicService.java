@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
@@ -20,6 +25,8 @@ import android.os.Binder;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.Builder;
 
 public class MusicService extends Service implements OnCompletionListener {
 	
@@ -79,6 +86,11 @@ public class MusicService extends Service implements OnCompletionListener {
 			
 	}
 	
+	
+	////NOTIFICATION VARIABLES////
+	private static final int notificationID = 1;
+	NotificationManager notificationManager;
+	NotificationCompat.Builder builder;
 	
 	////SONG LIST VARIABLES////
 	private String SD_PATH = Environment.getExternalStorageDirectory().getPath() +"/Music/";
@@ -146,6 +158,10 @@ public class MusicService extends Service implements OnCompletionListener {
 		l = new ProximitySensorEventListener();
 		if (isLazy)//turn on sensor if needed
 			sensorManager.registerListener(l, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+		
+		//create notification
+		notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.notify(notificationID,createNotification());
 	}
 	
 	
@@ -158,6 +174,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	public void onDestroy(){
 		//Toast.makeText(this,"Goodbye!", Toast.LENGTH_LONG).show();
 		sensorManager.unregisterListener(l);
+		notificationManager.cancel(notificationID);
 	}
 	
 	@Override
@@ -178,6 +195,24 @@ public class MusicService extends Service implements OnCompletionListener {
 	}
 		
 	////PRIVATE METHODS////
+	
+	//ongoing notification
+	private Notification createNotification(){
+		Intent intent = new Intent(getApplicationContext(),SongListActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+		
+		builder = new Builder(getApplicationContext());
+		Notification notification = builder
+				.setSmallIcon(R.drawable.ic_launcherapp)
+				.setContentTitle("jPlayer is running")
+				.setContentText((isLazy)?"Device sensor is enabled":"Device sensor is disabled")
+				.setOngoing(true)
+				.setContentIntent(pendingIntent)
+				.build();
+		
+		return notification;
+	}
 	
 	//method to find all .mp3 files and add them to list
 	private void updateSongList(){
@@ -716,11 +751,14 @@ public class MusicService extends Service implements OnCompletionListener {
 		if (isLazy){
 			isLazy=false;
 			sensorManager.unregisterListener(l);
+			builder.setContentText("Device sensor is disabled");
 		}
 		else{
 			isLazy=true;
 			sensorManager.registerListener(l, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+			builder.setContentText("Device sensor is enabled");
 		}
+		notificationManager.notify(notificationID,builder.build());
 		changeSettings.putBoolean("isLazy",isLazy);
 		changeSettings.commit();
 	}
