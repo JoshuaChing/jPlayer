@@ -3,5 +3,6 @@
     android:shape="line">
     <stroke
         android:width="5dp"
-        android:color="@color/lightBlueFUI"/>
+        android:color="@color/lightNavyFUI"/>
+        <!--android:color="@color/lightBlueFUI"/>-->
 </shape>

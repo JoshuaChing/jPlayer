@@ -12,7 +12,7 @@
         android:contentDescription="@string/album_artCD"
         android:background="@color/white"
         android:scaleType="centerCrop"
-        android:alpha="0.25"
+        android:alpha="0.50"
         android:src="@drawable/jandroid"/>
     
    <LinearLayout

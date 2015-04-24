@@ -93,8 +93,9 @@
      	android:onClick="homeButtonClicked"/>
     
 	<TextView
-	    android:background="@color/darkNavyFUI"
+	    android:background="@color/locationGrayFUI"
 	    android:color="@color/white"
+	    android:textColor="@color/skyBlue3"
  		android:id="@+id/path"
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"
