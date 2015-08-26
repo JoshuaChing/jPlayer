@@ -28,6 +28,8 @@
     <string name="setFolderCD">Set Music Folder</string>
     <string name="homeCD">Home Folder</string>
     <string name="homeFolder">Go back to current Music Folder</string>
+    <string name="changeThemeTitle">Current theme:</string>
+    <string name="changeTheme">Change Color Theme</string>
     <string name="title">Playlists</string>
     <string name="newPlaylist">Add Playlist</string>
     <string name="allSongsTitle">Songs</string>
@@ -63,6 +65,14 @@
     <string name="answer4">	    A: jPlayer is a one man project that is still in its early stages.
 	    I\'m trying my best to squish all the bugs! Thanks for understanding :).</string>
 
+    <string-array name="theme_array">
+        <item>Grey</item>
+        <item>Navy</item>
+        <item>Turquoise</item>
+        <item>Green</item>
+        <item>Black</item>
+    </string-array>
+    
     <color name="transparent">#00FFFFFF</color>
     <color name="skyBlue3">#00D5FF</color>
     <color name="black">#000000</color>

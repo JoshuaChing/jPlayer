@@ -20,8 +20,21 @@ public class UtilsHelper {
 
     // 0 = grey, 1 = navy, 2 = turquoise 3 = green 4 = black
 	public static int getTheme(Context context){
+		if (context == null){
+			return 0;
+		}
 		SharedPreferences settings = context.getSharedPreferences("THEME", 0);
 		int theme = settings.getInt("theme", 0);
 		return theme;
+	}
+
+	public static void setTheme(Context context, int theme){
+		if (context == null){
+			return;
+		}
+	    SharedPreferences settings = context.getSharedPreferences("THEME", 0);
+	    SharedPreferences.Editor editor = settings.edit();
+	    editor.putInt("theme", theme);
+	    editor.commit();
 	}
 }

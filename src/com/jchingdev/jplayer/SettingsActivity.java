@@ -14,7 +14,11 @@ import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
@@ -31,6 +35,9 @@ public class SettingsActivity extends Activity {
 	private CheckBox sensor;
 	private TextView folderPath;
 	
+	////THEME VARIABLE////
+	private Spinner spinner;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +50,8 @@ public class SettingsActivity extends Activity {
 		looping = (CheckBox)findViewById(R.id.loopCheckBox);
 		sensor = (CheckBox)findViewById(R.id.sensorCheckBox);
 		folderPath = (TextView)findViewById(R.id.folderPath);
+		spinner = (Spinner)findViewById(R.id.themeSpinner);
+		setUpSpinner();
 	}
 
 	@Override
@@ -149,4 +158,25 @@ public class SettingsActivity extends Activity {
 		overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 	}
 
+	private void setUpSpinner(){
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.theme_array, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
+		int theme = UtilsHelper.getTheme(getApplicationContext());
+		spinner.setSelection(theme);
+		spinner.setOnItemSelectedListener(new OnItemSelectedListener(){
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				System.out.println("@@@ " + position);
+				UtilsHelper.setTheme(getApplicationContext(), position);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+			    // do nothing
+			}
+			
+		});
+	}
 }

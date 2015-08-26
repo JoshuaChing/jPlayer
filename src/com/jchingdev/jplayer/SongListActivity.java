@@ -57,6 +57,7 @@ public class SongListActivity extends ListActivity {
 	private boolean noSongs;
 	private ListView alternateList;
 	private RelativeLayout mainLayout;
+	private List<String> alternateListData; //cache
 	
 	//logic path
 	private boolean initialAlternateListSwitch = false;
@@ -176,6 +177,14 @@ public class SongListActivity extends ListActivity {
 		return true;
 	}
 
+	@Override
+	protected void onResume(){
+		super.onResume();
+		updateSongListTheme();
+		updateMainLayoutTheme();
+		updateAlternateListTheme();
+	}
+	
 	@Override
 	protected void onStart(){
 		super.onStart();
@@ -315,6 +324,14 @@ public class SongListActivity extends ListActivity {
 		hasAlreadyBeenUpdated = true;
 	}
 	
+	private void updateSongListTheme(){
+		if (songItemAdapter == null){
+			return;
+		}
+		songItemAdapter = new SongItemAdapter(this,R.layout.song_item,songList);
+		setListAdapter(songItemAdapter);
+	}
+	
 	//method to display all songs
 	private void displayAllSongs(){
 		alternateList.setVisibility(View.GONE);
@@ -345,6 +362,16 @@ public class SongListActivity extends ListActivity {
 	
 	//method to set new single line data to alternate list
 	private void newAlternateListAdapterData(List<String> list){
+		alternateListData = null;
+		alternateListData = list;
+		// determine theme colors
+		int layout = getAlternateListLayout();
+		// set list background
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,layout,list);
+		alternateList.setAdapter(arrayAdapter);
+	}
+
+	private int getAlternateListLayout(){
 		// determine theme colors
 		int layout = R.layout.alternate_list_single_item;
 		int theme = UtilsHelper.getTheme(getApplicationContext());
@@ -357,14 +384,19 @@ public class SongListActivity extends ListActivity {
 		}else if (theme == 4){
 			layout = R.layout.theme_black_alternate_list_single_item;
 		}
-		// set theme background
-		int color = updateMainLayoutTheme();
-		alternateList.setBackgroundResource(color);
-		// set list background
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,layout,list);
+		return layout;
+	}
+	
+	private void updateAlternateListTheme(){
+		if (alternateList == null || alternateListData == null || alternateListData.isEmpty()){
+			return;
+		}
+		// determine theme colors
+		int layout = getAlternateListLayout();
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, layout, alternateListData);
 		alternateList.setAdapter(arrayAdapter);
 	}
-
+	
 	private int updateMainLayoutTheme(){
 		int color = R.color.lightNavyFUI;
 		int theme = UtilsHelper.getTheme(getApplicationContext());
@@ -377,7 +409,12 @@ public class SongListActivity extends ListActivity {
 		}else if (theme == 4){
 			color = R.color.black;
 		}
-		mainLayout.setBackgroundResource(color);
+		if (mainLayout != null){
+		    mainLayout.setBackgroundResource(color);
+		}
+		if (alternateList != null){
+			alternateList.setBackgroundResource(color);
+		}
 		return color;
 	}
 
