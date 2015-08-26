@@ -7,16 +7,17 @@
 <!-- MAIN LAYOUT -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongListActivity"
-    android:background="@color/lightNavyFUI"
     android:animateLayoutChanges="true">
     <!--android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"-->
     
    	<LinearLayout
    	    android:id="@+id/songPathLayout"
+   	    android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:orientation="horizontal"

@@ -19,12 +19,14 @@ public class SongItemAdapter extends ArrayAdapter<SongItem> implements Filterabl
 
 	private ArrayList<SongItem> objects;
 	private ArrayList<SongItem> displayedObjects;
+	private Context mContext;
 	
 	public SongItemAdapter(Context context, int resource, ArrayList<SongItem> objects) {
 		super(context, resource, objects);
 		// TODO Auto-generated constructor stub
 		this.objects= objects;
 		this.displayedObjects = objects;
+		this.mContext = context;
 	}
 
 	@Override
@@ -49,6 +51,19 @@ public class SongItemAdapter extends ArrayAdapter<SongItem> implements Filterabl
         SongItem i = displayedObjects.get(position);
         //set values to display
         if (i != null){
+            if (mContext != null){
+            int theme = UtilsHelper.getTheme(mContext);
+                if (theme == 1){
+                    UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_navy_songitembackground));
+                }else if (theme == 2){
+                    UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_turquoise_songitembackground));
+                }else if (theme == 3){
+                    UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_green_songitembackground));
+                }else if (theme == 4){
+                    UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_black_songitembackground));
+                }
+            }
+
             TextView name = (TextView)v.findViewById(R.id.nameSL);
             TextView artist = (TextView)v.findViewById(R.id.artistSL);
             TextView album = (TextView)v.findViewById(R.id.albumTextSL);

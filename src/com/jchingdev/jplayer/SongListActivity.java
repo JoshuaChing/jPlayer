@@ -26,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 //import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,6 +56,7 @@ public class SongListActivity extends ListActivity {
 	private SongItemAdapter songItemAdapter;
 	private boolean noSongs;
 	private ListView alternateList;
+	private RelativeLayout mainLayout;
 	
 	//logic path
 	private boolean initialAlternateListSwitch = false;
@@ -83,6 +85,8 @@ public class SongListActivity extends ListActivity {
 		subtitle = (TextView)findViewById(R.id.subtitle);
 		//set up alternate list view
 		alternateList = (ListView)findViewById(R.id.alternateList);
+		mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
+		updateMainLayoutTheme();
 		setAlternateListClickHandle();
 		//set up play button
 		/*playButton = (ImageView)findViewById(R.id.playButtonImage);
@@ -341,10 +345,42 @@ public class SongListActivity extends ListActivity {
 	
 	//method to set new single line data to alternate list
 	private void newAlternateListAdapterData(List<String> list){
-		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.alternate_list_single_item,list);
+		// determine theme colors
+		int layout = R.layout.alternate_list_single_item;
+		int theme = UtilsHelper.getTheme(getApplicationContext());
+		if (theme == 1) {
+			layout = R.layout.theme_navy_alternate_list_single_item;
+		}else if (theme == 2){
+			layout = R.layout.theme_turquoise_alternate_list_single_item;
+		}else if (theme == 3){
+			layout = R.layout.theme_green_alternate_list_single_item;
+		}else if (theme == 4){
+			layout = R.layout.theme_black_alternate_list_single_item;
+		}
+		// set theme background
+		int color = updateMainLayoutTheme();
+		alternateList.setBackgroundResource(color);
+		// set list background
+		ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,layout,list);
 		alternateList.setAdapter(arrayAdapter);
 	}
-	
+
+	private int updateMainLayoutTheme(){
+		int color = R.color.lightNavyFUI;
+		int theme = UtilsHelper.getTheme(getApplicationContext());
+		if (theme == 1) {
+			color = R.color.navyItemBack;
+		}else if (theme == 2){
+			color = R.color.turquoiseItemBack;
+		}else if (theme == 3){
+			color = R.color.greenItemBack;
+		}else if (theme == 4){
+			color = R.color.black;
+		}
+		mainLayout.setBackgroundResource(color);
+		return color;
+	}
+
 	private void setAlternateListClickHandle(){
 		alternateList.setOnItemClickListener(new OnItemClickListener(){
 

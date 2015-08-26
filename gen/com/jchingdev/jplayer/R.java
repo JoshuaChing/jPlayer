@@ -33,7 +33,10 @@ public final class R {
  COLOUR OF SONG ITEMS 
          */
         public static final int darkNavyFUI=0x7f070013;
-        public static final int docktext=0x7f070016;
+        public static final int docktext=0x7f070019;
+        /**  green theme 
+         */
+        public static final int greenItemBack=0x7f070018;
         /**  FLAT UI COLOURS 
          */
         public static final int lightBlueFUI=0x7f07000c;
@@ -48,9 +51,15 @@ public final class R {
  COLOUR OF SONG ITEMS HOVER 
          */
         public static final int locationGrayFUI=0x7f070014;
+        /**  navy theme 
+         */
+        public static final int navyItemBack=0x7f070016;
         public static final int silverFUI=0x7f070011;
         public static final int skyBlue3=0x7f070001;
         public static final int transparent=0x7f070000;
+        /**  turquoise theme 
+         */
+        public static final int turquoiseItemBack=0x7f070017;
         public static final int white=0x7f070003;
         public static final int whiteTrans75=0x7f070004;
     }
@@ -101,14 +110,18 @@ public final class R {
         public static final int sensor_icon=0x7f020021;
         public static final int sensor_icon_focused=0x7f020022;
         public static final int songitembackground=0x7f020023;
+        public static final int theme_black_songitembackground=0x7f020024;
+        public static final int theme_green_songitembackground=0x7f020025;
+        public static final int theme_navy_songitembackground=0x7f020026;
+        public static final int theme_turquoise_songitembackground=0x7f020027;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0048;
+        public static final int action_settings=0x7f0a0049;
         public static final int albumArt=0x7f0a0019;
         public static final int albumArtBackground=0x7f0a0013;
-        public static final int albumArtSL=0x7f0a0044;
-        public static final int albumTextSL=0x7f0a0047;
-        public static final int alternateList=0x7f0a0038;
+        public static final int albumArtSL=0x7f0a0045;
+        public static final int albumTextSL=0x7f0a0048;
+        public static final int alternateList=0x7f0a0039;
         public static final int answer1=0x7f0a000a;
         public static final int answer2=0x7f0a000c;
         public static final int answer2_1=0x7f0a000e;
@@ -119,12 +132,12 @@ public final class R {
         public static final int app_icon=0x7f0a0001;
         public static final int app_name=0x7f0a0002;
         public static final int app_version=0x7f0a0003;
-        public static final int artistSL=0x7f0a0046;
+        public static final int artistSL=0x7f0a0047;
         public static final int artistText=0x7f0a0016;
-        public static final int artists=0x7f0a003c;
-        public static final int artistsDockImage=0x7f0a003d;
+        public static final int artists=0x7f0a003d;
+        public static final int artistsDockImage=0x7f0a003e;
         public static final int back=0x7f0a0005;
-        public static final int backButtonLayout=0x7f0a003a;
+        public static final int backButtonLayout=0x7f0a003b;
         public static final int currentTime=0x7f0a001c;
         public static final int dock=0x7f0a001b;
         public static final int drawer_layout=0x7f0a0033;
@@ -133,20 +146,21 @@ public final class R {
         public static final int folderPathTitle=0x7f0a0030;
         public static final int forwardButton=0x7f0a0024;
         public static final int header=0x7f0a0008;
-        public static final int help=0x7f0a0040;
-        public static final int helpDockImage=0x7f0a0041;
+        public static final int help=0x7f0a0041;
+        public static final int helpDockImage=0x7f0a0042;
         public static final int lazyButton=0x7f0a0017;
         public static final int lazyButtonImage=0x7f0a0018;
         public static final int loop=0x7f0a002b;
         public static final int loopButton=0x7f0a0025;
         public static final int loopButtonImage=0x7f0a0026;
         public static final int loopCheckBox=0x7f0a002c;
+        public static final int mainLayout=0x7f0a0034;
         public static final int maxTime=0x7f0a001e;
-        public static final int nameSL=0x7f0a0045;
-        public static final int navDrawerIcon=0x7f0a0042;
-        public static final int navDrawerText=0x7f0a0043;
+        public static final int nameSL=0x7f0a0046;
+        public static final int navDrawerIcon=0x7f0a0043;
+        public static final int navDrawerText=0x7f0a0044;
         public static final int newPlaylist=0x7f0a0028;
-        public static final int noSongs=0x7f0a0039;
+        public static final int noSongs=0x7f0a003a;
         public static final int nowPlaying=0x7f0a0014;
         public static final int nowPlayingText=0x7f0a0015;
         public static final int path=0x7f0a0007;
@@ -157,23 +171,23 @@ public final class R {
         public static final int question3=0x7f0a000f;
         public static final int question4=0x7f0a0011;
         public static final int rewindButton=0x7f0a0021;
-        public static final int searchButton=0x7f0a0035;
-        public static final int searchFilter=0x7f0a0037;
+        public static final int searchButton=0x7f0a0036;
+        public static final int searchFilter=0x7f0a0038;
         public static final int seekBar=0x7f0a001d;
         public static final int sensor=0x7f0a002d;
         public static final int sensorCheckBox=0x7f0a002e;
         public static final int sensorDescription=0x7f0a002f;
         public static final int setFolderButton=0x7f0a0006;
-        public static final int settings=0x7f0a003e;
-        public static final int settingsDockImage=0x7f0a003f;
+        public static final int settings=0x7f0a003f;
+        public static final int settingsDockImage=0x7f0a0040;
         public static final int shuffle=0x7f0a0029;
         public static final int shuffleButton=0x7f0a001f;
         public static final int shuffleButtonImage=0x7f0a0020;
         public static final int shuffleCheckBox=0x7f0a002a;
-        public static final int songPathLayout=0x7f0a0034;
+        public static final int songPathLayout=0x7f0a0035;
         public static final int songs=0x7f0a0000;
-        public static final int songsDockImage=0x7f0a003b;
-        public static final int subtitle=0x7f0a0036;
+        public static final int songsDockImage=0x7f0a003c;
+        public static final int subtitle=0x7f0a0037;
         public static final int timeDisplay=0x7f0a001a;
         public static final int title=0x7f0a0027;
     }
@@ -190,6 +204,10 @@ public final class R {
         public static final int nav_drawer_item=0x7f030009;
         public static final int playlist_item=0x7f03000a;
         public static final int song_item=0x7f03000b;
+        public static final int theme_black_alternate_list_single_item=0x7f03000c;
+        public static final int theme_green_alternate_list_single_item=0x7f03000d;
+        public static final int theme_navy_alternate_list_single_item=0x7f03000e;
+        public static final int theme_turquoise_alternate_list_single_item=0x7f03000f;
     }
     public static final class menu {
         public static final int about=0x7f090000;
