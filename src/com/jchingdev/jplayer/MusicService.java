@@ -107,7 +107,7 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	////ALTERNATE LIST VARIABLES////
 	private String textArrow;
-	private MediaMetadataRetriever metaData = new MediaMetadataRetriever();
+	private static MediaMetadataRetriever metaData = new MediaMetadataRetriever();
 	private List<String> artistsList = new ArrayList<String>();
 	private String viewingArtist;
 	private String viewingAlbum;
@@ -227,17 +227,21 @@ public class MusicService extends Service implements OnCompletionListener {
 		//filter out mp3 files of the directory and add them to list
 		if (home.listFiles(new Mp3Filter()).length > 0){
 			for (File file: home.listFiles(new Mp3Filter())){
-				songList.add(file.getName());
-				metaData.setDataSource(SD_PATH+file.getName());
-				String tempArtist;
-				//check if artists exists or if its "unknown artist"
-				if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
-					tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-				else
-					tempArtist = "Unknown Artist";
-				//check if artists list contains the value, add it in if it doesn't
-				if (!artistsList.contains(tempArtist))
-					artistsList.add(tempArtist);
+				try {
+					songList.add(file.getName());
+					metaData.setDataSource(SD_PATH+file.getName());
+					String tempArtist;
+					//check if artists exists or if its "unknown artist"
+					if (metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST)!=null)
+						tempArtist = metaData.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+					else
+						tempArtist = "Unknown Artist";
+					//check if artists list contains the value, add it in if it doesn't
+					if (!artistsList.contains(tempArtist))
+						artistsList.add(tempArtist);
+				} catch (Exception e) {
+					System.out.println("error at music service update song list");
+				}
 			}
 		}
 		
@@ -263,6 +267,9 @@ public class MusicService extends Service implements OnCompletionListener {
 	
 	//set index of shuffle position
 	private void setShufflePositionIndex(int currentSongPosition){
+		if (songList == null) {
+			return;
+		}
 		int i = 0;
 		while (shuffleList[i]!=currentSongPosition && i<songList.size()){
 			i++;

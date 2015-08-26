@@ -106,13 +106,21 @@ public class SettingsActivity extends Activity {
 	public void checkBoxClicked(View view){
 		switch (view.getId()){
 		case R.id.shuffleCheckBox:
+			if (mService == null) {
+				shuffle.setChecked(!shuffle.isChecked());
+				return;
+			}
 			mService.shuffleButton();
 			break;
 		case R.id.loopCheckBox:
+			if (mService == null) {
+				looping.setChecked(!looping.isChecked());
+				return;
+			}
 			mService.loopButton();
 			break;
 		case R.id.sensorCheckBox:
-			if (hasProximitySensor)
+			if (hasProximitySensor && mService != null)
 				mService.lazyButton();
 			else{
 				sensor.setChecked(false);

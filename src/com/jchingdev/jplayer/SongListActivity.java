@@ -109,7 +109,9 @@ public class SongListActivity extends ListActivity {
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				// TODO Auto-generated method stub
-				songItemAdapter.getFilter().filter(s.toString());
+				if (songItemAdapter != null){
+				    songItemAdapter.getFilter().filter(s.toString());
+				}
 			}
 		});
 		//set up nav drawer and display
