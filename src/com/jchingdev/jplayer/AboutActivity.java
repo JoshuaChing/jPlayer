@@ -5,9 +5,12 @@ import android.app.Activity;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.view.Menu;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class AboutActivity extends Activity {
+
+	private RelativeLayout mainLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,8 @@ public class AboutActivity extends Activity {
 			e.printStackTrace();
 			versionName.setText("Version 1.0");
 		}
+		mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
+		updateBackground();
 	}
 
 	@Override
@@ -43,4 +48,10 @@ public class AboutActivity extends Activity {
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 
+	private void updateBackground(){
+		int color = UtilsHelper.getThemeColor(getApplicationContext());
+		if (mainLayout != null){
+		    mainLayout.setBackgroundResource(color);
+		}
+	}
 }

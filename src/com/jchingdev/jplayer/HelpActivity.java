@@ -4,13 +4,18 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 public class HelpActivity extends Activity {
+
+	private RelativeLayout mainLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_help);
+		mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
+		updateBackground();
 	}
 
 	@Override
@@ -32,5 +37,10 @@ public class HelpActivity extends Activity {
 		overridePendingTransition(R.anim.push_right_in,R.anim.push_right_out);
 	}
 
-	
+	private void updateBackground(){
+		int color = UtilsHelper.getThemeColor(getApplicationContext());
+		if (mainLayout != null){
+		    mainLayout.setBackgroundResource(color);
+		}
+	}
 }

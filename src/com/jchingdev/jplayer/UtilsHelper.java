@@ -37,4 +37,19 @@ public class UtilsHelper {
 	    editor.putInt("theme", theme);
 	    editor.commit();
 	}
+
+	public static int getThemeColor(Context context){
+		int color = R.color.lightNavyFUI;
+		int theme = UtilsHelper.getTheme(context);
+		if (theme == 1) {
+			color = R.color.navyItemBack;
+		}else if (theme == 2){
+			color = R.color.turquoiseItemBack;
+		}else if (theme == 3){
+			color = R.color.greenItemBack;
+		}else if (theme == 4){
+			color = R.color.black;
+		}
+		return color;
+	}
 }

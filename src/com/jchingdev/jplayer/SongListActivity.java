@@ -397,25 +397,14 @@ public class SongListActivity extends ListActivity {
 		alternateList.setAdapter(arrayAdapter);
 	}
 	
-	private int updateMainLayoutTheme(){
-		int color = R.color.lightNavyFUI;
-		int theme = UtilsHelper.getTheme(getApplicationContext());
-		if (theme == 1) {
-			color = R.color.navyItemBack;
-		}else if (theme == 2){
-			color = R.color.turquoiseItemBack;
-		}else if (theme == 3){
-			color = R.color.greenItemBack;
-		}else if (theme == 4){
-			color = R.color.black;
-		}
+	private void updateMainLayoutTheme(){
+		int color = UtilsHelper.getThemeColor(getApplicationContext());
 		if (mainLayout != null){
 		    mainLayout.setBackgroundResource(color);
 		}
 		if (alternateList != null){
 			alternateList.setBackgroundResource(color);
 		}
-		return color;
 	}
 
 	private void setAlternateListClickHandle(){
