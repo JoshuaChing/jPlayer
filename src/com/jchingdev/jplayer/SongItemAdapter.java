@@ -61,6 +61,8 @@ public class SongItemAdapter extends ArrayAdapter<SongItem> implements Filterabl
                     UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_green_songitembackground));
                 }else if (theme == 4){
                     UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_black_songitembackground));
+                }else if (theme == 5){
+                	UtilsHelper.setBackground(v,mContext.getResources().getDrawable(R.drawable.theme_blue_songitembackground));
                 }
             }
 

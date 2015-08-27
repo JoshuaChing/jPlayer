@@ -21,6 +21,9 @@ public final class R {
     }
     public static final class color {
         public static final int black=0x7f080002;
+        /**  blue theme 
+         */
+        public static final int blueItemBack=0x7f080019;
         public static final int cloudFUI=0x7f080015;
         /**  #3498db 
  COLOUR OF BUTTONS 
@@ -36,7 +39,7 @@ public final class R {
  COLOUR OF SONG ITEMS 
          */
         public static final int darkNavyFUI=0x7f080013;
-        public static final int docktext=0x7f080019;
+        public static final int docktext=0x7f08001a;
         /**  green theme 
          */
         public static final int greenItemBack=0x7f080018;
@@ -114,9 +117,10 @@ public final class R {
         public static final int sensor_icon_focused=0x7f020022;
         public static final int songitembackground=0x7f020023;
         public static final int theme_black_songitembackground=0x7f020024;
-        public static final int theme_green_songitembackground=0x7f020025;
-        public static final int theme_navy_songitembackground=0x7f020026;
-        public static final int theme_turquoise_songitembackground=0x7f020027;
+        public static final int theme_blue_songitembackground=0x7f020025;
+        public static final int theme_green_songitembackground=0x7f020026;
+        public static final int theme_navy_songitembackground=0x7f020027;
+        public static final int theme_turquoise_songitembackground=0x7f020028;
     }
     public static final class id {
         public static final int action_settings=0x7f0b004c;
@@ -211,9 +215,10 @@ public final class R {
         public static final int playlist_item=0x7f03000a;
         public static final int song_item=0x7f03000b;
         public static final int theme_black_alternate_list_single_item=0x7f03000c;
-        public static final int theme_green_alternate_list_single_item=0x7f03000d;
-        public static final int theme_navy_alternate_list_single_item=0x7f03000e;
-        public static final int theme_turquoise_alternate_list_single_item=0x7f03000f;
+        public static final int theme_blue_alternate_list_single_item=0x7f03000d;
+        public static final int theme_green_alternate_list_single_item=0x7f03000e;
+        public static final int theme_navy_alternate_list_single_item=0x7f03000f;
+        public static final int theme_turquoise_alternate_list_single_item=0x7f030010;
     }
     public static final class menu {
         public static final int about=0x7f0a0000;

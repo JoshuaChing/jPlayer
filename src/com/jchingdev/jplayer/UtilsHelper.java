@@ -18,7 +18,7 @@ public class UtilsHelper {
         }
 	}
 
-    // 0 = grey, 1 = navy, 2 = turquoise 3 = green 4 = black
+    // 0 = grey, 1 = navy, 2 = turquoise, 3 = green, 4 = black, 5 = blue
 	public static int getTheme(Context context){
 		if (context == null){
 			return 0;
@@ -49,6 +49,8 @@ public class UtilsHelper {
 			color = R.color.greenItemBack;
 		}else if (theme == 4){
 			color = R.color.black;
+		}else if (theme == 5){
+			color = R.color.blueItemBack;
 		}
 		return color;
 	}

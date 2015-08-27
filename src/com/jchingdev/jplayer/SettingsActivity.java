@@ -168,7 +168,6 @@ public class SettingsActivity extends Activity {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				System.out.println("@@@ " + position);
 				UtilsHelper.setTheme(getApplicationContext(), position);
 			}
 

@@ -383,6 +383,8 @@ public class SongListActivity extends ListActivity {
 			layout = R.layout.theme_green_alternate_list_single_item;
 		}else if (theme == 4){
 			layout = R.layout.theme_black_alternate_list_single_item;
+		}else if (theme == 5){
+			layout = R.layout.theme_blue_alternate_list_single_item;
 		}
 		return layout;
 	}

@@ -71,6 +71,7 @@
         <item>Turquoise</item>
         <item>Green</item>
         <item>Black</item>
+        <item>Blue</item>
     </string-array>
     
     <color name="transparent">#00FFFFFF</color>
@@ -104,4 +105,6 @@
     <color name="turquoiseItemBack">#16a085</color>
 	<!-- green theme -->
 	<color name="greenItemBack">#27ae60</color>
+	<!-- blue theme -->
+	<color name="blueItemBack">#2A7BB1</color>
 </resources>
